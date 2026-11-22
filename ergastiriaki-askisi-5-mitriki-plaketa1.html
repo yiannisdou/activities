@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Κατασκευαστής Quiz 1.5">
+<title>Εργαστηριακή Άσκηση 5: Μητρική Πλακέτα</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#f4f6f9}html:has(.qz[data-theme=dark]),body:has(.qz[data-theme=dark]){background:#0f131a}@media print{html,body{background:#fff!important;margin:0}}
+.qz{--qa:#0b4f8a;--qb:#1597a5;--bg:#f4f6f9;--card:#fff;--ink:#10131a;--mute:#5a6271;--line:#d8dce4;--soft:#eef2f7;--okc:#1a7f37;--okb:#e8f5ec;--bdc:#c1121f;--bdb:#fdecee;--ptc:#a36200;--ptb:#fff4e0;--qt:var(--qa);font:17px/1.55 "Noto Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);max-width:900px;margin:0 auto;padding:16px;border-radius:18px;color-scheme:light}
+.qz[data-theme=dark]{--bg:#0f131a;--card:#181d26;--ink:#e8ebf0;--mute:#a3abb9;--line:#2e3644;--soft:#222a37;--okc:#4cc16f;--okb:#12301c;--bdc:#ff6b75;--bdb:#3a161b;--ptc:#f0a43a;--ptb:#3a2a10;--qt:color-mix(in srgb,var(--qa) 50%,#fff);color-scheme:dark}
+.qz *{box-sizing:border-box;min-width:0}
+.qz-pt{border-collapse:collapse;width:100%}.qz-pt,.qz-pt>tbody,.qz-pt>tbody>tr,.qz-pt>tbody>tr>td{display:block;padding:0}.qz-pt>thead,.qz-pt>tfoot{display:none}
+.qz-h{display:block;background:linear-gradient(120deg,var(--qa),var(--qb));color:#fff;border-radius:14px;padding:16px 20px 12px;margin-bottom:14px;box-shadow:0 6px 20px color-mix(in srgb,var(--qa) 25%,transparent)}
+.qz-hr{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;margin-top:8px}.qz-hr .qz-meta{margin:0}
+.qz-h h1{font:700 clamp(21px,3.3vw,30px)/1.15 Literata,Georgia,serif;margin:0 0 4px;color:#fff;text-wrap:balance}
+.qz-h p{margin:4px 0}.qz-h .qz-sub{font-size:15px;font-weight:600;opacity:.92;margin:0 0 6px;line-height:1.35}.qz-h .qz-meta{color:rgba(255,255,255,.85)}
+.qz-tools{display:flex;gap:8px;flex-wrap:wrap}
+.qz-tb{font:inherit;font-size:15px;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--qt);border-radius:10px;padding:9px 14px;min-height:44px;cursor:pointer}
+.qz-tb:hover:not(:disabled){border-color:var(--qa)}
+.qz-h .qz-tb{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.5);min-height:38px;padding:6px 12px;font-size:14px}
+.qz-h .qz-tb:hover{background:rgba(255,255,255,.28)}
+.qz-tb:disabled{opacity:.4;cursor:default}
+.qz-meta{color:var(--mute);font-size:14px}
+.qz-hint{color:var(--mute);font-size:15px;margin:4px 0 8px}
+.qz-pinfo{display:none}
+.qz-name{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-weight:600;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 14px}
+.qz-name input{flex:1 1 240px}
+.qz-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 4px 8px;scrollbar-width:thin}
+.qz-pill{flex:none;width:44px;height:44px;border-radius:22px;border:2px solid var(--line);background:var(--card);color:var(--mute);font:inherit;font-weight:700;cursor:pointer;transition:transform .15s}
+.qz-pill.ans{border-color:var(--qa);color:var(--qt)}
+.qz-pill.on{background:var(--qa);border-color:var(--qa);color:#fff;transform:scale(1.08);box-shadow:0 0 0 3px color-mix(in srgb,var(--qa) 30%,transparent)}
+.qz-pill.ok{background:var(--okb);border-color:var(--okc);color:var(--okc)}
+.qz-pill.bad{background:var(--bdb);border-color:var(--bdc);color:var(--bdc)}
+.qz-pill.part{background:var(--ptb);border-color:var(--ptc);color:var(--ptc)}
+.qz-prog{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;margin:2px 0 14px}
+.qz-prog i,.qz-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--qa),var(--qb));transition:width .3s}
+.qz-hs{display:flex;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;align-items:flex-start;transition:height .25s;scrollbar-width:none;overscroll-behavior-x:contain}
+.qz-hs::-webkit-scrollbar{display:none}
+.qz-hs>.qz-card{flex:0 0 100%;scroll-snap-align:start;margin:0}
+.qz-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:14px 0}
+.qz-pos{color:var(--mute);font-weight:600;white-space:nowrap}
+.qz-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 18px rgba(0,0,0,.05)}
+.qz-card.qz-ok{border-color:var(--okc)}.qz-card.qz-bad{border-color:var(--bdc)}.qz-card.qz-part{border-color:var(--ptc)}
+.qz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.qz-n{display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 8px;border-radius:18px;background:linear-gradient(120deg,var(--qa),var(--qb));color:#fff;font-weight:700}
+.qz-p{color:var(--mute);font-size:14px}
+.qz-t{font-weight:600;font-size:18px;margin-bottom:12px}
+.qz img{display:block;max-width:100%;height:auto;border-radius:10px;margin:8px 0 14px;background:#fff}
+.qz-opt{display:flex;gap:12px;align-items:center;padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;margin:8px 0;cursor:pointer;min-height:50px;background:var(--card);transition:border-color .15s,background .15s}
+.qz-opt:hover{border-color:color-mix(in srgb,var(--qa) 55%,var(--line))}
+.qz-opt input{width:20px;height:20px;margin:0;flex:none;accent-color:var(--qa)}
+.qz-opt:has(input:checked){border-color:var(--qa);background:color-mix(in srgb,var(--qa) 10%,var(--card))}
+.qz-tf{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0 10px}
+.qz .ok{border-color:var(--okc)!important;background:var(--okb)!important}
+.qz .bad{border-color:var(--bdc)!important;background:var(--bdb)!important}
+.qz-opt.miss{border:2px dashed var(--okc)}
+.qz-opt.ok::after,.qz-m.ok::after,.qz-ord li.ok::after{content:"✓";margin-left:auto;font-weight:700;color:var(--okc)}
+.qz-opt.bad::after,.qz-m.bad::after,.qz-ord li.bad::after{content:"✗";margin-left:auto;font-weight:700;color:var(--bdc)}
+.qz-opt.miss::after{content:"✓ σωστό";margin-left:auto;font-size:14px;font-weight:700;color:var(--okc)}
+.qz input[type=text],.qz select{font:inherit;font-size:16px;color:var(--ink);padding:8px 10px;border:1.5px solid color-mix(in srgb,var(--ink) 22%,var(--card));border-radius:10px;min-height:44px;background:var(--card);max-width:100%}
+.qz input[type=text]:focus,.qz select:focus{outline:3px solid color-mix(in srgb,var(--qa) 35%,transparent);border-color:var(--qa)}
+.qz-wide{width:100%}
+.qz-row{display:flex;gap:10px;align-items:center}
+.qz-fill{line-height:2.7}
+.qz-gap{min-height:38px!important;padding:4px 8px!important;margin:0 3px;vertical-align:baseline}
+.qz-m{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:center;margin:8px 0;padding:8px 12px;border:1.5px solid var(--line);border-radius:12px}
+.qz-m select{width:100%}
+.qz-ord{list-style:decimal;padding-left:1.6em;margin:8px 0}
+.qz-ord li{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:6px 6px 6px 12px;margin:6px 0;background:var(--card)}
+.qz-oi{flex:1}
+.qz-ord li::marker{font-weight:700;color:var(--qt)}
+.qz-ob{display:flex;gap:4px;flex:none}
+.qz-ob button{width:44px;height:40px;border:1.5px solid var(--line);border-radius:10px;background:var(--soft);font-size:18px;cursor:pointer;color:var(--qt)}
+.qz-ob button:disabled{opacity:.35;cursor:default}
+.qz-btn{font:inherit;font-weight:700;font-size:16px;background:linear-gradient(120deg,var(--qa),var(--qb));color:#fff;border:0;border-radius:12px;padding:12px 24px;cursor:pointer;min-height:48px;margin-top:12px;box-shadow:0 4px 14px color-mix(in srgb,var(--qa) 30%,transparent)}
+.qz-btn:focus-visible,.qz-tb:focus-visible,.qz-pill:focus-visible,.qz-ob button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.qz-foot{text-align:center;margin:18px 0}.qz-foot[hidden]{display:none}.qz-un{margin:0}.qz-un:empty{display:none}
+.qz-fb{margin-top:14px;padding:10px 14px;border-radius:10px;background:var(--soft);border-left:4px solid var(--mute)}
+.qz-fb.ok{border-color:var(--okc)}.qz-fb.bad{border-color:var(--bdc)}.qz-fb.part{border-color:var(--ptc)}
+.qz-fb ul,.qz-fb ol{margin:4px 0;padding-left:1.4em}
+.qz-ex{margin-top:6px;color:var(--mute)}
+.qz-res{text-align:center;border:2px solid var(--qa);background:var(--card)!important;border-radius:16px;padding:22px 18px;margin:24px 0}
+.qz-score{font:700 22px Literata,Georgia,serif}.qz-score b{font-size:54px;color:var(--qt)}
+.qz-bar{height:10px;background:var(--soft);border-radius:5px;overflow:hidden;max-width:420px;margin:10px auto}
+.qz-big{font-size:19px;font-weight:600}
+.qz-ra{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+.qz-ra .qz-tb{margin-top:12px}
+@media(max-width:560px){.qz{padding:10px;border-radius:0}.qz-h{padding:14px 14px 10px}.qz-card{padding:16px 14px}.qz-m{grid-template-columns:minmax(0,1fr) auto}.qz-m select{grid-column:1}.qz-nav .qz-tb{padding:9px 10px;font-size:14px}}
+@media(prefers-reduced-motion:reduce){.qz *{transition:none!important;scroll-behavior:auto!important}}
+@media print{
+@page{size:A4 portrait;margin:0}
+.qz-pt{display:table}.qz-pt>thead{display:table-header-group}.qz-pt>tfoot{display:table-footer-group}.qz-pt>tbody{display:table-row-group}.qz-pt>tbody>tr{display:table-row}.qz-pt>tbody>tr>td{display:table-cell;padding:0}.qz-sp{height:11mm}
+.qz,.qz[data-theme]{--bg:#fff;--card:#fff;--ink:#000;--mute:#333;--line:#b8bcc4;--soft:#f2f3f5;--okc:#1a7f37;--okb:#e9f6ec;--bdc:#c1121f;--bdb:#fdeeee;--ptc:#a36200;--ptb:#fff4e0;--qt:var(--qa);color-scheme:light;max-width:none;margin:0;padding:0 14mm;background:#fff;border-radius:0;font-size:12pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.qz *{box-shadow:none!important;text-shadow:none!important;outline:0!important}
+.qz-h{background:color-mix(in srgb,var(--qa) 12%,#fff)!important;color:#000;border:0;border-left:6px solid var(--qa);padding:10px 14px;border-radius:6px}
+.qz-h h1{color:#000}.qz-h .qz-meta{color:#333}
+.qz-tools,.qz-tabs,.qz-prog,.qz-nav,.qz-btn,.qz-ob,.qz-hint,.qz-name,.qz-ra,.qz-foot{display:none!important}
+.qz-pinfo{display:block;margin:8px 0 10px}
+.qz-track,.qz-hs{display:block!important;height:auto!important;overflow:visible!important}
+.qz-card,.qz-hs>.qz-card{break-inside:avoid;margin:0 0 9px!important;padding:10px 14px;border:1px solid var(--line);border-radius:8px}
+.qz-n{background:color-mix(in srgb,var(--qa) 15%,#fff);color:#000;border:0}
+.qz-opt,.qz-m,.qz-ord li{border-width:1px}
+.qz-fb{background:var(--soft);border-left-width:4px}
+.qz-res{break-inside:avoid;border:1px solid var(--line);border-radius:8px}
+.qz-bar{border:1px solid var(--line)}
+}</style>
+</head>
+<body>
+<main class="qz" id="qz"></main>
+<script type="application/json" id="quiz-data">{"title":"Εργαστηριακή Άσκηση 5: Μητρική Πλακέτα","intro":"","settings":{"shuffleQ":true,"shuffleOpt":true,"mode":"each","showAnswers":true,"retry":true,"askName":false,"pass":50,"accent":"#1d6b45","accent2":"#6f9a2a","layout":"cards","theme":"light","themeToggle":true,"printBtn":true},"questions":[{"id":"22vn0d6","type":"tf","text":"Οι σύγχρονες μητρικές κάρτες υποστηρίζουν αποκλειστικά αποθηκευτικά μέσα sata SSD.","points":1,"explain":"","answer":false},{"id":"5pdz2tt","type":"tf","text":"Οι θύρες PCIe χρησιμοποιούνται μόνο για την τοποθέτηση καρτών γραφικών.","points":1,"explain":"","answer":false},{"id":"vcz9s6m","type":"mc","text":"Ποιο από τα παρακάτω υποστηρίζουν οι σύγχρονες μητρικές κάρτες μέσω της υποδοχής M2;","points":1,"explain":"","options":[{"t":"Σύνδεση αποθηκευτικών μέσων NVMe SSD","c":true},{"t":"Σύνδεση οπτικών αποθηκευτικών μέσων CD/DVD","c":false},{"t":"Σύνδεση αποθηκευτικών μέσων HDD","c":false},{"t":"Σύνδεση αποθηκευτικών μέσων USB flash drives","c":false}]},{"id":"fpfahbu","type":"mc","text":"Ποιο από τα παρακάτω form factors είναι το μικρότερο σε μέγεθος;","points":1,"explain":"","options":[{"t":"Mini-ITX","c":true},{"t":" ATX","c":false},{"t":"micro-ATX","c":false},{"t":"E-ATX","c":false}]},{"id":"yjr3byv","type":"match","text":"Αντιστοιχίστε τις παρακάτω προτάσεις με τα στοιχεία της μητρικής κάρτας που δίνονται.","points":1,"explain":"","pairs":[{"l":"Χρησιμοποιούνται για την σύνδεση αποθηκευτικών μέσων (HDD/SSD)","r":"SATA Ports"},{"l":"Τοποθετείται ο επεξεργαστής εκεί.","r":"CPU Socket"},{"l":"Χρησιμοποιούνται για την σύνδεση καρτών γραφικών ή άλλων καρτών επέκτασης. ","r":"PCIe Slots"},{"l":"Τοποθετούνται αρθρώματα μνήμης","r":"RAM Slots"}]},{"id":"g3daa09","type":"tf","text":"Οι υποδοχές RAM βρίσκονται συνήθως δίπλα από τον επεξεργαστή στη μητρική κάρτα.","points":1,"explain":"","answer":true},{"id":"z3sjw5c","type":"tf","text":"Το chipset της μητρικής κάρτας καθορίζει τη συμβατότητα με τα υπόλοιπα εξαρτήματα, όπως RAM και CPU.","points":1,"explain":"","answer":true},{"id":"jxpynsb","type":"mc","text":"Ποια από τα παρακάτω καθορίζουν τη συμβατότητα ενός επεξεργαστή με τη μητρική κάρτα (μπορείτε να επιλέξετε παραπάνω από ένα); ","points":1,"explain":"","options":[{"t":"Το chipset της μητρικής κάρτας","c":true},{"t":"Το socket της μητρικής κάρτας","c":true},{"t":"Οι θύρες USB","c":false},{"t":"Η μνήμη RAM","c":false}]},{"id":"oetdwwh","type":"tf","text":"Η ψύκτρα που τοποθετείται πάνω από τον επεξεργαστή συνδέεται στη μητρική κάρτα για την τροφοδοσία του ανεμιστήρα.","points":1,"explain":"","answer":true},{"id":"cupzie3","type":"tf","text":"Οι μητρικές κάρτες ATX είναι μικρότερες σε μέγεθος από τις micro-ATX.","points":1,"explain":"","answer":false},{"id":"bdjx3yw","type":"tf","text":"Η ποιότητα των υλικών της μητρικής κάρτας μπορεί να επηρεάσει τη διάρκεια ζωής του συστήματος.","points":1,"explain":"","answer":true},{"id":"n0bbywx","type":"tf","text":"Οι μητρικές κάρτες υποστηρίζουν οποιοδήποτε τύπο επεξεργαστή ανεξαρτήτως socket.","points":1,"explain":"","answer":false}],"subject":"Εισαγωγή στα Υπολογιστικά Συστήματα και στα Δίκτυα Επικοινωνιών","grade":"Β΄ ΕΠΑΛ"}</script>
+<script>
+(function (root, Q, opt) {
+  opt = opt || {};
+  const S = Object.assign({ shuffleQ: false, shuffleOpt: true, mode: 'end', showAnswers: true, retry: true, askName: false, pass: 50, accent: '#0b4f8a', accent2: '#1597a5', layout: 'cards', theme: 'light', themeToggle: true, printBtn: true }, Q.settings || {});
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmt = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/_\{(.+?)\}/g, '<sub>$1</sub>').replace(/\^\{(.+?)\}/g, '<sup>$1</sup>').replace(/\n/g, '<br>');
+  const norm = s => String(s == null ? '' : s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+  const shuf = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const toNum = s => parseFloat(String(s).replace(/\s/g, '').replace(',', '.'));
+  const pts = q => Number(q.points) > 0 ? Number(q.points) : 1;
+  const filled = s => String(s == null ? '' : s).trim() !== '';
+  root.style.setProperty('--qa', S.accent || '#0b4f8a');
+  root.style.setProperty('--qb', S.accent2 || S.accent || '#1597a5');
+  const cards = S.layout === 'cards', TK = 'qz-theme';
+  let theme = S.theme || 'light';
+  if (S.themeToggle && !opt.preview) { try { theme = localStorage.getItem(TK) || theme; } catch (e) { } }
+  const isDark = () => theme === 'dark' || (theme === 'auto' && !!window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+  const applyTheme = () => { root.dataset.theme = isDark() ? 'dark' : 'light'; const b = root.querySelector('.qz-theme'); if (b) b.textContent = isDark() ? '☀ Φωτεινό' : '☾ Σκοτεινό'; };
+  let st = [], name = '', cur = 0, ro = null, track = null, scT = 0;
+
+  function prep(q) {
+    const v = { q, done: false, frac: 0 }, sh = a => S.shuffleOpt ? shuf(a) : a.slice();
+    if (q.type === 'mc') { const O = q.options || []; v.opts = sh(O.map((o, i) => i).filter(i => filled(O[i].t))); v.multi = O.filter(o => o.c && filled(o.t)).length > 1; }
+    if (q.type === 'match') { const P = q.pairs || []; v.left = sh(P.map((p, i) => i).filter(i => filled(P[i].l))); v.right = shuf([...new Set(P.map(p => String(p.r || '').trim()).filter(Boolean))]); }
+    if (q.type === 'order') { v.items = (q.items || []).filter(filled); let c = v.items.map((x, i) => i); for (let k = 0; k < 10 && c.length > 1; k++) { c = shuf(c); if (c.some((x, i) => x !== i)) break; } v.cur = c; }
+    if (q.type === 'fill') {
+      v.parts = String(q.gap || '').split(/\[([^\]]*)\]/);
+      v.ans = v.parts.filter((x, i) => i % 2).map(s => s.split('|').map(x => x.trim()).filter(Boolean));
+      if (q.bank) v.bank = shuf([...new Set(v.ans.map(a => a[0] || '').concat(String(q.extra || '').split(',').map(x => x.trim())).filter(Boolean))]);
+    }
+    return v;
+  }
+  const opt2 = (type, i, val, html) => `<label class="qz-opt" data-v="${esc(val)}"><input type="${type}" name="qz${i}" value="${esc(val)}"><span>${html}</span></label>`;
+  const ordList = v => v.cur.map((k, p) => `<li data-p="${p}"><span class="qz-oi">${fmt(v.items[k])}</span><span class="qz-ob"><button type="button" data-mv="-1" aria-label="Πάνω" ${p === 0 ? 'disabled' : ''}>↑</button><button type="button" data-mv="1" aria-label="Κάτω" ${p === v.cur.length - 1 ? 'disabled' : ''}>↓</button></span></li>`).join('');
+  function body(v, i) {
+    const q = v.q;
+    switch (q.type) {
+      case 'tf': return `<div class="qz-tf">${opt2('radio', i, 'true', 'Σωστό')}${opt2('radio', i, 'false', 'Λάθος')}</div>`;
+      case 'mc': return (v.multi ? '<p class="qz-hint">Μπορεί να είναι σωστές περισσότερες από μία.</p>' : '') + v.opts.map(j => opt2(v.multi ? 'checkbox' : 'radio', i, j, fmt(q.options[j].t))).join('');
+      case 'match': return v.left.map(j => `<div class="qz-m" data-v="${j}"><div class="qz-ml">${fmt(q.pairs[j].l)}</div><select aria-label="Αντιστοίχιση"><option value="">— Επίλεξε —</option>${v.right.map(r => `<option value="${esc(r)}">${esc(r)}</option>`).join('')}</select></div>`).join('');
+      case 'fill': return `<div class="qz-fill">${v.parts.map((p, k) => {
+        if (!(k % 2)) return fmt(p);
+        const g = k >> 1, len = Math.max(5, ...v.ans[g].map(a => a.length)) + 2;
+        return v.bank ? `<select class="qz-gap" data-g="${g}" aria-label="Κενό ${g + 1}"><option value=""></option>${v.bank.map(w => `<option value="${esc(w)}">${esc(w)}</option>`).join('')}</select>`
+          : `<input type="text" class="qz-gap" data-g="${g}" size="${len}" autocomplete="off" spellcheck="false" aria-label="Κενό ${g + 1}">`;
+      }).join('')}</div>`;
+      case 'order': return `<p class="qz-hint">Βάλε τα στοιχεία στη σωστή σειρά με τα βελάκια.</p><ol class="qz-ord">${ordList(v)}</ol>`;
+      case 'num': return `<div class="qz-row"><input type="text" class="qz-in" inputmode="decimal" autocomplete="off" aria-label="Απάντηση"><span>${esc(q.unit || '')}</span></div>`;
+      case 'short': return `<input type="text" class="qz-in qz-wide" autocomplete="off" aria-label="Απάντηση">`;
+    }
+    return '';
+  }
+  function card(v, i) {
+    const q = v.q, p = pts(q);
+    return `<section class="qz-card" data-q="${i}"><div class="qz-top"><span class="qz-n">${i + 1}</span><span class="qz-p">${String(p).replace('.', ',')} ${p === 1 ? 'μονάδα' : 'μονάδες'}</span></div>`
+      + (filled(q.text) ? `<div class="qz-t">${fmt(q.text)}</div>` : '') + (q.img ? `<img src="${esc(q.img)}" alt="">` : '')
+      + `<div class="qz-b">${body(v, i)}</div>` + (S.mode === 'each' ? '<button type="button" class="qz-btn qz-chk">Έλεγχος</button>' : '') + '<div class="qz-fb" hidden></div></section>';
+  }
+  function start() {
+    const nm = root.querySelector('.qz-name input'); if (nm) name = nm.value;
+    const qs = Q.questions || [];
+    st = (S.shuffleQ ? shuf(qs) : qs.slice()).map(prep); cur = 0;
+    const total = st.reduce((a, v) => a + pts(v.q), 0), multi = cards && st.length > 1;
+    const tools = (S.themeToggle ? '<button type="button" class="qz-tb qz-theme"></button>' : '') + (S.printBtn ? '<button type="button" class="qz-tb qz-print">⎙ Εκτύπωση / PDF</button>' : '');
+    const SP = '<tr><td><div class="qz-sp"></div></td></tr>';
+    root.innerHTML = `<table class="qz-pt" role="presentation"><thead>${SP}</thead><tfoot>${SP}</tfoot><tbody><tr><td>` + `<header class="qz-h"><div class="qz-hb">${filled(Q.subject) || filled(Q.grade) ? `<p class="qz-sub">${[Q.subject, Q.grade].filter(filled).map(fmt).join(' · ')}</p>` : ''}<h1>${fmt(Q.title || 'Quiz')}</h1>${filled(Q.intro) ? `<p>${fmt(Q.intro)}</p>` : ''}</div><div class="qz-hr"><p class="qz-meta">${st.length} ${st.length === 1 ? 'ερώτηση' : 'ερωτήσεις'} · ${String(total).replace('.', ',')} μονάδες</p>${tools ? `<div class="qz-tools">${tools}</div>` : ''}</div></header>`
+      + `<div class="qz-pinfo">Ονοματεπώνυμο: <span class="qz-pname">………………………………………</span> · Ημερομηνία: ${new Date().toLocaleDateString('el-GR')}</div>`
+      + (S.askName ? `<label class="qz-name">Ονοματεπώνυμο <input type="text" class="qz-in" value="${esc(name)}"></label>` : '')
+      + (multi ? `<nav class="qz-tabs" aria-label="Ερωτήσεις">${st.map((v, i) => `<button type="button" class="qz-pill" data-go="${i}" aria-label="Ερώτηση ${i + 1}">${i + 1}</button>`).join('')}</nav><div class="qz-prog"><i></i></div>` : '')
+      + (st.length ? `<div class="qz-track${multi ? ' qz-hs' : ''}">${st.map(card).join('')}</div>` : '<p class="qz-hint">Δεν υπάρχουν ακόμη ερωτήσεις.</p>')
+      + (multi ? '<div class="qz-nav"><button type="button" class="qz-tb" data-step="-1">← Προηγούμενη</button><span class="qz-pos"></span><button type="button" class="qz-tb" data-step="1">Επόμενη →</button></div>' : '')
+      + `<div class="qz-foot"><p class="qz-meta qz-un"></p><button type="button" class="qz-btn qz-submit">${S.mode === 'each' ? 'Τελικό αποτέλεσμα' : 'Υποβολή απαντήσεων'}</button></div><div class="qz-res" hidden></div></td></tr></tbody></table>`;
+    applyTheme();
+    track = multi ? root.querySelector('.qz-track') : null;
+    if (ro) { ro.disconnect(); ro = null; }
+    if (track) {
+      track.addEventListener('scroll', () => { clearTimeout(scT); scT = setTimeout(syncScroll, 90); }, { passive: true });
+      try { ro = new ResizeObserver(fitH); [...track.children].forEach(c => ro.observe(c)); } catch (e) { }
+      setActive(0);
+    }
+  }
+  function fitH() { if (!track) return; const c = track.children[cur]; if (c) track.style.height = c.offsetHeight + 'px'; }
+  function setActive(i) {
+    if (!track) return;
+    cur = Math.max(0, Math.min(st.length - 1, i));
+    const tabs = root.querySelector('.qz-tabs');
+    root.querySelectorAll('.qz-pill').forEach((p, k) => { p.classList.toggle('on', k === cur); if (k === cur) p.setAttribute('aria-current', 'step'); else p.removeAttribute('aria-current'); });
+    const pill = tabs && tabs.children[cur];
+    if (pill) tabs.scrollTo({ left: pill.offsetLeft - tabs.offsetLeft - tabs.clientWidth / 2 + pill.offsetWidth / 2, behavior: 'smooth' });
+    root.querySelector('.qz-pos').textContent = `${cur + 1} / ${st.length}`;
+    root.querySelector('[data-step="-1"]').disabled = cur === 0;
+    const last = cur === st.length - 1, nx = root.querySelector('[data-step="1"]');
+    nx.disabled = last; nx.style.visibility = last ? 'hidden' : '';
+    const ft = root.querySelector('.qz-foot'); if (ft) ft.hidden = !last;
+    fitH(); prog();
+  }
+  function go(i, smooth) {
+    if (!track) return;
+    if (Math.abs(i - cur) > 1) smooth = false;
+    setActive(i);
+    const c = track.children[cur];
+    track.scrollTo({ left: c.offsetLeft - track.children[0].offsetLeft, behavior: smooth ? 'smooth' : 'auto' });
+  }
+  function syncScroll() {
+    if (!track) return;
+    const x = track.scrollLeft, base = track.children[0].offsetLeft; let best = 0, bd = 1e9;
+    [...track.children].forEach((c, k) => { const d = Math.abs(c.offsetLeft - base - x); if (d < bd) { bd = d; best = k; } });
+    if (best !== cur) setActive(best);
+  }
+  function isAnswered(i) {
+    const v = st[i], el = root.querySelector(`[data-q="${i}"]`); if (!el) return false;
+    if (v.q.type === 'order') return !!v.moved;
+    return [...el.querySelectorAll('input')].some(x => x.type === 'radio' || x.type === 'checkbox' ? x.checked : filled(x.value)) || [...el.querySelectorAll('select')].some(s => s.value);
+  }
+  function prog() {
+    const pills = root.querySelectorAll('.qz-pill'); let n = 0;
+    st.forEach((v, i) => { const a = v.done || isAnswered(i); if (a) n++; if (pills[i]) pills[i].classList.toggle('ans', a); });
+    const bar = root.querySelector('.qz-prog i'); if (bar) bar.style.width = (st.length ? n / st.length * 100 : 0) + '%';
+    const un = root.querySelector('.qz-un'), left = st.length - n; if (un) un.textContent = left ? `Έχεις ${left} ${left === 1 ? 'αναπάντητη ερώτηση' : 'αναπάντητες ερωτήσεις'}.` : '';
+  }
+  function markOpts(el, chosen, correct) {
+    el.querySelectorAll('.qz-opt').forEach(l => {
+      const val = l.dataset.v, c = correct.has(val), ch = chosen.has(val);
+      if (ch) l.classList.add(c ? 'ok' : 'bad'); else if (c && S.showAnswers) l.classList.add('miss');
+    });
+  }
+  function rightAnswer(v) {
+    const q = v.q;
+    switch (q.type) {
+      case 'tf': return q.answer ? 'Σωστό' : 'Λάθος';
+      case 'mc': return (q.options || []).filter(o => o.c && filled(o.t)).map(o => fmt(o.t)).join(' · ');
+      case 'match': return '<ul>' + v.left.map(j => `<li>${fmt(q.pairs[j].l)} → ${esc(q.pairs[j].r)}</li>`).join('') + '</ul>';
+      case 'fill': return v.ans.map(a => esc(a[0] || '')).join(', ');
+      case 'order': return '<ol>' + v.items.map(s => `<li>${fmt(s)}</li>`).join('') + '</ol>';
+      case 'num': return esc(String(q.answer).replace('.', ',')) + ' ' + esc(q.unit || '') + (Number(q.tol) ? ` (±${esc(q.tol)}%)` : '');
+      case 'short': return esc((q.answers || []).filter(filled)[0] || '');
+    }
+    return '';
+  }
+  function grade(i) {
+    const v = st[i]; if (!v || v.done) return;
+    const q = v.q, el = root.querySelector(`[data-q="${i}"]`);
+    let frac = 0, ans = false;
+    if (q.type === 'tf' || q.type === 'mc') {
+      const chosen = new Set([...el.querySelectorAll('input:checked')].map(x => x.value));
+      const correct = new Set(q.type === 'tf' ? [String(!!q.answer)] : (q.options || []).map((o, j) => o.c && filled(o.t) ? String(j) : null).filter(x => x !== null));
+      ans = chosen.size > 0; frac = ans && chosen.size === correct.size && [...chosen].every(x => correct.has(x)) ? 1 : 0;
+      markOpts(el, chosen, correct);
+    } else if (q.type === 'match') {
+      let c = 0; const rows = [...el.querySelectorAll('.qz-m')];
+      rows.forEach(r => { const s = r.querySelector('select'), ok = norm(s.value) === norm(q.pairs[+r.dataset.v].r); if (s.value) ans = true; if (ok) c++; r.classList.add(ok ? 'ok' : 'bad'); });
+      frac = rows.length ? c / rows.length : 0;
+    } else if (q.type === 'fill') {
+      let c = 0; const gs = [...el.querySelectorAll('.qz-gap')];
+      gs.forEach(g => { const val = g.value, ok = v.ans[+g.dataset.g].some(a => norm(a) === norm(val)); if (filled(val)) ans = true; if (ok) c++; g.classList.add(ok ? 'ok' : 'bad'); });
+      frac = gs.length ? c / gs.length : 0;
+    } else if (q.type === 'order') {
+      ans = !!v.moved; let c = 0;
+      el.querySelectorAll('.qz-ord li').forEach(li => { const p = +li.dataset.p, ok = v.cur[p] === p; if (ok) c++; li.classList.add(ok ? 'ok' : 'bad'); });
+      frac = v.cur.length ? c / v.cur.length : 0;
+    } else {
+      const inp = el.querySelector('.qz-in'), val = inp.value; ans = filled(val); let ok = false;
+      if (q.type === 'num') { const x = toNum(val), a = toNum(q.answer), tol = Math.abs(toNum(q.tol) || 0); ok = ans && isFinite(x) && isFinite(a) && Math.abs(x - a) <= Math.abs(a) * tol / 100 + 1e-9 * Math.max(1, Math.abs(a)); }
+      else ok = ans && (q.answers || []).filter(filled).some(a => norm(a) === norm(val));
+      frac = ok ? 1 : 0; inp.classList.add(ok ? 'ok' : 'bad');
+    }
+    v.done = true; v.frac = Math.round(frac * 100) / 100; v.answered = ans;
+    el.querySelectorAll('input,select,.qz-b button').forEach(x => x.disabled = true);
+    const ch = el.querySelector('.qz-chk'); if (ch) ch.remove();
+    const cls = v.frac >= 1 ? 'ok' : v.frac > 0 ? 'part' : 'bad';
+    const label = !ans ? 'Δεν απαντήθηκε' : v.frac >= 1 ? '✓ Σωστό!' : v.frac > 0 ? `Μερικώς σωστό (${Math.round(v.frac * 100)}%)` : '✗ Λάθος';
+    const fb = el.querySelector('.qz-fb');
+    fb.innerHTML = `<b>${label}</b>` + (S.showAnswers && v.frac < 1 ? `<div>Σωστή απάντηση: ${rightAnswer(v)}</div>` : '') + (filled(q.explain) ? `<div class="qz-ex">${fmt(q.explain)}</div>` : '');
+    fb.className = 'qz-fb ' + cls; fb.hidden = false; el.classList.add('qz-' + cls);
+    const pill = root.querySelectorAll('.qz-pill')[i]; if (pill) pill.classList.add(cls);
+    fitH(); prog();
+  }
+  function finish() {
+    st.forEach((v, i) => grade(i));
+    const total = st.reduce((a, v) => a + pts(v.q), 0), score = Math.round(st.reduce((a, v) => a + v.frac * pts(v.q), 0) * 100) / 100;
+    const pct = total ? Math.round(score / total * 100) : 0, pass = pct >= Number(S.pass || 0), un = st.filter(v => !v.answered).length;
+    const nm = root.querySelector('.qz-name input'); if (nm) { name = nm.value; nm.disabled = true; }
+    const res = root.querySelector('.qz-res'), sub = root.querySelector('.qz-submit'); if (sub) sub.remove();
+    res.innerHTML = `<div class="qz-score"><b>${String(score).replace('.', ',')}</b> / ${String(total).replace('.', ',')}</div><div class="qz-bar"><i style="width:${pct}%"></i></div>`
+      + `<p class="qz-big">${pct}% — ${pass ? 'Μπράβο, πέτυχες τη βάση!' : 'Δεν έφτασες ακόμη τη βάση (' + esc(S.pass) + '%).'}</p>`
+      + `<p class="qz-meta">${st.filter(v => v.frac >= 1).length} σωστές από ${st.length}${un ? ` · ${un} αναπάντητες` : ''}${filled(name) ? ' · ' + esc(name) : ''} · ${new Date().toLocaleString('el-GR')}</p>`
+      + `<div class="qz-ra">${S.retry ? '<button type="button" class="qz-btn qz-again">Ξανά από την αρχή</button>' : ''}${S.printBtn ? '<button type="button" class="qz-tb qz-print">⎙ Εκτύπωση / PDF αποτελεσμάτων</button>' : ''}</div>`;
+    res.className = 'qz-res ' + (pass ? 'ok' : 'bad'); res.hidden = false;
+    try { res.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { }
+  }
+  root.onclick = e => {
+    const t = e.target;
+    const mv = t.closest('[data-mv]');
+    if (mv) { const cd = mv.closest('[data-q]'), v = st[+cd.dataset.q], p = +mv.closest('li').dataset.p, to = p + +mv.dataset.mv; if (v.done || to < 0 || to >= v.cur.length) return; [v.cur[p], v.cur[to]] = [v.cur[to], v.cur[p]]; v.moved = true; cd.querySelector('.qz-ord').innerHTML = ordList(v); const b = cd.querySelector(`li[data-p="${to}"] [data-mv="${mv.dataset.mv}"]`); if (b && !b.disabled) b.focus({ preventScroll: true }); prog(); return; }
+    const g = t.closest('[data-go]'); if (g) return go(+g.dataset.go, true);
+    const sp = t.closest('[data-step]'); if (sp) return go(cur + +sp.dataset.step, true);
+    if (t.closest('.qz-theme')) { theme = isDark() ? 'light' : 'dark'; if (!opt.preview) { try { localStorage.setItem(TK, theme); } catch (x) { } } return applyTheme(); }
+    if (t.closest('.qz-print')) { const nm = root.querySelector('.qz-name input'), pn = root.querySelector('.qz-pname'); if (nm && filled(nm.value) && pn) pn.textContent = nm.value; try { window.print(); } catch (x) { } return; }
+    if (t.closest('.qz-chk')) return grade(+t.closest('[data-q]').dataset.q);
+    if (t.closest('.qz-submit')) return finish();
+    if (t.closest('.qz-again')) { start(); try { root.scrollIntoView({ behavior: 'smooth' }); } catch (x) { } }
+  };
+  root.oninput = root.onchange = e => { if (e.target.closest('[data-q]')) prog(); };
+  root.onkeydown = e => {
+    if (!track || e.target.closest('input,select,textarea')) return;
+    if (e.key === 'ArrowRight') { go(cur + 1, true); e.preventDefault(); }
+    if (e.key === 'ArrowLeft') { go(cur - 1, true); e.preventDefault(); }
+  };
+  if (!opt.preview && window.matchMedia) { try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme); } catch (e) { } }
+  window.addEventListener('resize', () => { if (track) go(cur, false); });
+  start();
+  if (opt.embed && window.parent !== window) {
+    const post = () => { try { window.parent.postMessage({ qzHeight: Math.ceil(document.documentElement.scrollHeight) }, '*'); } catch (e) { } };
+    try { new ResizeObserver(post).observe(document.body); } catch (e) { setInterval(post, 1000); }
+    post();
+  }
+})(document.getElementById('qz'), JSON.parse(document.getElementById('quiz-data').textContent), { embed: true });
+</script>
+</body>
+</html>

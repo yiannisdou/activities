@@ -10,4 +10,5 @@
 Quiz και προσομοιώσεις σε HTML: ο κώδικας με άδεια MIT, οι ερωτήσεις, οι επεξηγήσεις και τα κείμενα με άδεια CC BY-NC-SA 4.0
 Αν χρησιμοποιήσετε ή προσαρμόσετε κάτι, παρακαλώ αναφέρετε την πηγή: Ι. Δούφλιας, www.douflias.sites.sch.gr
 
-CC BY-NC-SA 4.0
+[![CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.el)
+

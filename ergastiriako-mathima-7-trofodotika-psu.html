@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Κατασκευαστής Quiz 1.5">
+<meta name="generator" content="Κατασκευαστής Quiz 1.7">
 <title>Εργαστηριακό Μάθημα 7 : Τροφοδοτικά PSU</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -322,8 +322,9 @@
   window.addEventListener('resize', () => { if (track) go(cur, false); });
   start();
   if (opt.embed && window.parent !== window) {
-    const post = () => { try { window.parent.postMessage({ qzHeight: Math.ceil(document.documentElement.scrollHeight) }, '*'); } catch (e) { } };
-    try { new ResizeObserver(post).observe(document.body); } catch (e) { setInterval(post, 1000); }
+    let lastH = 0;
+    const post = () => { const h = Math.ceil(root.getBoundingClientRect().bottom + window.scrollY + 8); if (Math.abs(h - lastH) < 2) return; lastH = h; try { window.parent.postMessage({ qzHeight: h }, '*'); } catch (e) { } };
+    try { new ResizeObserver(post).observe(root); } catch (e) { setInterval(post, 1000); }
     post();
   }
 })(document.getElementById('qz'), JSON.parse(document.getElementById('quiz-data').textContent), { embed: true });

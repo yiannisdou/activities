@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Κατασκευαστής Quiz">
+<title>Νόμος του Ohm και LED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#fff}
+.qz{--qa:#0b4f8a;font:17px/1.55 "Noto Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:#10131a;max-width:860px;margin:0 auto;padding:16px;color-scheme:light}
+.qz *{box-sizing:border-box}
+.qz-h h1{font:700 clamp(26px,4vw,36px)/1.15 Literata,Georgia,serif;margin:4px 0 8px;color:var(--qa)}
+.qz-h p{margin:6px 0}
+.qz-meta{color:#596070;font-size:14px}
+.qz-hint{color:#596070;font-size:15px;margin:4px 0 8px}
+.qz-name{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:600;margin:10px 0}
+.qz-name input{flex:1 1 240px}
+.qz-card{background:#fff;border:1px solid #d9dce3;border-radius:12px;padding:18px 20px;margin:16px 0}
+.qz-card.qz-ok{border-color:#1a7f37}.qz-card.qz-bad{border-color:#c1121f}.qz-card.qz-part{border-color:#b26b00}
+.qz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.qz-n{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;border-radius:17px;background:var(--qa);color:#fff;font-weight:700}
+.qz-p{color:#596070;font-size:14px}
+.qz-t{font-weight:600;margin-bottom:10px}
+.qz img{display:block;max-width:100%;height:auto;border-radius:8px;margin:8px 0 12px}
+.qz-opt{display:flex;gap:12px;align-items:center;padding:10px 14px;border:1px solid #d9dce3;border-radius:10px;margin:8px 0;cursor:pointer;min-height:48px;background:#fff}
+.qz-opt input{width:20px;height:20px;margin:0;flex:none;accent-color:var(--qa)}
+.qz-opt:has(input:checked){border-color:var(--qa);background:color-mix(in srgb,var(--qa) 7%,#fff)}
+.qz-tf{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0 10px}
+.qz .ok{border-color:#1a7f37!important;background:#eaf6ec!important}
+.qz .bad{border-color:#c1121f!important;background:#fdecee!important}
+.qz-opt.miss{border:2px dashed #1a7f37}
+.qz input[type=text],.qz select{font:inherit;font-size:16px;color:#10131a;padding:8px 10px;border:1px solid #aab2bf;border-radius:8px;min-height:44px;background:#fff;max-width:100%}
+.qz input[type=text]:focus,.qz select:focus{outline:3px solid color-mix(in srgb,var(--qa) 40%,#fff);border-color:var(--qa)}
+.qz-wide{width:100%}
+.qz-row{display:flex;gap:10px;align-items:center}
+.qz-fill{line-height:2.6}
+.qz-gap{min-height:38px!important;padding:4px 8px!important;margin:0 3px;vertical-align:baseline}
+.qz-m{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:center;margin:8px 0;padding:8px 10px;border:1px solid #e3e6ec;border-radius:10px}
+.qz-m select{width:100%}
+.qz-ord{list-style:decimal;padding-left:1.6em;margin:8px 0}
+.qz-ord li{display:flex;gap:10px;align-items:center;justify-content:space-between;border:1px solid #d9dce3;border-radius:10px;padding:6px 6px 6px 12px;margin:6px 0;background:#fff}
+.qz-ord li::marker{font-weight:700}
+.qz-ob{display:flex;gap:4px;flex:none}
+.qz-ob button{width:44px;height:40px;border:1px solid #aab2bf;border-radius:8px;background:#fff;font-size:18px;cursor:pointer;color:var(--qa)}
+.qz-ob button:disabled{opacity:.35;cursor:default}
+.qz-btn{font:inherit;font-weight:700;font-size:16px;background:var(--qa);color:#fff;border:0;border-radius:10px;padding:12px 22px;cursor:pointer;min-height:46px;margin-top:12px}
+.qz-btn:focus-visible,.qz-ob button:focus-visible{outline:3px solid #10131a;outline-offset:2px}
+.qz-foot{text-align:center;margin:20px 0}
+.qz-fb{margin-top:12px;padding:10px 14px;border-radius:8px;background:#f4f6f9;border-left:4px solid #888}
+.qz-fb.ok{border-color:#1a7f37}.qz-fb.bad{border-color:#c1121f}.qz-fb.part{border-color:#b26b00}
+.qz-fb ul,.qz-fb ol{margin:4px 0;padding-left:1.4em}
+.qz-ex{margin-top:6px;color:#3b4250}
+.qz-res{text-align:center;border:2px solid var(--qa);border-radius:14px;padding:22px 18px;margin:24px 0}
+.qz-score{font:700 22px Literata,Georgia,serif}.qz-score b{font-size:52px;color:var(--qa)}
+.qz-bar{height:10px;background:#e8ebf0;border-radius:5px;overflow:hidden;max-width:420px;margin:10px auto}
+.qz-bar i{display:block;height:100%;background:var(--qa)}
+.qz-big{font-size:19px;font-weight:600}
+@media(max-width:560px){.qz{padding:10px}.qz-card{padding:14px}.qz-m{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<main class="qz" id="qz"></main>
+<script type="application/json" id="quiz-data">{"title":"Νόμος του Ohm και LED","intro":"Απάντησε σε όλες τις ερωτήσεις και πάτα «Υποβολή απαντήσεων» στο τέλος.","settings":{"shuffleQ":true,"shuffleOpt":true,"mode":"end","showAnswers":true,"retry":true,"askName":false,"pass":50,"accent":"#1d6b45"},"questions":[{"id":"05ydxnp","type":"tf","text":"Η ηλεκτρική αντίσταση μετριέται σε Ohm (Ω).","points":1,"answer":true,"explain":"Η μονάδα της αντίστασης στο SI είναι το Ohm."},{"id":"18m2xjl","type":"mc","text":"Ποια αντίσταση βάζουμε σε σειρά με ένα LED σε έξοδο 5 V του Arduino;","points":1,"options":[{"t":"22 Ω","c":false},{"t":"220 Ω","c":true},{"t":"10 kΩ","c":false},{"t":"1 MΩ","c":false}],"explain":"Με 220 Ω το ρεύμα του LED περιορίζεται περίπου στα 14 mA."},{"id":"oroamms","type":"match","text":"Αντιστοίχισε κάθε μέγεθος με τη μονάδα του.","points":2,"pairs":[{"l":"Τάση","r":"Volt (V)"},{"l":"Ρεύμα","r":"Ampere (A)"},{"l":"Αντίσταση","r":"Ohm (Ω)"},{"l":"Ισχύς","r":"Watt (W)"},{"l":"","r":"Hertz (Hz)"}],"explain":""},{"id":"k2x9ayu","type":"fill","text":"Συμπλήρωσε τα κενά.","points":2,"gap":"Σύμφωνα με τον νόμο του Ohm, η τάση ισούται με το [ρεύμα] επί την [αντίσταση]. Για αντίσταση pull-up χρησιμοποιούμε συνήθως [10 kΩ|10kΩ|10k|10 k|10000 Ω].","bank":false,"extra":"","explain":"V = I · R"},{"id":"kydv9zf","type":"num","text":"Αντίσταση 220 Ω διαρρέεται από ρεύμα 0,02 A. Πόση είναι η τάση στα άκρα της;","points":2,"answer":"4.4","tol":2,"unit":"V","explain":"V = I · R = 0,02 · 220 = 4,4 V"},{"id":"ytkbbep","type":"order","text":"Βάλε στη σωστή σειρά τα βήματα για να ανάψει ένα LED με το Arduino.","points":2,"items":["Συνδέω το LED με αντίσταση 220 Ω σε σειρά στο pin 13","Γράφω pinMode(13, OUTPUT) στη setup()","Γράφω digitalWrite(13, HIGH) στη loop()","Ανεβάζω τον κώδικα στην πλακέτα"],"explain":""},{"id":"j1sbi77","type":"short","text":"Πώς λέγεται το όργανο με το οποίο μετράμε την ένταση του ρεύματος;","points":1,"answers":["αμπερόμετρο","αμπερομετρο"],"explain":"Συνδέεται πάντα σε σειρά με το κύκλωμα."}]}</script>
+<script>
+(function (root, Q, opt) {
+  opt = opt || {};
+  const S = Object.assign({ shuffleQ: false, shuffleOpt: true, mode: 'end', showAnswers: true, retry: true, askName: false, pass: 50, accent: '#0b4f8a' }, Q.settings || {});
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmt = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/_\{(.+?)\}/g, '<sub>$1</sub>').replace(/\^\{(.+?)\}/g, '<sup>$1</sup>').replace(/\n/g, '<br>');
+  const norm = s => String(s == null ? '' : s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+  const shuf = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const toNum = s => parseFloat(String(s).replace(/\s/g, '').replace(',', '.'));
+  const pts = q => Number(q.points) > 0 ? Number(q.points) : 1;
+  const filled = s => String(s == null ? '' : s).trim() !== '';
+  root.style.setProperty('--qa', S.accent || '#0b4f8a');
+  let st = [], name = '';
+
+  function prep(q) {
+    const v = { q, done: false, frac: 0 }, sh = a => S.shuffleOpt ? shuf(a) : a.slice();
+    if (q.type === 'mc') { const O = q.options || []; v.opts = sh(O.map((o, i) => i).filter(i => filled(O[i].t))); v.multi = O.filter(o => o.c && filled(o.t)).length > 1; }
+    if (q.type === 'match') { const P = q.pairs || []; v.left = sh(P.map((p, i) => i).filter(i => filled(P[i].l))); v.right = shuf([...new Set(P.map(p => String(p.r || '').trim()).filter(Boolean))]); }
+    if (q.type === 'order') { v.items = (q.items || []).filter(filled); let c = v.items.map((x, i) => i); for (let k = 0; k < 10 && c.length > 1; k++) { c = shuf(c); if (c.some((x, i) => x !== i)) break; } v.cur = c; }
+    if (q.type === 'fill') {
+      v.parts = String(q.gap || '').split(/\[([^\]]*)\]/);
+      v.ans = v.parts.filter((x, i) => i % 2).map(s => s.split('|').map(x => x.trim()).filter(Boolean));
+      if (q.bank) v.bank = shuf([...new Set(v.ans.map(a => a[0] || '').concat(String(q.extra || '').split(',').map(x => x.trim())).filter(Boolean))]);
+    }
+    return v;
+  }
+  const opt2 = (type, i, val, html) => `<label class="qz-opt" data-v="${esc(val)}"><input type="${type}" name="qz${i}" value="${esc(val)}"><span>${html}</span></label>`;
+  const ordList = v => v.cur.map((k, p) => `<li data-p="${p}"><span class="qz-oi">${fmt(v.items[k])}</span><span class="qz-ob"><button type="button" data-mv="-1" aria-label="Πάνω" ${p === 0 ? 'disabled' : ''}>↑</button><button type="button" data-mv="1" aria-label="Κάτω" ${p === v.cur.length - 1 ? 'disabled' : ''}>↓</button></span></li>`).join('');
+  function body(v, i) {
+    const q = v.q;
+    switch (q.type) {
+      case 'tf': return `<div class="qz-tf">${opt2('radio', i, 'true', 'Σωστό')}${opt2('radio', i, 'false', 'Λάθος')}</div>`;
+      case 'mc': return (v.multi ? '<p class="qz-hint">Μπορεί να είναι σωστές περισσότερες από μία.</p>' : '') + v.opts.map(j => opt2(v.multi ? 'checkbox' : 'radio', i, j, fmt(q.options[j].t))).join('');
+      case 'match': return v.left.map(j => `<div class="qz-m" data-v="${j}"><div class="qz-ml">${fmt(q.pairs[j].l)}</div><select aria-label="Αντιστοίχιση"><option value="">— Επίλεξε —</option>${v.right.map(r => `<option value="${esc(r)}">${esc(r)}</option>`).join('')}</select></div>`).join('');
+      case 'fill': return `<div class="qz-fill">${v.parts.map((p, k) => {
+        if (!(k % 2)) return fmt(p);
+        const g = k >> 1, len = Math.max(5, ...v.ans[g].map(a => a.length)) + 2;
+        return v.bank ? `<select class="qz-gap" data-g="${g}" aria-label="Κενό ${g + 1}"><option value=""></option>${v.bank.map(w => `<option value="${esc(w)}">${esc(w)}</option>`).join('')}</select>`
+          : `<input type="text" class="qz-gap" data-g="${g}" size="${len}" autocomplete="off" spellcheck="false" aria-label="Κενό ${g + 1}">`;
+      }).join('')}</div>`;
+      case 'order': return `<p class="qz-hint">Βάλε τα στοιχεία στη σωστή σειρά με τα βελάκια.</p><ol class="qz-ord">${ordList(v)}</ol>`;
+      case 'num': return `<div class="qz-row"><input type="text" class="qz-in" inputmode="decimal" autocomplete="off" aria-label="Απάντηση"><span>${esc(q.unit || '')}</span></div>`;
+      case 'short': return `<input type="text" class="qz-in qz-wide" autocomplete="off" aria-label="Απάντηση">`;
+    }
+    return '';
+  }
+  function card(v, i) {
+    const q = v.q, p = pts(q);
+    return `<section class="qz-card" data-q="${i}"><div class="qz-top"><span class="qz-n">${i + 1}</span><span class="qz-p">${p} ${p === 1 ? 'μονάδα' : 'μονάδες'}</span></div>`
+      + (filled(q.text) ? `<div class="qz-t">${fmt(q.text)}</div>` : '') + (q.img ? `<img src="${esc(q.img)}" alt="">` : '')
+      + `<div class="qz-b">${body(v, i)}</div>` + (S.mode === 'each' ? '<button type="button" class="qz-btn qz-chk">Έλεγχος</button>' : '') + '<div class="qz-fb" hidden></div></section>';
+  }
+  function start() {
+    const nm = root.querySelector('.qz-name input'); if (nm) name = nm.value;
+    const qs = Q.questions || [];
+    st = (S.shuffleQ ? shuf(qs) : qs.slice()).map(prep);
+    const total = st.reduce((a, v) => a + pts(v.q), 0);
+    root.innerHTML = `<header class="qz-h"><h1>${fmt(Q.title || 'Quiz')}</h1>${filled(Q.intro) ? `<p>${fmt(Q.intro)}</p>` : ''}<p class="qz-meta">${st.length} ${st.length === 1 ? 'ερώτηση' : 'ερωτήσεις'} · ${total} μονάδες</p>`
+      + (S.askName ? `<label class="qz-name">Ονοματεπώνυμο <input type="text" class="qz-in" value="${esc(name)}"></label>` : '') + '</header>'
+      + (st.length ? st.map(card).join('') : '<p class="qz-hint">Δεν υπάρχουν ακόμη ερωτήσεις.</p>')
+      + `<div class="qz-foot"><button type="button" class="qz-btn qz-submit">${S.mode === 'each' ? 'Τελικό αποτέλεσμα' : 'Υποβολή απαντήσεων'}</button></div><div class="qz-res" hidden></div>`;
+  }
+  function markOpts(el, chosen, correct) {
+    el.querySelectorAll('.qz-opt').forEach(l => {
+      const val = l.dataset.v, c = correct.has(val), ch = chosen.has(val);
+      if (ch) l.classList.add(c ? 'ok' : 'bad'); else if (c && S.showAnswers) l.classList.add('miss');
+    });
+  }
+  function rightAnswer(v) {
+    const q = v.q;
+    switch (q.type) {
+      case 'tf': return q.answer ? 'Σωστό' : 'Λάθος';
+      case 'mc': return (q.options || []).filter(o => o.c && filled(o.t)).map(o => fmt(o.t)).join(' · ');
+      case 'match': return '<ul>' + v.left.map(j => `<li>${fmt(q.pairs[j].l)} → ${esc(q.pairs[j].r)}</li>`).join('') + '</ul>';
+      case 'fill': return v.ans.map(a => esc(a[0] || '')).join(', ');
+      case 'order': return '<ol>' + v.items.map(s => `<li>${fmt(s)}</li>`).join('') + '</ol>';
+      case 'num': return esc(String(q.answer).replace('.', ',')) + ' ' + esc(q.unit || '') + (Number(q.tol) ? ` (±${esc(q.tol)}%)` : '');
+      case 'short': return esc((q.answers || []).filter(filled)[0] || '');
+    }
+    return '';
+  }
+  function grade(i) {
+    const v = st[i]; if (!v || v.done) return;
+    const q = v.q, el = root.querySelector(`[data-q="${i}"]`);
+    let frac = 0, ans = false;
+    if (q.type === 'tf' || q.type === 'mc') {
+      const chosen = new Set([...el.querySelectorAll('input:checked')].map(x => x.value));
+      const correct = new Set(q.type === 'tf' ? [String(!!q.answer)] : (q.options || []).map((o, j) => o.c && filled(o.t) ? String(j) : null).filter(x => x !== null));
+      ans = chosen.size > 0; frac = ans && chosen.size === correct.size && [...chosen].every(x => correct.has(x)) ? 1 : 0;
+      markOpts(el, chosen, correct);
+    } else if (q.type === 'match') {
+      let c = 0; const rows = [...el.querySelectorAll('.qz-m')];
+      rows.forEach(r => { const s = r.querySelector('select'), ok = norm(s.value) === norm(q.pairs[+r.dataset.v].r); if (s.value) ans = true; if (ok) c++; r.classList.add(ok ? 'ok' : 'bad'); });
+      frac = rows.length ? c / rows.length : 0;
+    } else if (q.type === 'fill') {
+      let c = 0; const gs = [...el.querySelectorAll('.qz-gap')];
+      gs.forEach(g => { const val = g.value, ok = v.ans[+g.dataset.g].some(a => norm(a) === norm(val)); if (filled(val)) ans = true; if (ok) c++; g.classList.add(ok ? 'ok' : 'bad'); });
+      frac = gs.length ? c / gs.length : 0;
+    } else if (q.type === 'order') {
+      ans = true; let c = 0;
+      el.querySelectorAll('.qz-ord li').forEach(li => { const p = +li.dataset.p, ok = v.cur[p] === p; if (ok) c++; li.classList.add(ok ? 'ok' : 'bad'); });
+      frac = v.cur.length ? (c === v.cur.length ? 1 : c / v.cur.length) : 0;
+    } else {
+      const inp = el.querySelector('.qz-in'), val = inp.value; ans = filled(val); let ok = false;
+      if (q.type === 'num') { const x = toNum(val), a = toNum(q.answer), tol = Math.abs(toNum(q.tol) || 0); ok = ans && isFinite(x) && isFinite(a) && Math.abs(x - a) <= Math.abs(a) * tol / 100 + 1e-9 * Math.max(1, Math.abs(a)); }
+      else ok = ans && (q.answers || []).filter(filled).some(a => norm(a) === norm(val));
+      frac = ok ? 1 : 0; inp.classList.add(ok ? 'ok' : 'bad');
+    }
+    v.done = true; v.frac = Math.round(frac * 100) / 100; v.answered = ans;
+    el.querySelectorAll('input,select,.qz-b button').forEach(x => x.disabled = true);
+    const ch = el.querySelector('.qz-chk'); if (ch) ch.remove();
+    const cls = v.frac >= 1 ? 'ok' : v.frac > 0 ? 'part' : 'bad';
+    const label = !ans ? 'Δεν απαντήθηκε' : v.frac >= 1 ? '✓ Σωστό!' : v.frac > 0 ? `Μερικώς σωστό (${Math.round(v.frac * 100)}%)` : '✗ Λάθος';
+    const fb = el.querySelector('.qz-fb');
+    fb.innerHTML = `<b>${label}</b>` + (S.showAnswers && v.frac < 1 ? `<div>Σωστή απάντηση: ${rightAnswer(v)}</div>` : '') + (filled(q.explain) ? `<div class="qz-ex">${fmt(q.explain)}</div>` : '');
+    fb.className = 'qz-fb ' + cls; fb.hidden = false; el.classList.add('qz-' + cls);
+  }
+  function finish() {
+    st.forEach((v, i) => grade(i));
+    const total = st.reduce((a, v) => a + pts(v.q), 0), score = Math.round(st.reduce((a, v) => a + v.frac * pts(v.q), 0) * 100) / 100;
+    const pct = total ? Math.round(score / total * 100) : 0, pass = pct >= Number(S.pass || 0), un = st.filter(v => !v.answered).length;
+    const nm = root.querySelector('.qz-name input'); if (nm) { name = nm.value; nm.disabled = true; }
+    const res = root.querySelector('.qz-res'), sub = root.querySelector('.qz-submit'); if (sub) sub.remove();
+    res.innerHTML = `<div class="qz-score"><b>${String(score).replace('.', ',')}</b> / ${total}</div><div class="qz-bar"><i style="width:${pct}%"></i></div>`
+      + `<p class="qz-big">${pct}% — ${pass ? 'Μπράβο, πέτυχες τη βάση!' : 'Δεν έφτασες ακόμη τη βάση (' + esc(S.pass) + '%).'}</p>`
+      + `<p class="qz-meta">${st.filter(v => v.frac >= 1).length} σωστές από ${st.length}${un ? ` · ${un} αναπάντητες` : ''}${filled(name) ? ' · ' + esc(name) : ''} · ${new Date().toLocaleString('el-GR')}</p>`
+      + (S.retry ? '<button type="button" class="qz-btn qz-again">Ξανά από την αρχή</button>' : '');
+    res.className = 'qz-res ' + (pass ? 'ok' : 'bad'); res.hidden = false;
+    try { res.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { }
+  }
+  root.onclick = e => {
+    const mv = e.target.closest('[data-mv]');
+    if (mv) { const card = mv.closest('[data-q]'), v = st[+card.dataset.q], p = +mv.closest('li').dataset.p, t = p + +mv.dataset.mv; if (v.done || t < 0 || t >= v.cur.length) return; [v.cur[p], v.cur[t]] = [v.cur[t], v.cur[p]]; card.querySelector('.qz-ord').innerHTML = ordList(v); const b = card.querySelector(`li[data-p="${t}"] [data-mv="${mv.dataset.mv}"]`); if (b && !b.disabled) b.focus(); return; }
+    if (e.target.closest('.qz-chk')) return grade(+e.target.closest('[data-q]').dataset.q);
+    if (e.target.closest('.qz-submit')) return finish();
+    if (e.target.closest('.qz-again')) { start(); try { root.scrollIntoView({ behavior: 'smooth' }); } catch (x) { } }
+  };
+  start();
+  if (opt.embed && window.parent !== window) {
+    const post = () => { try { window.parent.postMessage({ qzHeight: Math.ceil(document.documentElement.scrollHeight) }, '*'); } catch (e) { } };
+    try { new ResizeObserver(post).observe(document.body); } catch (e) { setInterval(post, 1000); }
+    post();
+  }
+})(document.getElementById('qz'), JSON.parse(document.getElementById('quiz-data').textContent), { embed: true });
+</script>
+</body>
+</html>

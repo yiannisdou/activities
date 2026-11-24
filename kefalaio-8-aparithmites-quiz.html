@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Κατασκευαστής Τεστ & Quiz 1.8">
+<title>Κεφάλαιο 8: Απαριθμητές</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#f4f6f9;min-height:100%}html:has(.ex[data-theme=dark]),body:has(.ex[data-theme=dark]){background:#0f131a}@media print{html,body{background:#fff!important}}
+.ex{--qa:#0b4f8a;--qb:#1597a5;--bg:#f4f6f9;--card:#fff;--ink:#10131a;--mute:#5a6271;--line:#d8dce4;--soft:#eef2f7;--okc:#1a7f37;--okb:#e8f5ec;--bdc:#c1121f;--bdb:#fdecee;--ptc:#a36200;--ptb:#fff4e0;--inb:#b4bbc7;position:relative;font:17px/1.55 "Noto Sans","Segoe UI",system-ui,sans-serif;color:var(--ink);background:var(--bg);max-width:900px;margin:0 auto;padding:16px 16px 60px;color-scheme:light;min-height:100%}
+.ex[data-theme=dark]{--bg:#0f131a;--card:#181d26;--ink:#e8ebf0;--mute:#a3abb9;--line:#2e3644;--soft:#222a37;--okc:#4cc16f;--okb:#12301c;--bdc:#ff6b75;--bdb:#3a161b;--ptc:#f0a43a;--ptb:#3a2a10;--inb:#4a5363;color-scheme:dark}
+.ex[data-theme=dark] .rsol{background:#fff;color:#111;border-radius:8px;padding:8px}
+@media screen{.ex[data-theme=dark] .ex-r,.ex[data-theme=dark] .ex-sol summary,.ex[data-theme=dark] .ex-btn2,.ex[data-theme=dark] .ex-kpw{color:color-mix(in srgb,var(--qa) 45%,#fff)!important}}
+.ex[data-theme=dark] .km-e{color:#5a6271}
+.ex *{box-sizing:border-box;min-width:0}
+.ex-htools{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.ex-htools button{font:inherit;font-size:14px;font-weight:600;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:10px;padding:6px 12px;min-height:38px;cursor:pointer}.ex-htools button:hover{background:rgba(255,255,255,.28)}
+@media print{.ex,.ex[data-theme]{--bg:#fff;--card:#fff;--ink:#000;--mute:#333;--line:#999;--soft:#f3f3f3;--inb:#888;--okc:#1a7f37;--okb:#e8f5ec;--bdc:#c1121f;--bdb:#fdecee;--ptc:#a36200;--ptb:#fff4e0;color-scheme:light;max-width:none;padding:0;background:#fff}
+.ex *{box-shadow:none!important}.ex-cards .ex-q{display:block!important}.ex-pills,.ex-nav,.ex-act,.ex-gear,.ex-btn,.ex-htools,.ex-kp,.cc-bar,.km-bar,.ex-hint{display:none!important}
+.ex-h{background:none!important;color:#000;border:2px solid #000}.ex-h h1{color:#000!important}.ex-q,.ex-end{break-inside:avoid}.ex-sol{border:1px solid #999}}
+.ex-h{background:linear-gradient(120deg,var(--qa),var(--qb));color:#fff;border-radius:14px;padding:16px 20px 14px;margin-bottom:14px}
+.ex-h h1{font:700 clamp(21px,3.3vw,30px)/1.15 Literata,Georgia,serif;margin:0;color:#fff;text-wrap:balance}
+.ex-sub{font-size:15px;font-weight:600;opacity:.92;margin:0 0 6px;line-height:1.35}
+.ex-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 18px rgba(0,0,0,.05)}
+.ex-center{text-align:center}
+.ex-card h2{font:700 22px/1.25 Literata,Georgia,serif;margin:0 0 8px}
+.ex-intro{margin:0 0 10px}
+.ex-facts{margin:0 0 16px;padding-left:1.2em;color:var(--mute)}.ex-facts li{margin:3px 0}.ex-facts b{color:var(--ink)}
+.ex-form{display:grid;gap:12px;margin:0 0 8px}
+.ex-form label{display:grid;gap:4px;font-weight:600;font-size:15px}
+.ex input[type=text],.ex input[type=password],.ex select,.ex textarea{font:inherit;font-size:16px;color:var(--ink);padding:9px 11px;border:1.5px solid var(--inb);border-radius:10px;min-height:44px;background:var(--card);max-width:100%;width:100%}
+.ex input:focus,.ex select:focus,.ex textarea:focus{outline:3px solid color-mix(in srgb,var(--qa) 30%,transparent);border-color:var(--qa)}
+.ex-err{color:var(--bdc);font-weight:600;min-height:1.4em;margin:6px 0}
+.ex-fold{font-size:13px;color:var(--mute);margin:14px 0 0}.ex-fold.ok{color:var(--okc)}
+.ex-btn{font:inherit;font-weight:700;font-size:16px;background:linear-gradient(120deg,var(--qa),var(--qb));color:#fff;border:0;border-radius:12px;padding:12px 26px;cursor:pointer;min-height:48px}
+.ex-btn2{font:inherit;font-weight:600;font-size:15px;background:var(--card);color:var(--qa);border:1.5px solid var(--line);border-radius:10px;padding:9px 16px;cursor:pointer;min-height:44px}
+.ex-btn2:hover{border-color:var(--qa)}
+.ex-btn:focus-visible,.ex-btn2:focus-visible,.ex-tg:focus-visible,.ex-ob button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.ex-bar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;margin-bottom:12px;box-shadow:0 4px 14px rgba(0,0,0,.06);font-size:15px}
+.ex-who{font-weight:700}.ex-prog{color:var(--mute)}
+.ex-timer{font-weight:700;font-variant-numeric:tabular-nums;color:var(--qa)}.ex-timer.warn{color:var(--bdc)}
+.ex-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.ex-n{display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 8px;border-radius:18px;background:linear-gradient(120deg,var(--qa),var(--qb));color:#fff;font-weight:700}
+.ex-p{color:var(--mute);font-size:14px;text-align:right}.ex-r{color:var(--qa);font-weight:600}
+.ex-t{font-weight:600;font-size:18px;margin-bottom:12px}
+.ex img{display:block;max-width:100%;height:auto;border-radius:10px;margin:8px 0 14px}
+.ex-hint{color:var(--mute);font-size:15px;margin:4px 0 8px}
+.ex-opt{display:flex;gap:12px;align-items:center;padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;margin:8px 0;cursor:pointer;min-height:50px;background:var(--card)}
+.ex-opt input{width:20px;height:20px;margin:0;flex:none;accent-color:var(--qa)}
+.ex-opt:has(input:checked){border-color:var(--qa);background:color-mix(in srgb,var(--qa) 8%,var(--card))}
+.ex-tf{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0 10px}
+.ex .ex-ok{border-color:var(--okc)!important;background:var(--okb)!important}
+.ex .ex-bad{border-color:var(--bdc)!important;background:var(--bdb)!important}
+.ex-m{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:center;margin:8px 0;padding:8px 12px;border:1.5px solid var(--line);border-radius:12px}
+.ex-fill{line-height:2.7}.ex-gap{width:auto!important;min-height:38px!important;padding:4px 8px!important;margin:0 3px}
+.ex-row{display:flex;gap:10px;align-items:center}.ex-row input{max-width:240px}
+.ex-ord{padding-left:1.6em;margin:8px 0}
+.ex-ord li{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:6px 6px 6px 12px;margin:6px 0;background:var(--card)}
+.ex-oi{flex:1}.ex-ob{display:flex;gap:4px;flex:none}
+.ex-ob button{width:44px;height:40px;border:1.5px solid var(--line);border-radius:10px;background:var(--soft);font-size:18px;cursor:pointer;color:var(--qa)}
+.ex-ob button:disabled{opacity:.35;cursor:default}
+.ex-open{min-height:140px;resize:vertical;line-height:1.5}
+.ex-given{background:var(--soft);border-radius:10px;padding:10px 14px;margin:0 0 12px}
+.ex-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px 14px}
+.ex-fields label{display:grid;gap:4px;font-size:15px;font-weight:600}
+.ex-scroll{overflow-x:auto;margin:12px 0 4px}
+.ex-tab{border-collapse:collapse;min-width:100%}
+.ex-tab th,.ex-tab td{border:1px solid var(--line);padding:5px 7px;text-align:center;font-size:15px}
+.ex-tab thead th{background:var(--soft)}.ex-tab tbody th{background:var(--soft);white-space:nowrap;font-weight:600}
+.ex-tab input{min-width:150px;font-size:15px!important;padding:6px 8px!important;min-height:38px!important}
+.ex-tt{min-width:0}.ex-tt td,.ex-tt th{padding:3px 7px!important}.ex-tt .ex-tg{height:32px}.ex-tt td{width:56px;font-variant-numeric:tabular-nums}.ex-tt .ex-oc{background:color-mix(in srgb,var(--qa) 5%,var(--card))}
+.ex-tt th.ex-oc{min-width:90px}
+.ex-tg{width:44px;height:36px;border:1.5px solid var(--inb);border-radius:8px;background:var(--card);font-family:inherit;font-size:17px;font-weight:700;line-height:1;color:var(--ink);cursor:pointer}
+.ex-tg:hover{border-color:var(--qa)}
+.ov{border-top:1.5px solid currentColor;padding-top:1px;display:inline-block;line-height:1.1}
+.ex-conv{display:grid;gap:10px}
+.ex-cr{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:18px}
+.ex-src{font-variant-numeric:tabular-nums;white-space:nowrap}
+.ex-dst{display:inline-flex;align-items:center;gap:2px}.ex-dst input{width:min(320px,70vw)}
+.ex-act{margin-top:12px}
+.ex-fb{margin-top:12px;padding:10px 14px;border-radius:10px;background:var(--soft);border-left:4px solid var(--mute)}
+.ex-fb.ok{border-color:var(--okc);background:var(--okb)}.ex-fb.bad{border-color:var(--bdc)}.ex-fb.part{border-color:var(--ptc)}
+.ex-end{padding:22px}
+.ex-done .ex-big{width:64px;height:64px;border-radius:32px;margin:0 auto 10px;background:var(--okb);color:var(--okc);font:700 36px/64px sans-serif}
+.ex-score{font-size:18px;margin:12px 0}.ex-score b{font:700 44px Literata,Georgia,serif;color:var(--qa)}
+.ex-pdf{font-weight:600}.ex-pdf.ok{color:var(--okc)}.ex-pdf.bad{color:var(--bdc)}
+.ex-spin{display:inline-block;width:16px;height:16px;border:3px solid var(--line);border-top-color:var(--qa);border-radius:50%;vertical-align:-2px;animation:exs 1s linear infinite}
+@keyframes exs{to{transform:rotate(360deg)}}
+.ex-gear{position:fixed;right:10px;bottom:10px;width:36px;height:36px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--mute);opacity:.45;cursor:pointer;font-size:18px;z-index:20}
+.ex-gear:hover,.ex-gear:focus-visible{opacity:1}
+.ex-modal{position:fixed;inset:0;background:rgba(10,14,22,.5);display:flex;align-items:center;justify-content:center;padding:16px;z-index:30}
+.ex-mbox{background:var(--card);border-radius:14px;padding:20px 22px;max-width:520px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.ex-mbox h2{font:700 22px Literata,Georgia,serif;margin:0 0 8px}.ex-mbox h3{font-size:16px;margin:14px 0 4px}
+.ex-mbox p{margin:6px 0}.ex-mbox .ok{color:var(--okc);font-weight:600}.ex-mbox .bad{color:var(--bdc);font-weight:600}
+.ex-mact{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.ex-ars{display:flex;flex-wrap:wrap;gap:18px 28px}
+.ex-ar{position:relative;display:grid;justify-items:end;font:600 20px/1.5 ui-monospace,Consolas,"Courier New",monospace;letter-spacing:.12em;padding:6px 10px 8px 26px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);min-width:calc(var(--w) + 60px)}
+.ex-arn{white-space:pre}.ex-op{position:absolute;left:10px}
+.ex-arb{position:absolute;right:8px;top:2px;font:600 11px "Noto Sans",sans-serif;letter-spacing:0;color:var(--mute)}
+.ex-arr{border-top:2.5px solid var(--ink)!important;margin-top:4px;text-align:right;font:inherit!important;letter-spacing:.12em;width:calc(var(--w) + 30px)!important;max-width:none!important}
+.ex-fn{font-size:19px}
+.ex-part{font-size:16px;margin:16px 0 6px}
+.ex-exr{font-size:19px}.ex-exr b{white-space:nowrap}
+.ex-eqd{flex:1;min-height:52px;border:1.5px solid var(--inb);border-radius:10px;background:var(--card);padding:10px 14px;font:600 24px/1.3 "Noto Sans","Segoe UI",sans-serif;letter-spacing:.04em;cursor:text;display:flex;align-items:center;flex-wrap:wrap}
+.ex-eqd:focus{outline:3px solid color-mix(in srgb,var(--qa) 30%,transparent);border-color:var(--qa)}
+.ex-car{display:inline-block;width:2px;height:1.1em;background:var(--qa);margin-left:2px;animation:exc 1s steps(1) infinite}.ex-eqd:not(:focus) .ex-car{opacity:.35}
+@keyframes exc{50%{opacity:0}}
+.ex-kp{display:grid;gap:6px;margin:10px 0 4px}.ex-kp>div{display:flex;flex-wrap:wrap;gap:6px}
+.ex-kp button{min-width:52px;height:46px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);font-family:inherit;font-size:21px;font-weight:700;color:var(--ink);cursor:pointer;padding:0 12px}
+.ex-kp button:hover:not(:disabled){border-color:var(--qa);background:var(--soft)}.ex-kp button:disabled{opacity:.45;cursor:default}
+.ex-kp .ex-kps{font-family:"Segoe UI Symbol","Cambria Math","DejaVu Sans",serif;font-weight:400}.ex-kp .ex-kpw{font-size:15px;font-weight:600;color:var(--qa)}.ex-kp .ex-kpn{font-size:17px}.ex-exr input{font-family:ui-monospace,Consolas,monospace!important;font-size:18px!important}
+.ex-prev{min-height:1.2em;font-size:14px;margin:2px 0 0;color:var(--mute)}.ex-prev.bad{color:var(--ptc)}
+.km-wrap{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-start}
+.km{border-collapse:collapse}.km th{font-weight:700;color:var(--mute);padding:4px 8px;font-variant-numeric:tabular-nums}
+.km td{border:2px solid var(--ink);padding:0}
+.km-corner{position:relative;width:62px;height:46px;background:linear-gradient(to top right,transparent calc(50% - 1px),var(--line),transparent calc(50% + 1px))}
+.km-rv{position:absolute;left:6px;bottom:3px;color:var(--ink)}.km-cv{position:absolute;right:6px;top:3px;color:var(--ink)}
+.km-c{position:relative;width:62px;height:56px;border:0;background:var(--card);font-family:inherit;font-size:22px;font-weight:700;line-height:1;color:var(--ink);cursor:pointer;display:block}
+.km-c:hover{filter:brightness(.96)}.km-c.fixed{cursor:default}.km-c.cur{background:color-mix(in srgb,var(--qa) 18%,var(--card));outline:3px solid var(--qa);outline-offset:-3px}
+.km-e{color:#c2c7d0}.km-m{position:absolute;left:4px;top:2px;font-size:10px;font-weight:600;color:#9aa1ad}
+.km-d{position:absolute;right:3px;bottom:3px;display:flex;gap:2px}.km-d i{width:9px;height:9px;border-radius:50%;display:block}
+.km-side{flex:1 1 220px}.km-bar{display:flex;flex-wrap:wrap;gap:8px}
+.km-msg{font-size:14px;color:var(--mute);min-height:1.4em;margin:8px 0}.km-msg.bad{color:var(--bdc);font-weight:600}
+.km-gl{list-style:none;padding:0;margin:0}.km-gl li{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:15px}.km-gl i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.km-x{border:0;background:none;color:var(--bdc);font-size:15px;cursor:pointer;min-height:32px;padding:0 8px}.km-none{color:var(--mute)}
+.ex .ex-wv.ex-bad,.ex .ex-wv.ex-ok{background:transparent!important;border:0!important}.ex-wv.ex-bad .wv-svg{border-color:var(--bdc)}.ex-wv.ex-ok .wv-svg{border-color:var(--okc)}
+.ex-wt td,.ex-reg td,.ex-cnt td{padding:3px 6px!important}.ex-wt .ex-tg,.ex-reg .ex-tg,.ex-cnt .ex-tg{height:34px}.ex-wt select{min-height:36px;padding:4px 8px;font-size:15px;width:auto}
+.ex-reg .ex-rc{border-left:2px solid var(--ink);border-right:2px solid var(--ink)}.ex-mu{color:var(--mute);font-size:14px}.ex-dec{width:90px!important;min-height:36px!important;padding:4px 8px!important;text-align:center}
+.ex .ex-km.ex-bad,.ex .ex-km.ex-ok{background:transparent!important;border:0!important}.ex-km.ex-bad .km td{border-color:var(--bdc)}.ex-km.ex-ok .km td{border-color:var(--okc)}
+.cc-bar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}.cc-bar .ex-btn2{min-height:38px;padding:6px 12px}.cc-clr{margin-left:auto;color:var(--bdc)!important}
+.cc-sim{margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:16px}.cc-sim .ex-tg{width:auto;padding:0 10px}
+.ex-circ.ex-bad .cc-svg{border-color:var(--bdc)}.ex-circ.ex-ok .cc-svg{border-color:var(--okc)}
+.ex .ex-circ.ex-bad,.ex .ex-circ.ex-ok{background:transparent!important;border:0!important}
+.ex-cards .ex-q{display:none}.ex-cards .ex-q.on{display:block}
+.ex-pills{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 8px}
+.ex-pill{flex:none;width:42px;height:42px;border-radius:21px;border:2px solid var(--line);background:var(--card);color:var(--mute);font:inherit;font-weight:700;cursor:pointer}
+.ex-pill.ans{border-color:var(--qa);color:var(--qa)}.ex-pill.on{background:var(--qa);border-color:var(--qa);color:#fff}
+.ex-pill.ok{background:var(--okb);border-color:var(--okc);color:var(--okc)}.ex-pill.bad{background:var(--bdb);border-color:var(--bdc);color:var(--bdc)}.ex-pill.part{background:var(--ptb);border-color:var(--ptc);color:var(--ptc)}
+.ex-pill.on.ok,.ex-pill.on.bad,.ex-pill.on.part{box-shadow:0 0 0 3px color-mix(in srgb,var(--qa) 35%,transparent)}
+.ex-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:12px 0}.ex-pos{color:var(--mute);font-weight:600}
+.ex-qi{margin:0 0 12px}
+.ex-sol{margin-top:10px;border:1px solid var(--line);border-radius:10px;padding:6px 12px;background:var(--card)}.ex-sol summary{cursor:pointer;font-weight:700;color:var(--qa);min-height:32px;display:flex;align-items:center}
+.rsol{overflow-x:auto;font-size:15px}.rsol svg{max-width:100%;height:auto}
+.ex-bar2{height:10px;background:var(--soft);border-radius:5px;overflow:hidden;max-width:420px;margin:10px auto}.ex-bar2 i{display:block;height:100%;background:linear-gradient(90deg,var(--qa),var(--qb))}
+.ex-big{font-size:19px;font-weight:600}
+@media(max-width:560px){.ex{padding:10px 10px 60px}.ex-card{padding:16px 14px}.ex-m{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.ex-spin{animation:none}}</style>
+</head>
+<body>
+<main id="exam"></main>
+<script type="application/json" id="exam-data">{"id":"0i8wj54s243xo5","title":"Κεφάλαιο 8: Απαριθμητές","subject":"Ψηφιακά Συστήματα","grade":"Γ' ΕΠΑ.Λ.","intro":"","settings":{"penalty":50,"scale":"20","showScore":true,"duration":0,"date":"","startCode":"","sections":"ΓΗΛΝ","shuffleQ":true,"shuffleOpt":true,"accent":"#0b4f8a","accent2":"#1597a5","pinHash":"03dec4d249c6a57c7350b7e1863bab6f29044df38a11ed1022f900ea9339595c","layout":"cards","qlayout":"cards","showSol":true,"theme":"light","themeToggle":true,"printBtn":true},"questions":[{"id":"112lps4","type":"tf","text":"Ο BCD απαριθμητής απαριθμεί δεκαέξι καταστάσεις. ","points":2,"retry":false,"answer":false},{"id":"7h8nqop","type":"tf","text":"Σε έναν ασύγχρονο BCD απαριθμητή η πύλη NAND υπάρχει, για να μηδενίζει το περιεχόμενο των τεσσάρων flip-flops με τον επόμενο παλμό ρολογιού, όταν ο απαριθμητής βρίσκεται στην κατάσταση Q4Q3Q2Q1=1001.","points":2,"retry":false,"answer":true},{"id":"snna6h7","type":"tf","text":"Ο BCD απαριθμητής πρέπει να αποτελείται από τρία (3) flip-flops.","points":2,"retry":false,"answer":true},{"id":"9fijvbf","type":"short","text":"Έστω ότι η λογική κατάσταση των εξόδων ενός δυαδικού απαριθμητή που μετρά προς τα πάνω είναι 1001. Να γράψετε ποια θα είναι η επόμενη κατάσταση των εξόδων του απαριθμητή; ","points":2,"retry":true,"answers":["1010"]},{"id":"6v3gfu6","type":"short","text":"Πόσα flip flop θα χρειαστούμε για να υλοποιήσουμε το κύκλωμα ενός απαριθμητή που μετρά 32 καταστάσεις; ","points":1,"retry":true,"answers":["5","πέντε"]},{"id":"ukftzgx","type":"cnt","text":"Να συμπληρώσετε τον πίνακα με τα περιεχόμενα του απαριθμητή στους επόμενους παλμούς ρολογιού.","points":4,"retry":true,"mode":"up","nb":4,"init":"1011","pulses":7,"mod":6,"dec":true},{"id":"wwlu9jo","type":"cnt","text":"Να συμπληρώσετε τον πίνακα με τα περιεχόμενα του απαριθμητή στους επόμενους παλμούς ρολογιού.","points":4,"retry":true,"mode":"bcd","nb":4,"init":"0111","pulses":5,"mod":6,"dec":true},{"id":"f5vcw9t","type":"mc","text":"Το παρακάτω κύκλωμα είναι ένας:","points":1,"retry":true,"options":[{"t":"Ασύγχρονος BCD Απαριθμητής ","c":true},{"t":"Ασύγχρονος Δυαδικός Απαριθμητής ","c":false},{"t":"Σύγχρονος Δυαδικός Απαριθμητής ","c":false},{"t":"Αμφίδρομος Απαριθμητής","c":false}],"img":"data:image/png;base64,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"},{"id":"40w5b3l","type":"match","text":"Να αντιστοιχίσετε τις προτάσεις με τα στοιχεία που δίνονται στη λίστα.","points":2,"retry":true,"pairs":[{"l":"Ένας προς τα πάνω απαριθμητής των  5bit","r":"μετράει από το 0 έως το 31"},{"l":"O απαριθμητής BCD προς τα πάνω","r":"μετράει από το 0 έως το 9"},{"l":"Ένας δυαδικός απαριθμητής 4 bits","r":"μετράει από το 0 έως το 15"}]}],"kind":"quiz"}</script>
+<script>
+const LIB = (function () {
+  /* ---------- IPv4 ---------- */
+  const ipToInt = s => {
+    const p = String(s == null ? '' : s).trim().split('.');
+    if (p.length !== 4) return null;
+    let n = 0;
+    for (const x of p) { if (!/^\d{1,3}$/.test(x)) return null; const v = +x; if (v > 255) return null; n = n * 256 + v; }
+    return n;
+  };
+  const intToIp = n => [24, 16, 8, 0].map(s => Math.floor(n / 2 ** s) % 256).join('.');
+  const maskInt = p => p === 0 ? 0 : 2 ** 32 - 2 ** (32 - p);
+  const maskStr = p => intToIp(maskInt(p));
+  const prefixFromMask = s => { const n = ipToInt(s); if (n === null) return null; for (let p = 0; p <= 32; p++) if (maskInt(p) === n) return p; return null; };
+  const ipClass = n => { const o = Math.floor(n / 2 ** 24); return o < 128 ? 'A' : o < 192 ? 'B' : o < 224 ? 'C' : o < 240 ? 'D' : 'E'; };
+  function analyze(ip, p) {
+    p = Number(p); const n = ipToInt(ip);
+    if (n === null || !(p >= 1 && p <= 30)) return null;
+    const size = 2 ** (32 - p), net = Math.floor(n / size) * size;
+    return { cls: ipClass(n), mask: maskStr(p), prefix: '/' + p, net: intToIp(net), bc: intToIp(net + size - 1), first: intToIp(net + 1), last: intToIp(net + size - 2), hosts: String(size - 2) };
+  }
+  function divide(net, p, n) {
+    p = Number(p); n = Number(n); const b = ipToInt(net);
+    if (b === null || !(p >= 1 && p <= 29) || !(n >= 2)) return null;
+    const bits = Math.ceil(Math.log2(n)), np = p + bits;
+    if (np > 30) return null;
+    const size = 2 ** (32 - np), base = Math.floor(b / 2 ** (32 - p)) * 2 ** (32 - p), rows = [];
+    for (let i = 0; i < 2 ** bits; i++) { const s = base + i * size; rows.push({ net: intToIp(s), first: intToIp(s + 1), last: intToIp(s + size - 2), bc: intToIp(s + size - 1) }); }
+    return { base: intToIp(base), mask: maskStr(np), prefix: '/' + np, hosts: String(size - 2), count: String(2 ** bits), bits, rows };
+  }
+  const SUB_A = { cls: 'Τάξη διεύθυνσης', mask: 'Μάσκα υποδικτύου', prefix: 'Πρόθεμα (CIDR)', net: 'Διεύθυνση δικτύου', bc: 'Διεύθυνση broadcast', first: 'Πρώτος host', last: 'Τελευταίος host', hosts: 'Πλήθος hosts' };
+  const SUB_D = { mask: 'Νέα μάσκα υποδικτύου', prefix: 'Νέο πρόθεμα (CIDR)', count: 'Πλήθος υποδικτύων', hosts: 'Hosts ανά υποδίκτυο' };
+  const SUB_C = { net: 'Διεύθυνση δικτύου', first: 'Πρώτος host', last: 'Τελευταίος host', bc: 'Broadcast' };
+  function eqField(k, user, exp) {
+    const u = String(user == null ? '' : user).replace(/\s+/g, '');
+    if (!u) return false;
+    if (k === 'prefix') return u.replace(/^\//, '') === String(exp).replace(/^\//, '');
+    if (k === 'cls') return u.toUpperCase() === exp;
+    if (k === 'hosts' || k === 'count') return u.replace(/\./g, '') === String(exp);
+    const a = ipToInt(u); return a !== null && a === ipToInt(exp);
+  }
+
+  /* ---------- Αριθμητικά συστήματα ---------- */
+  const BASES = { '2': 'Δυαδικό (2)', '8': 'Οκταδικό (8)', '10': 'Δεκαδικό (10)', '16': 'Δεκαεξαδικό (16)', bcd: 'BCD 8421' };
+  const BSUB = { '2': '2', '8': '8', '10': '10', '16': '16', bcd: 'BCD' };
+  function parseVal(v, b) {
+    v = String(v == null ? '' : v).replace(/\s+/g, '').toUpperCase();
+    if (!v) return null;
+    if (b === 'bcd') {
+      if (!/^[01]+$/.test(v)) return null;
+      v = v.padStart(Math.ceil(v.length / 4) * 4, '0'); let d = '';
+      for (let i = 0; i < v.length; i += 4) { const x = parseInt(v.slice(i, i + 4), 2); if (x > 9) return null; d += x; }
+      return Number(d);
+    }
+    const re = { '2': /^[01]+$/, '8': /^[0-7]+$/, '10': /^\d+$/, '16': /^[0-9A-F]+$/ }[b];
+    if (!re || !re.test(v)) return null;
+    const n = parseInt(v, +b); return n <= Number.MAX_SAFE_INTEGER ? n : null;
+  }
+  function fmtVal(n, b) {
+    if (n == null) return '';
+    if (b === 'bcd') return String(n).split('').map(d => (+d).toString(2).padStart(4, '0')).join(' ');
+    return n.toString(+b).toUpperCase();
+  }
+  const convAns = r => { const n = parseVal(r.v, r.from); return n == null || r.from === r.to ? null : fmtVal(n, r.to); };
+  const convNorm = (s, b) => { s = String(s == null ? '' : s).replace(/[\s_]/g, '').toUpperCase(); if (b === '16') s = s.replace(/^0X/, '').replace(/H$/, ''); return s.replace(/^0+(?=.)/, ''); };
+  const convEq = (r, user) => { const a = convAns(r); return a != null && convNorm(user, r.to) !== '' && convNorm(user, r.to) === convNorm(a, r.to); };
+  const convSrc = r => { const n = parseVal(r.v, r.from); return n == null ? String(r.v) : r.from === 'bcd' ? fmtVal(n, 'bcd') : String(r.v).replace(/\s+/g, '').toUpperCase(); };
+
+  /* ---------- Λογικές παραστάσεις ---------- */
+  function parseExpr(src) {
+    const s = String(src == null ? '' : src), toks = [];
+    for (let i = 0; i < s.length; i++) {
+      const c = s[i];
+      if (/\s/.test(c)) continue;
+      if (/[A-Za-z]/.test(c)) toks.push({ t: 'v', n: c.toUpperCase() });
+      else if (c === '0' || c === '1') toks.push({ t: 'c', v: +c });
+      else if ("()+'’!¬~·*.&⊕^⊙".includes(c)) toks.push({ t: c === '’' ? "'" : c === '¬' || c === '~' ? '!' : c === '*' || c === '.' || c === '&' ? '·' : c === '^' ? '⊕' : c });
+      else throw new Error(`Άγνωστο σύμβολο «${c}»`);
+    }
+    let k = 0;
+    const peek = () => toks[k], take = () => toks[k++];
+    const startsUnary = t => t && (t.t === 'v' || t.t === 'c' || t.t === '(' || t.t === '!');
+    function pOr() { let a = pXor(); while (peek() && peek().t === '+') { take(); a = { t: 'or', a, b: pXor() }; } return a; }
+    function pXor() { let a = pAnd(); while (peek() && (peek().t === '⊕' || peek().t === '⊙')) { const op = take().t; a = { t: op === '⊕' ? 'xor' : 'xnor', a, b: pAnd() }; } return a; }
+    function pAnd() { let a = pUn(); for (;;) { if (peek() && peek().t === '·') { take(); a = { t: 'and', a, b: pUn() }; } else if (startsUnary(peek())) a = { t: 'and', a, b: pUn() }; else break; } return a; }
+    function pUn() { if (peek() && peek().t === '!') { take(); return { t: 'not', a: pUn() }; } let a = pPri(); while (peek() && peek().t === "'") { take(); a = { t: 'not', a }; } return a; }
+    function pPri() {
+      const t = take();
+      if (!t) throw new Error('Η παράσταση τελειώνει απότομα');
+      if (t.t === 'v') return { t: 'v', n: t.n };
+      if (t.t === 'c') return { t: 'c', v: t.v };
+      if (t.t === '(') { const a = pOr(); if (!peek() || take().t !== ')') throw new Error('Λείπει μια παρένθεση «)»'); return { t: 'g', a }; }
+      throw new Error(`Μη αναμενόμενο «${t.t}»`);
+    }
+    if (!toks.length) throw new Error('Κενή παράσταση');
+    const ast = pOr();
+    if (k < toks.length) throw new Error(`Περιττό «${toks[k].t === 'v' ? toks[k].n : toks[k].t}»`);
+    const vars = new Set(); (function walk(n) { if (!n) return; if (n.t === 'v') vars.add(n.n); walk(n.a); walk(n.b); })(ast);
+    return { ast, vars: [...vars].sort() };
+  }
+  function evalE(n, env) {
+    switch (n.t) {
+      case 'v': return env[n.n] ? 1 : 0; case 'c': return n.v; case 'g': return evalE(n.a, env);
+      case 'not': return evalE(n.a, env) ? 0 : 1;
+      case 'and': return evalE(n.a, env) & evalE(n.b, env);
+      case 'or': return evalE(n.a, env) | evalE(n.b, env);
+      case 'xor': return evalE(n.a, env) ^ evalE(n.b, env);
+      case 'xnor': return (evalE(n.a, env) ^ evalE(n.b, env)) ? 0 : 1;
+    }
+    return 0;
+  }
+  function renderE(n) {
+    switch (n.t) {
+      case 'v': return n.n; case 'c': return String(n.v);
+      case 'g': return '(' + renderE(n.a) + ')';
+      case 'not': return '<span class="ov">' + renderE(n.a.t === 'g' ? n.a.a : n.a) + '</span>';
+      case 'and': return renderE(n.a) + '·' + renderE(n.b);
+      case 'or': return renderE(n.a) + ' + ' + renderE(n.b);
+      case 'xor': return renderE(n.a) + ' ⊕ ' + renderE(n.b);
+      case 'xnor': return renderE(n.a) + ' ⊙ ' + renderE(n.b);
+    }
+    return '';
+  }
+  /* πίνακας αληθείας: στήλες = μία παράσταση ανά γραμμή */
+  function truthTable(q) {
+    const lines = String(q.exprs || '').split('\n').map(x => x.trim()).filter(Boolean);
+    if (!lines.length) return { err: 'Γράψε τουλάχιστον μία παράσταση.' };
+    const cols = []; const vs = new Set();
+    for (const l of lines) {
+      let name = '', ex = l; const m = l.match(/^([A-Za-zΑ-Ωα-ω][\wΑ-Ωα-ω]*)\s*=\s*(.+)$/); if (m) { name = m[1]; ex = m[2]; }
+      try { const p = parseExpr(ex); p.vars.forEach(v => vs.add(v)); cols.push({ name, src: ex, ast: p.ast, html: renderE(p.ast) }); }
+      catch (e) { return { err: `«${l}»: ${e.message}` }; }
+    }
+    const vars = [...vs].sort();
+    if (vars.length > 4) return { err: 'Έως 4 μεταβλητές (16 γραμμές).' };
+    if (!vars.length) return { err: 'Η παράσταση δεν έχει μεταβλητές.' };
+    const rows = [];
+    for (let r = 0; r < 2 ** vars.length; r++) {
+      const env = {}; vars.forEach((v, i) => env[v] = (r >> (vars.length - 1 - i)) & 1);
+      rows.push({ ins: vars.map(v => env[v]), outs: cols.map(c => evalE(c.ast, env)) });
+    }
+    return { vars, cols, rows };
+  }
+  /* ---------- αριθμητικές πράξεις ---------- */
+  const arithVal = r => { const a = parseVal(r.a, r.base), b = parseVal(r.b, r.base); if (a == null || b == null) return null; const v = r.op === '-' ? a - b : a + b; return v < 0 ? null : v; };
+  const arithAns = r => { const v = arithVal(r); return v == null ? null : fmtVal(v, r.base); };
+  const arithEq = (r, u) => { const a = arithAns(r); return a != null && convNorm(u, r.base) !== '' && convNorm(u, r.base) === convNorm(a, r.base); };
+  const arithSrc = (s, b) => String(s == null ? '' : s).replace(/\s+/g, '').toUpperCase();
+
+  /* ---------- συνδυαστικά: συνάρτηση, ελαχιστοποίηση ---------- */
+  const VN = ['A', 'B', 'C', 'D'];
+  const nums = s => String(s == null ? '' : s).split(/[^0-9]+/).filter(Boolean).map(Number);
+  function funcOf(q) {
+    let vars, out = (q.out || 'Y').trim() || 'Y', rows, html = '';
+    if (q.src === 'mint') {
+      const n = Math.min(4, Math.max(2, Number(q.nv) || 3)); vars = VN.slice(0, n);
+      const N = 2 ** n, ones = nums(q.mint), dc = nums(q.dc);
+      if (ones.some(m => m >= N) || dc.some(m => m >= N)) return { err: `Οι ελαχιστόροι πρέπει να είναι από 0 έως ${N - 1}.` };
+      if (ones.some(m => dc.includes(m))) return { err: 'Ένας όρος είναι και ελαχιστόρος και αδιάφορος.' };
+      rows = [...Array(N).keys()].map(m => ones.includes(m) ? 1 : dc.includes(m) ? 'x' : 0);
+    } else {
+      let ex = String(q.fexpr || ''); const m = ex.match(/^\s*([A-Za-zΑ-Ωα-ω]\w*)\s*=\s*(.+)$/); if (m) { out = m[1]; ex = m[2]; }
+      let p; try { p = parseExpr(ex); } catch (e) { return { err: e.message }; }
+      if (p.vars.length > 4) return { err: 'Έως 4 μεταβλητές.' };
+      if (p.vars.length < 2) return { err: 'Χρειάζονται τουλάχιστον 2 μεταβλητές.' };
+      vars = p.vars; html = renderE(p.ast);
+      rows = [...Array(2 ** vars.length).keys()].map(r => { const env = {}; vars.forEach((v, i) => env[v] = (r >> (vars.length - 1 - i)) & 1); return evalE(p.ast, env); });
+    }
+    const ones = rows.map((x, i) => x === 1 ? i : -1).filter(i => i >= 0), dcs = rows.map((x, i) => x === 'x' ? i : -1).filter(i => i >= 0);
+    const min = minSOP(vars.length, ones, dcs);
+    return { vars, out, rows, ones, dcs, html, min, minHtml: cubesHtml(min.terms, vars), minLits: min.lits };
+  }
+  function minSOP(n, ones, dcs) {
+    if (!ones.length) return { terms: [], lits: 0 };
+    const ok = new Set(ones.concat(dcs)), cubes = [];
+    const covers = c => { const out = []; for (let m = 0; m < 2 ** n; m++) { let f = true; for (let i = 0; i < n; i++) { const bit = (m >> (n - 1 - i)) & 1; if (c[i] !== '-' && +c[i] !== bit) { f = false; break; } } if (f) out.push(m); } return out; };
+    const all = []; (function gen(s) { if (s.length === n) { all.push(s); return; } for (const ch of ['0', '1', '-']) gen(s + ch); })('');
+    for (const c of all) { const cv = covers(c); if (cv.every(m => ok.has(m)) && cv.some(m => ones.includes(m))) cubes.push({ c, cv }); }
+    const inside = (a, b) => a !== b && [...a].every((ch, i) => b[i] === '-' || b[i] === ch);
+    const primes = cubes.filter(x => !cubes.some(y => inside(x.c, y.c)));
+    const litsOf = c => [...c].filter(ch => ch !== '-').length;
+    let best = null;
+    const P = primes.length;
+    for (let k = 1; k <= P && !best; k++) {
+      const idx = [...Array(k).keys()];
+      for (;;) {
+        const set = idx.map(i => primes[i]), cov = new Set(set.flatMap(x => x.cv));
+        if (ones.every(m => cov.has(m))) { const l = set.reduce((a, x) => a + litsOf(x.c), 0); if (!best || l < best.lits) best = { terms: set.map(x => x.c), lits: l }; }
+        let i = k - 1; while (i >= 0 && idx[i] === P - k + i) i--; if (i < 0) break; idx[i]++; for (let j = i + 1; j < k; j++) idx[j] = idx[j - 1] + 1;
+      }
+    }
+    return best || { terms: [], lits: 0 };
+  }
+  function cubesHtml(terms, vars) {
+    if (!terms.length) return '0';
+    if (terms.some(t => /^-+$/.test(t))) return '1';
+    return terms.map(t => [...t].map((ch, i) => ch === '-' ? '' : ch === '1' ? vars[i] : `<span class="ov">${vars[i]}</span>`).filter(Boolean).join('·')).join(' + ');
+  }
+  const countLits = n => !n ? 0 : n.t === 'v' ? 1 : countLits(n.a) + countLits(n.b);
+  /* έλεγχος παράστασης μαθητή: 1 = σωστή και ελάχιστη, 'eq' = σωστή όχι ελάχιστη, 0 = λάθος */
+  function checkExpr(F, src) {
+    let p; try { p = parseExpr(String(src || '').replace(/^\s*[A-Za-zΑ-Ωα-ω]\w*\s*=\s*/, '')); } catch (e) { return { ok: 0, err: e.message }; }
+    if (p.vars.some(v => !F.vars.includes(v))) return { ok: 0, err: 'Άγνωστη μεταβλητή' };
+    for (let r = 0; r < F.rows.length; r++) {
+      if (F.rows[r] === 'x') continue;
+      const env = {}; F.vars.forEach((v, i) => env[v] = (r >> (F.vars.length - 1 - i)) & 1);
+      if (evalE(p.ast, env) !== F.rows[r]) return { ok: 0, html: renderE(p.ast) };
+    }
+    const l = countLits(p.ast);
+    return { ok: l <= F.minLits ? 1 : 'eq', lits: l, html: renderE(p.ast) };
+  }
+
+  /* ---------- χάρτης Karnaugh ---------- */
+  const GRAY = ['00', '01', '11', '10'];
+  function kmLayout(vars) {
+    const n = vars.length;
+    if (n === 2) return { rv: vars[0], cv: vars[1], rows: ['0', '1'], cols: ['0', '1'], idx: (r, c) => r * 2 + c };
+    if (n === 3) return { rv: vars[0], cv: vars[1] + vars[2], rows: ['0', '1'], cols: GRAY, idx: (r, c) => (r << 2) | parseInt(GRAY[c], 2) };
+    return { rv: vars[0] + vars[1], cv: vars[2] + vars[3], rows: GRAY, cols: GRAY, idx: (r, c) => (parseInt(GRAY[r], 2) << 2) | parseInt(GRAY[c], 2) };
+  }
+  function cubeOf(S, n) {
+    if (!S.length || (S.length & (S.length - 1))) return null;
+    let c = '';
+    for (let i = 0; i < n; i++) { const bits = new Set(S.map(m => (m >> (n - 1 - i)) & 1)); c += bits.size === 2 ? '-' : String([...bits][0]); }
+    const cov = []; for (let m = 0; m < 2 ** n; m++) { let f = true; for (let i = 0; i < n; i++) { if (c[i] !== '-' && +c[i] !== ((m >> (n - 1 - i)) & 1)) { f = false; break; } } if (f) cov.push(m); }
+    return cov.length === S.length && cov.every(m => S.includes(m)) ? c : null;
+  }
+  /* βαθμός χάρτη 0..1 και ανάλυση */
+  function kmCheck(F, u, kfill) {
+    let d = null; try { d = typeof u === 'string' ? JSON.parse(u || 'null') : u; } catch (e) { }
+    d = d || { c: {}, g: [] };
+    const n = F.vars.length, N = 2 ** n, exp = m => F.rows[m] === 'x' ? 'X' : String(F.rows[m]);
+    let cellsOk = 0; for (let m = 0; m < N; m++) if (String((d.c || {})[m] || '') === exp(m)) cellsOk++;
+    const groups = (d.g || []).map(S => ({ S, cube: cubeOf(S, n) }));
+    const bad = groups.filter(x => !x.cube || x.S.some(m => F.rows[m] === 0));
+    const cov = new Set(groups.flatMap(x => x.S)), miss = F.ones.filter(m => !cov.has(m));
+    const lits = groups.reduce((a, x) => a + (x.cube ? [...x.cube].filter(ch => ch !== '-').length : 0), 0);
+    const minimal = !bad.length && !miss.length && groups.length === F.min.terms.length && lits === F.minLits;
+    const gScore = !groups.length || bad.length || miss.length ? 0 : minimal ? 1 : 'part';
+    return { d, cellsFrac: cellsOk / N, cellsOk, N, groups, bad, miss, lits, minimal, gScore, html: cubesHtml(groups.filter(x => x.cube).map(x => x.cube), F.vars) };
+  }
+
+  /* ---------- ακολουθιακά: μανταλωτές / flip-flop ---------- */
+  const WDEV = { srnand: { name: 'Μανταλωτής S-R με πύλες NAND', ins: ['S', 'R'], latch: true }, srnor: { name: 'Μανταλωτής S-R με πύλες NOR', ins: ['S', 'R'], latch: true }, d: { name: 'D flip-flop', ins: ['D'] }, t: { name: 'T flip-flop', ins: ['T'] }, jk: { name: 'J-K flip-flop', ins: ['J', 'K'] } };
+  const WOPS = { hold: 'Αμετάβλητη', set: 'Θέση (Set)', reset: 'Μηδενισμός (Reset)', toggle: 'Αλλαγή κατάστασης (Toggle)', inv: 'Μη χρησιμοποιούμενη', aset: 'Ασύγχρονη θέση (PRESET)', areset: 'Ασύγχρονος μηδενισμός (CLEAR)' };
+  const wOpsFor = q => { const D = WDEV[q.dev] || WDEV.jk; const k = D.latch ? ['hold', 'set', 'reset', 'inv'] : q.dev === 'd' ? ['set', 'reset'] : q.dev === 't' ? ['hold', 'toggle'] : ['hold', 'set', 'reset', 'toggle']; if (!D.latch && q.async) k.push('aset', 'areset'); return k; };
+  const wLabel = (q, k) => k === 'init' ? 'Αρχική κατάσταση' : ((q.ops || {})[k] || WOPS[k] || k);
+  const wSigs = q => { const D = WDEV[q.dev] || WDEV.jk; return D.latch ? D.ins.slice() : ['CP'].concat(D.ins, q.async ? ['PRESET', 'CLEAR'] : []); };
+  const wv = (q, s, k) => { const a = (q.sig || {})[s] || []; return a[k] == null ? (s === 'PRESET' || s === 'CLEAR' ? 1 : 0) : +a[k]; };
+  const wEdge = (q, k) => k > 0 && (q.edge === 'neg' ? wv(q, 'CP', k - 1) === 1 && wv(q, 'CP', k) === 0 : wv(q, 'CP', k - 1) === 0 && wv(q, 'CP', k) === 1);
+  function simWave(q) {
+    const n = Math.max(2, Math.min(24, Number(q.n) || 12)), D = WDEV[q.dev] || WDEV.jk, Q = [], op = [];
+    let s = +q.q0 ? 1 : 0;
+    for (let k = 0; k < n; k++) {
+      let o = 'hold';
+      if (D.latch) {
+        const S = wv(q, 'S', k), R = wv(q, 'R', k);
+        if (q.dev === 'srnand') { if (!S && R) { s = 1; o = 'set'; } else if (S && !R) { s = 0; o = 'reset'; } else if (!S && !R) { s = 1; o = 'inv'; } }
+        else { if (S && !R) { s = 1; o = 'set'; } else if (!S && R) { s = 0; o = 'reset'; } else if (S && R) { s = 0; o = 'inv'; } }
+        if (k === 0 && !q.latch0) { /* η Q στο t0 δίνεται */ }
+      } else {
+        const pr = q.async ? wv(q, 'PRESET', k) : 1, cl = q.async ? wv(q, 'CLEAR', k) : 1;
+        if (!pr && cl) { s = 1; o = 'aset'; } else if (pr && !cl) { s = 0; o = 'areset'; } else if (!pr && !cl) { s = 1; o = 'inv'; }
+        else if (wEdge(q, k)) {
+          const g = x => wv(q, x, k);
+          if (q.dev === 'd') { s = g('D'); o = s ? 'set' : 'reset'; }
+          else if (q.dev === 't') { if (g('T')) { s = 1 - s; o = 'toggle'; } }
+          else { const J = g('J'), K = g('K'); if (J && K) { s = 1 - s; o = 'toggle'; } else if (J) { s = 1; o = 'set'; } else if (K) { s = 0; o = 'reset'; } }
+        }
+      }
+      if (k === 0) { s = +q.q0 ? 1 : 0; o = 'init'; }
+      Q.push(s); op.push(o);
+    }
+    return { n, Q, op };
+  }
+  const tLab = (k, sub) => `t<tspan font-size="${sub || 10}" dy="4">${k}</tspan>`;
+  function drawWave(q, o) {
+    o = o || {}; const R = simWave(q), n = R.n, sigs = wSigs(q), W = 760, X0 = 78, iw = (W - X0 - 24) / n, RH = 54, x = k => X0 + k * iw;
+    const rows = sigs.slice(); if (!o.noQ) rows.push('Q'); if (o.correct) rows.push('Qσ');
+    const H = rows.length * RH + 40;
+    let s = `<rect x="0" y="0" width="${W}" height="${H}" fill="#fff"/>`;
+    for (let k = 0; k <= n; k++) s += `<line x1="${x(k)}" y1="6" x2="${x(k)}" y2="${H - 30}" stroke="#9aa1ad" stroke-dasharray="3 4" stroke-width="1"/><text x="${x(k)}" y="${H - 12}" text-anchor="middle" class="wv-t">${tLab(k)}</text>`;
+    s += `<line x1="${X0 - 4}" y1="${H - 30}" x2="${W - 10}" y2="${H - 30}" stroke="#1d2330" stroke-width="1.5"/>`;
+    const step = (arr, top, cls, from) => { let d = '', started = false; for (let k = from || 0; k < n; k++) { const v = arr[k]; if (v == null || v === '') { started = false; continue; } const y = top + (v ? 12 : 40); if (!started) { d += `M${x(k)} ${y}`; started = true; } else d += `V${y}`; d += `H${x(k + 1)}`; } return d ? `<path d="${d}" class="${cls}"/>` : ''; };
+    rows.forEach((sg, r) => {
+      const top = r * RH + 4, nm = sg === 'Qσ' ? 'Q σωστή' : sg;
+      s += `<text x="8" y="${top + 31}" class="wv-n">${nm}</text><text x="${X0 - 10}" y="${top + 16}" class="wv-l">1</text><text x="${X0 - 10}" y="${top + 44}" class="wv-l">0</text>`;
+      if (sg === 'Q' || sg === 'Qσ') {
+        if (sg === 'Qσ') s += step(R.Q, top, 'wv-c');
+        else {
+          const st = o.student || []; const arr = R.Q.map((v, k) => k === 0 ? R.Q[0] : st[k]);
+          s += step(arr, top, 'wv-q');
+          if (o.edit) for (let k = 1; k < n; k++) s += `<rect class="wv-hit" data-wk="${k}" data-lv="1" x="${x(k)}" y="${top}" width="${iw}" height="26"/><rect class="wv-hit" data-wk="${k}" data-lv="0" x="${x(k)}" y="${top + 26}" width="${iw}" height="26"/>`;
+        }
+      } else {
+        const arr = [...Array(n).keys()].map(k => wv(q, sg, k));
+        s += step(arr, top, 'wv-s');
+        if (sg === 'CP') for (let k = 1; k < n; k++) if (wEdge(q, k)) { const up = q.edge !== 'neg', yA = top + 26; s += `<path d="M${x(k) - 4} ${yA + (up ? 3 : -3)} L${x(k)} ${yA + (up ? -4 : 4)} L${x(k) + 4} ${yA + (up ? 3 : -3)}" class="wv-ar"/>`; }
+        if (o.edit && o.editIn) for (let k = 0; k < n; k++) s += `<rect class="wv-hit" data-ws="${sg}" data-wk="${k}" x="${x(k)}" y="${top}" width="${iw}" height="52"/>`;
+      }
+    });
+    return { svg: s, W, H };
+  }
+  const WAVE_CSS = `.wv-svg{width:100%;height:auto;display:block;background:#fff;border:1.5px solid #c9ced8;border-radius:10px;user-select:none;-webkit-user-select:none}
+.wv-n{font:700 15px "Noto Sans","Segoe UI",Arial,sans-serif;fill:#1d2330}.wv-l{font:11px "Noto Sans","Segoe UI",Arial,sans-serif;fill:#6b7280;text-anchor:end}.wv-t{font:13px "Noto Sans","Segoe UI",Arial,sans-serif;fill:#1d2330}
+.wv-s{fill:none;stroke:#1d2330;stroke-width:2.2}.wv-q{fill:none;stroke:#0b4f8a;stroke-width:3}.wv-c{fill:none;stroke:#1a7f37;stroke-width:2.4;stroke-dasharray:6 4}
+.wv-ar{fill:none;stroke:#1d2330;stroke-width:1.8}.wv-hit{fill:transparent;cursor:pointer}.wv-hit:hover{fill:rgba(11,79,138,.08)}`;
+
+  /* ---------- καταχωρητές ολίσθησης ---------- */
+  const bits = s => String(s == null ? '' : s).replace(/[^01]/g, '').split('').map(Number);
+  function regSim(q) {
+    const n = Math.max(2, Math.min(8, Number(q.nb) || 4)); let cur = bits(q.init); while (cur.length < n) cur.unshift(0); cur = cur.slice(-n);
+    const seq = bits(q.seq), left = q.dir === 'left', rows = [{ in: null, c: cur.slice(), out: left ? cur[0] : cur[n - 1] }];
+    seq.forEach(b => { cur = left ? cur.slice(1).concat(b) : [b].concat(cur.slice(0, n - 1)); rows.push({ in: b, c: cur.slice(), out: left ? cur[0] : cur[n - 1] }); });
+    return { n, rows };
+  }
+  /* ---------- απαριθμητές ---------- */
+  function cntSim(q) {
+    const n = Math.max(2, Math.min(6, Number(q.nb) || 4)), N = 2 ** n, b = bits(q.init); let v = b.reduce((a, x) => a * 2 + x, 0) % N;
+    const mod = q.mode === 'bcd' ? 10 : q.mode === 'mod' ? Math.max(2, Math.min(N, Number(q.mod) || N)) : N;
+    if (v >= mod) return { err: `Η αρχική κατάσταση (${v}) δεν ανήκει στον κύκλο μέτρησης (0–${mod - 1}).` };
+    const rows = [v], m = Math.max(1, Math.min(32, Number(q.pulses) || 4));
+    for (let i = 0; i < m; i++) { v = q.mode === 'down' ? (v - 1 + N) % N : (v + 1) % mod; rows.push(v); }
+    return { n, mod, rows, bitsOf: x => [...Array(n).keys()].map(i => (x >> (n - 1 - i)) & 1) };
+  }
+
+  /* ---------- κύκλωμα πυλών ---------- */
+  const GATES = { not: 'NOT', and: 'AND', or: 'OR', nand: 'NAND', nor: 'NOR', xor: 'XOR', xnor: 'XNOR' };
+  function geo(t, n) {
+    const h = t === 'not' ? 30 : n === 3 ? 54 : 40, bw = t === 'not' ? 32 : 46, bub = ['not', 'nand', 'nor', 'xnor'].includes(t);
+    const ins = t === 'not' ? [h / 2] : n === 3 ? [h / 6, h / 2, 5 * h / 6] : [h * 0.25, h * 0.75];
+    return { h, bw, bub, ins, ox: bw + (bub ? 8 : 0) + 12 };
+  }
+  function gateShape(t, n) {
+    const G = geo(t, n), h = G.h, bw = G.bw; let s = '';
+    const orP = (dx) => `M${dx} 0 Q${dx + bw * 0.55} 0 ${dx + bw} ${h / 2} Q${dx + bw * 0.55} ${h} ${dx} ${h} Q${dx + h * 0.28} ${h / 2} ${dx} 0 Z`;
+    if (t === 'and' || t === 'nand') s += `<path class="gb" d="M0 0 H${bw - h / 2} A${h / 2} ${h / 2} 0 0 1 ${bw - h / 2} ${h} H0 Z"/>`;
+    else if (t === 'not') s += `<path class="gb" d="M0 0 L${bw} ${h / 2} L0 ${h} Z"/>`;
+    else { s += `<path class="gb" d="${orP(0)}"/>`; if (t === 'xor' || t === 'xnor') s += `<path class="gl" d="M-6 0 Q${h * 0.28 - 6} ${h / 2} -6 ${h}"/>`; }
+    if (G.bub) s += `<circle class="gb" cx="${bw + 4}" cy="${h / 2}" r="4"/>`;
+    const lead = t === 'or' || t === 'nor' || t === 'xor' || t === 'xnor' ? h * 0.14 : 0;
+    G.ins.forEach(y => { s += `<line class="gl" x1="-12" y1="${y}" x2="${lead + (y === h / 2 && lead ? h * 0.14 : 0)}" y2="${y}"/>`; });
+    s += `<line class="gl" x1="${bw + (G.bub ? 8 : 0)}" y1="${h / 2}" x2="${G.ox}" y2="${h / 2}"/>`;
+    return s;
+  }
+  function circLayout(vars) { const n = vars.length, H = Math.max(290, n * 70 + 60), W = 760; return { W, H, inY: vars.map((v, i) => Math.round(H / (n + 1) * (i + 1))), outY: Math.round(H / 2) }; }
+  function evalCirc(d, vars, env) {
+    const memo = {}, vis = {}, gs = {}; (d.g || []).forEach(g => gs[g.id] = g);
+    const src = (dst, p) => { const w = (d.w || []).find(w => w.d === dst && (w.p || 0) === p); return w ? w.s : null; };
+    const val = s => {
+      if (s == null) return null; if (vars.includes(s)) return env[s] ? 1 : 0;
+      const g = gs[s]; if (!g) return null; if (s in memo) return memo[s]; if (vis[s]) return null; vis[s] = 1;
+      const n = g.t === 'not' ? 1 : g.n || 2, a = [];
+      for (let p = 0; p < n; p++) { const x = val(src(g.id, p)); if (x == null) { vis[s] = 0; return memo[s] = null; } a.push(x); }
+      const and = a.every(Boolean) ? 1 : 0, or = a.some(Boolean) ? 1 : 0, par = a.reduce((x, y) => x ^ y, 0);
+      const r = { not: 1 - a[0], and, or, nand: 1 - and, nor: 1 - or, xor: par, xnor: 1 - par }[g.t];
+      vis[s] = 0; return memo[s] = r;
+    };
+    return { out: val(src('OUT', 0)), val };
+  }
+  function circTable(d, F) { return F.rows.map((x, r) => { const env = {}; F.vars.forEach((v, i) => env[v] = (r >> (F.vars.length - 1 - i)) & 1); return evalCirc(d, F.vars, env).out; }); }
+  function circCheck(d, F) {
+    if (!d || !(d.g || []).length && !(d.w || []).some(w => w.d === 'OUT')) return { ok: 0, why: 'empty' };
+    const T = circTable(d, F); if (T.some(x => x == null)) return { ok: 0, why: 'open', T };
+    const bad = T.map((x, r) => F.rows[r] !== 'x' && x !== F.rows[r] ? r : -1).filter(r => r >= 0);
+    return { ok: bad.length ? 0 : 1, bad, T };
+  }
+  function drawCirc(d, vars, out, o) {
+    o = o || {}; const Lg = circLayout(vars), on = {}; d = d || { g: [], w: [] };
+    let ev = null; if (o.vals) ev = evalCirc(d, vars, o.vals);
+    const pos = s => { const i = vars.indexOf(s); if (i >= 0) return [56, Lg.inY[i]]; const g = (d.g || []).find(g => g.id === s); if (!g) return null; const G = geo(g.t, g.n); return [g.x + G.ox, g.y + G.h / 2]; };
+    const dpos = (dst, p) => { if (dst === 'OUT') return [Lg.W - 96, Lg.outY]; const g = (d.g || []).find(g => g.id === dst); if (!g) return null; const G = geo(g.t, g.n); return [g.x - 12, g.y + G.ins[p || 0]]; };
+    let s = `<rect class="cc-bg" data-hit="bg" x="0" y="0" width="${Lg.W}" height="${Lg.H}"/>`;
+    (d.w || []).forEach(w => { const a = pos(w.s), b = dpos(w.d, w.p); if (!a || !b) return; const dx = Math.max(30, Math.abs(b[0] - a[0]) / 2), hi = ev && ev.val(w.s) === 1; s += `<path class="cc-w${hi ? ' on' : ''}" d="M${a[0]} ${a[1]} C${a[0] + dx} ${a[1]} ${b[0] - dx} ${b[1]} ${b[0]} ${b[1]}"/>`; });
+    vars.forEach((v, i) => { const y = Lg.inY[i], hi = o.vals && o.vals[v]; s += `<g class="cc-term${hi ? ' on' : ''}"><text x="16" y="${y + 6}" class="cc-lb">${v}</text><line class="gl" x1="34" y1="${y}" x2="56" y2="${y}"/><circle class="cc-pin src${o.pend === v ? ' pend' : ''}" cx="56" cy="${y}" r="5"/><circle class="cc-hit" data-hit="src" data-id="${v}" cx="56" cy="${y}" r="13"/></g>`; });
+    (d.g || []).forEach(g => {
+      const G = geo(g.t, g.n), sel = o.sel === g.id;
+      s += `<g class="cc-g${sel ? ' sel' : ''}" transform="translate(${g.x} ${g.y})"><rect class="cc-body" data-hit="gate" data-id="${g.id}" x="-4" y="-6" width="${G.bw + 14}" height="${G.h + 12}" rx="6"/>${gateShape(g.t, g.n)}`;
+      G.ins.forEach((y, p) => { s += `<circle class="cc-pin dst" cx="-12" cy="${y}" r="4.5"/><circle class="cc-hit" data-hit="dst" data-id="${g.id}" data-p="${p}" cx="-12" cy="${y}" r="11"/>`; });
+      s += `<circle class="cc-pin src${o.pend === g.id ? ' pend' : ''}" cx="${G.ox}" cy="${G.h / 2}" r="5"/><circle class="cc-hit" data-hit="src" data-id="${g.id}" cx="${G.ox}" cy="${G.h / 2}" r="12"/>`;
+      if (o.labels !== false) s += `<text class="cc-gt" x="${G.bw / 2 - (g.t === 'not' ? 6 : 0)}" y="${G.h / 2 + 4}">${g.t === 'not' ? '' : GATES[g.t]}</text>`;
+      if (sel && o.edit) s += `<g data-hit="del" data-id="${g.id}" class="cc-del"><circle cx="${G.bw + 14}" cy="-10" r="11"/><text x="${G.bw + 14}" y="-6">✕</text></g>`;
+      s += '</g>';
+    });
+    const ov = ev ? ev.out : null;
+    s += `<g class="cc-term${ov === 1 ? ' on' : ''}"><circle class="cc-pin dst" cx="${Lg.W - 96}" cy="${Lg.outY}" r="5"/><circle class="cc-hit" data-hit="dst" data-id="OUT" data-p="0" cx="${Lg.W - 96}" cy="${Lg.outY}" r="13"/><line class="gl" x1="${Lg.W - 96}" y1="${Lg.outY}" x2="${Lg.W - 76}" y2="${Lg.outY}"/><text x="${Lg.W - 70}" y="${Lg.outY + 6}" class="cc-lb">${out}${ev ? ' = ' + (ov == null ? '?' : ov) : ''}</text></g>`;
+    return { svg: s, W: Lg.W, H: Lg.H };
+  }
+  const CIRC_CSS = `.cc-svg{width:100%;height:auto;display:block;background:#fff;border:1.5px solid #c9ced8;border-radius:10px;touch-action:none;user-select:none;-webkit-user-select:none}
+.cc-svg:focus{outline:none;border-color:#0b4f8a}.cc-svg:focus-visible{outline:3px solid #0b4f8a55}.cc-bg{fill:#fff}.gb{fill:#fff;stroke:#1d2330;stroke-width:2}.gl{fill:none;stroke:#1d2330;stroke-width:2}
+.cc-w{fill:none;stroke:#3a4252;stroke-width:2.2}.cc-w.on{stroke:#d97706;stroke-width:3}
+.cc-term.on .cc-lb{fill:#d97706}.cc-lb{font:700 18px "Noto Sans","Segoe UI",Arial,sans-serif;fill:#1d2330}
+.cc-gt{font:600 9px "Noto Sans","Segoe UI",Arial,sans-serif;fill:#6b7280;text-anchor:middle;pointer-events:none}
+.cc-pin{fill:#fff;stroke:#1d2330;stroke-width:1.6}.cc-pin.src{fill:#1d2330}.cc-pin.pend{fill:#d97706;stroke:#d97706;r:7}
+.cc-hit{fill:transparent;cursor:crosshair}.cc-g .gb,.cc-g .gl,.cc-pin,.cc-term .gl,.cc-lb{pointer-events:none}.cc-body{fill:transparent;cursor:grab}
+.cc-g.sel .cc-body{fill:rgba(11,79,138,.08);stroke:#0b4f8a;stroke-dasharray:4 3}
+.cc-del{cursor:pointer}.cc-del circle{fill:#c1121f}.cc-del text{fill:#fff;font:700 12px sans-serif;text-anchor:middle;pointer-events:none}`;
+  return { ipToInt, intToIp, maskStr, prefixFromMask, analyze, divide, SUB_A, SUB_D, SUB_C, eqField, BASES, BSUB, parseVal, fmtVal, convAns, convEq, convSrc, parseExpr, evalE, renderE, truthTable, arithAns, arithEq, arithSrc, funcOf, minSOP, cubesHtml, checkExpr, GATES, geo, evalCirc, circCheck, circTable, drawCirc, CIRC_CSS, kmLayout, cubeOf, kmCheck, WDEV, WOPS, wOpsFor, wLabel, wSigs, wv, wEdge, simWave, drawWave, WAVE_CSS, regSim, cntSim, tLab };
+});
+const EXAM = (function (root, E, opt) {
+  opt = opt || {};
+  const L = LIB();
+  const S = Object.assign({ penalty: 50, scale: '20', showScore: true, duration: 0, date: '', startCode: '', sections: '', shuffleQ: false, shuffleOpt: true, accent: '#0b4f8a', accent2: '#1597a5', pinHash: '' }, E.settings || {});
+  const PEN = Math.min(100, Math.max(0, Number(S.penalty) || 0)) / 100;
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmt = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/_\{(.+?)\}/g, '<sub>$1</sub>').replace(/\^\{(.+?)\}/g, '<sup>$1</sup>').replace(/\n/g, '<br>');
+  const norm = s => String(s == null ? '' : s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+  const filled = s => String(s == null ? '' : s).trim() !== '';
+  const shuf = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const toNum = s => parseFloat(String(s).replace(/\s/g, '').replace(',', '.'));
+  const pts = q => Number(q.points) > 0 ? Number(q.points) : 1;
+  const nf = n => String(Math.round(n * 100) / 100).replace('.', ',');
+  const QS = (E.questions || []).filter(q => q && q.type);
+  const AUTO = q => q.type !== 'open';
+  const QUIZ = E.kind === 'quiz' || !!opt.quiz;
+  const RETRY = q => AUTO(q) && (QUIZ || !!q.retry);
+  const MAXA = q => QUIZ ? (q.retry ? 2 : 1) : 2;
+  const CARDS = S.layout === 'cards';
+  let theme = S.theme || 'light';
+  if (QUIZ && S.themeToggle !== false && !opt.preview) { try { theme = localStorage.getItem('qz-theme') || theme; } catch (e) { } }
+  const isDark = () => QUIZ && (theme === 'dark' || (theme === 'auto' && !!window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches));
+  const applyTheme = () => { root.dataset.theme = isDark() ? 'dark' : 'light'; const b = root.querySelector('.ex-thb'); if (b) b.textContent = isDark() ? '☀ Φωτεινό' : '☾ Σκοτεινό'; };
+  const FIELD = t => ['match', 'fill', 'num', 'short', 'subnet', 'conv', 'truth', 'arith', 'comb', 'wave', 'reg', 'cnt'].includes(t);
+  const TL = { tf: 'Σωστό / Λάθος', mc: 'Πολλαπλής επιλογής', match: 'Αντιστοίχιση', fill: 'Συμπλήρωση κενών', order: 'Σειρά', num: 'Αριθμητική', short: 'Σύντομη απάντηση', open: 'Ανοιχτή απάντηση', subnet: 'Διευθυνσιοδότηση IPv4', conv: 'Μετατροπές', truth: 'Πίνακας αληθείας', arith: 'Αριθμητικές πράξεις', comb: 'Συνδυαστικό κύκλωμα', wave: 'Κυματομορφές', reg: 'Καταχωρητής ολίσθησης', cnt: 'Απαριθμητής' };
+  const KEY = 'exam.' + (E.id || 'x');
+  let mem = null;
+  const load = () => { if (opt.preview || QUIZ) return mem; try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } };
+  const store = () => { if (opt.preview || QUIZ) { mem = st; return; } try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) { } };
+  const fresh = () => ({ phase: 'start', name: '', section: '', ans: {}, att: {}, moved: {}, order: null, perm: {}, override: false });
+  let st = load() || fresh();
+  root.classList.add('ex');
+  if (!document.getElementById('cc-css')) { const cs = document.createElement('style'); cs.id = 'cc-css'; cs.textContent = L.CIRC_CSS + L.WAVE_CSS; document.head.appendChild(cs); }
+  root.style.setProperty('--qa', S.accent || '#0b4f8a');
+  root.style.setProperty('--qb', S.accent2 || S.accent || '#1597a5');
+
+  /* ---------- δομή ερωτήσεων ---------- */
+  const gaps = q => String(q.gap || '').split(/\[([^\]]*)\]/).filter((x, i) => i % 2).map(s => s.split('|').map(x => x.trim()).filter(Boolean));
+  const items = q => (q.items || []).filter(filled);
+  const partOf = q => Math.min(100, Math.max(0, Number(q.partial == null ? 50 : q.partial))) / 100;
+  const nums = s => String(s == null ? '' : s).split(/[^0-9]+/).filter(Boolean).map(Number);
+  const wRows = q => { const n = L.simWave(q).n; return [...new Set(nums(q.rows))].filter(k => k > 0 && k < n).sort((a, b) => a - b); };
+  const wInAt = (q, sg, k) => L.wv(q, sg, k);
+  const wTL = (q, k) => (L.WDEV[q.dev] || {}).latch ? `t<sub>${k}</sub>‐t<sub>${k + 1}</sub>` : `t<sub>${k}</sub>`;
+  const ord = i => i + 'ος παλμός';
+  const combParts = q => ['table', 'kmap', 'simp', 'circ'].filter(k => (q.parts || {})[k] && !(k === 'table' && q.show === 'table'));
+  function makePerm(q) {
+    const P = {}, sh = a => S.shuffleOpt ? shuf(a) : a.slice();
+    if (q.type === 'mc') P.opts = sh((q.options || []).map((o, i) => i).filter(i => filled(q.options[i].t)));
+    if (q.type === 'match') { const A = q.pairs || []; P.left = sh(A.map((p, i) => i).filter(i => filled(A[i].l))); P.right = shuf([...new Set(A.map(p => String(p.r || '').trim()).filter(Boolean))]); }
+    if (q.type === 'order') { const n = items(q).length; let c = [...Array(n).keys()]; for (let k = 0; k < 10 && n > 1; k++) { c = shuf(c); if (c.some((x, i) => x !== i)) break; } P.cur = c; }
+    if (q.type === 'fill' && q.bank) P.bank = shuf([...new Set(gaps(q).map(a => a[0] || '').concat(String(q.extra || '').split(',').map(x => x.trim())).filter(Boolean))]);
+    return P;
+  }
+  function spec(q, P) {
+    switch (q.type) {
+      case 'match': return P.left.map(j => ({ label: fmt(q.pairs[j].l), exp: String(q.pairs[j].r || '').trim(), eq: u => filled(u) && norm(u) === norm(q.pairs[j].r) }));
+      case 'fill': return gaps(q).map((a, k) => ({ label: 'Κενό ' + (k + 1), exp: a[0] || '', eq: u => filled(u) && a.some(x => norm(x) === norm(u)) }));
+      case 'num': { const a = toNum(q.answer), tol = Math.abs(toNum(q.tol) || 0); return [{ label: 'Απάντηση', exp: String(q.answer).replace('.', ',') + (q.unit ? ' ' + q.unit : ''), eq: u => { const x = toNum(u); return filled(u) && isFinite(x) && isFinite(a) && Math.abs(x - a) <= Math.abs(a) * tol / 100 + 1e-9 * Math.max(1, Math.abs(a)); } }]; }
+      case 'short': { const A = (q.answers || []).filter(filled); return [{ label: 'Απάντηση', exp: A[0] || '', eq: u => filled(u) && A.some(x => norm(x) === norm(u)) }]; }
+      case 'subnet': {
+        if (q.mode === 'divide') {
+          const D = L.divide(q.net, q.dprefix, q.n); if (!D) return [];
+          const out = [], ask = q.ask || {};
+          Object.keys(L.SUB_D).forEach(k => { if (ask[k]) out.push({ label: L.SUB_D[k], exp: D[k], eq: u => L.eqField(k, u, D[k]) }); });
+          const cols = Object.keys(L.SUB_C).filter(c => (q.cols || {})[c]), nr = Math.min(D.rows.length, Math.max(0, Number(q.rows) || 0));
+          for (let r = 0; r < nr; r++) cols.forEach(c => out.push({ label: `Υποδίκτυο ${r + 1}: ${L.SUB_C[c]}`, exp: D.rows[r][c], eq: u => L.eqField(c, u, D.rows[r][c]) }));
+          return out;
+        }
+        const A = L.analyze(q.ip, q.prefix); if (!A) return [];
+        return Object.keys(L.SUB_A).filter(k => (q.ask || {})[k]).map(k => ({ label: L.SUB_A[k], exp: A[k], eq: u => L.eqField(k, u, A[k]) }));
+      }
+      case 'conv': return (q.rows || []).filter(r => L.convAns(r) != null).map(r => ({ label: `(${esc(L.convSrc(r))})<sub>${L.BSUB[r.from]}</sub> → (…)<sub>${L.BSUB[r.to]}</sub>`, exp: L.convAns(r), eq: u => L.convEq(r, u) }));
+      case 'arith': return (q.rows || []).filter(r => L.arithAns(r) != null).map(r => ({ label: `(${esc(L.arithSrc(r.a))})<sub>${L.BSUB[r.base]}</sub> ${r.op === '-' ? '−' : '+'} (${esc(L.arithSrc(r.b))})<sub>${L.BSUB[r.base]}</sub>`, exp: L.arithAns(r), eq: u => L.arithEq(r, u) }));
+      case 'wave': {
+        const R = L.simWave(q), D = L.WDEV[q.dev] || L.WDEV.jk, pp = (q.parts || {}), np = (pp.draw ? 1 : 0) + (pp.table ? 1 : 0) || 1, out = [];
+        if (pp.draw) out.push({ part: 'draw', w: 1 / np, exp: '', eq: u => { let a = []; try { a = JSON.parse(u || '[]') || []; } catch (e) { } let c = 0; for (let k = 1; k < R.n; k++) if (String(a[k]) === String(R.Q[k])) c++; return c / (R.n - 1); } });
+        if (pp.table) { const rows = wRows(q), f = []; rows.forEach(k => { if (q.tin) D.ins.forEach(sg => f.push({ part: 'table', k, col: sg, exp: String(wInAt(q, sg, k)), eq: u => String(u) === String(wInAt(q, sg, k)) })); f.push({ part: 'table', k, col: 'Q', exp: String(R.Q[k]), eq: u => String(u) === String(R.Q[k]) }); if (q.top) f.push({ part: 'table', k, col: 'op', exp: L.wLabel(q, R.op[k]), eq: u => u === R.op[k] }); }); f.forEach(x => { x.w = 1 / np / f.length; out.push(x); }); }
+        return out;
+      }
+      case 'reg': { const G = L.regSim(q), out = []; G.rows.slice(1).forEach((r, i) => { const lb = ord(i + 1); if (q.cin) out.push({ label: lb + ': είσοδος', exp: String(r.in), eq: u => String(u) === String(r.in) }); r.c.forEach((b, j) => out.push({ label: `${lb}: FF${j + 1}`, exp: String(b), eq: u => String(u) === String(b) })); if (q.kind !== 'sipo' && q.cout) out.push({ label: lb + ': έξοδος', exp: String(r.out), eq: u => String(u) === String(r.out) }); }); return out; }
+      case 'cnt': { const C = L.cntSim(q); if (C.err) return []; const out = []; C.rows.slice(1).forEach((v, i) => { C.bitsOf(v).forEach((b, j) => out.push({ label: `${ord(i + 1)}: Q${C.n - j}`, exp: String(b), eq: u => String(u) === String(b) })); if (q.dec) out.push({ label: `${ord(i + 1)}: δεκαδικός`, exp: String(v), eq: u => filled(u) && Number(String(u).trim()) === v }); }); return out; }
+      case 'comb': {
+        const F = L.funcOf(q); if (F.err) return []; const pp = combParts(q), out = [], w = 1 / (pp.length || 1);
+        if (pp.includes('table')) { const care = F.rows.filter(x => x !== 'x').length; F.rows.forEach((x, r) => { if (x !== 'x') out.push({ part: 'table', r, w: w / care, exp: String(x), eq: u => String(u) === String(x) }); }); }
+        if (pp.includes('kmap')) out.push({ part: 'kmap', w, exp: '', eq: u => { const k = L.kmCheck(F, u, q.kfill), gs = k.gScore === 1 ? 1 : k.gScore === 'part' ? partOf(q) : 0; return q.kfill ? 0.4 * k.cellsFrac + 0.6 * gs : gs; } });
+        if (pp.includes('simp')) out.push({ part: 'simp', w, exp: F.minHtml, eq: u => { const c = L.checkExpr(F, u); return c.ok === 1 ? 1 : c.ok === 'eq' ? partOf(q) : 0; } });
+        if (pp.includes('circ')) out.push({ part: 'circ', w, exp: '', eq: u => { let d = null; try { d = JSON.parse(u || 'null'); } catch (e) { } return L.circCheck(d, F).ok ? 1 : 0; } });
+        return out;
+      }
+      case 'truth': { const T = L.truthTable(q); if (T.err) return []; const out = []; T.rows.forEach((row, r) => T.cols.forEach((c, ci) => out.push({ label: `Γραμμή ${r + 1}`, exp: String(row.outs[ci]), eq: u => String(u) === String(row.outs[ci]) }))); return out; }
+    }
+    return [];
+  }
+  const colHead = (q, c, ci, n) => q.hide && ci === n - 1 ? esc(c.name || 'Y') : (c.name ? esc(c.name) + ' = ' : '') + c.html;
+
+  /* ---------- σώμα ερωτήσεων ---------- */
+  const opt2 = (type, i, val, html) => `<label class="ex-opt" data-v="${esc(val)}"><input type="${type}" name="ex${i}" value="${esc(val)}"><span>${html}</span></label>`;
+  function body(q, i, P) {
+    let g = 0; const inp = (cls, extra) => `<input type="text" data-g="${g++}" class="${cls || ''}" autocomplete="off" spellcheck="false"${extra || ''}>`;
+    switch (q.type) {
+      case 'tf': return `<div class="ex-tf">${opt2('radio', i, 'true', 'Σωστό')}${opt2('radio', i, 'false', 'Λάθος')}</div>`;
+      case 'mc': { const multi = (q.options || []).filter(o => o.c && filled(o.t)).length > 1; return (multi ? '<p class="ex-hint">Μπορεί να είναι σωστές περισσότερες από μία.</p>' : '') + P.opts.map(j => opt2(multi ? 'checkbox' : 'radio', i, j, fmt(q.options[j].t))).join(''); }
+      case 'match': return P.left.map(j => `<div class="ex-m"><div>${fmt(q.pairs[j].l)}</div><select data-g="${g++}" aria-label="Αντιστοίχιση"><option value="">— Επίλεξε —</option>${P.right.map(r => `<option value="${esc(r)}">${esc(r)}</option>`).join('')}</select></div>`).join('');
+      case 'fill': { const parts = String(q.gap || '').split(/\[([^\]]*)\]/), A = gaps(q); return `<div class="ex-fill">${parts.map((p, k) => { if (!(k % 2)) return fmt(p); const len = Math.max(5, ...A[k >> 1].map(a => a.length)) + 2; return P.bank ? `<select data-g="${g++}" class="ex-gap"><option value=""></option>${P.bank.map(w => `<option value="${esc(w)}">${esc(w)}</option>`).join('')}</select>` : inp('ex-gap', ` size="${len}"`); }).join('')}</div>`; }
+      case 'order': return '<p class="ex-hint">Βάλε τα στοιχεία στη σωστή σειρά με τα βελάκια.</p><ol class="ex-ord"></ol>';
+      case 'num': return `<div class="ex-row">${inp('', ' inputmode="decimal"')}<span>${esc(q.unit || '')}</span></div>`;
+      case 'short': return inp('ex-wide');
+      case 'open': return `<textarea class="ex-open" rows="${Math.max(3, Number(q.lines) || 6)}" data-open aria-label="Απάντηση"></textarea>`;
+      case 'subnet': {
+        if (q.mode === 'divide') {
+          const D = L.divide(q.net, q.dprefix, q.n); if (!D) return '<p class="ex-hint">Μη έγκυρα δεδομένα άσκησης.</p>';
+          const ask = q.ask || {}, cols = Object.keys(L.SUB_C).filter(c => (q.cols || {})[c]), nr = Math.min(D.rows.length, Math.max(0, Number(q.rows) || 0));
+          const pw2 = 2 ** Math.round(Math.log2(q.n)) === Number(q.n);
+          let h = `<p class="ex-given">Δίκτυο <b>${esc(D.base)}/${esc(q.dprefix)}</b>: να χωριστεί σε ${pw2 ? '' : 'τουλάχιστον '}<b>${esc(q.n)}</b> υποδίκτυα ίσου μεγέθους.</p>`;
+          const sc = Object.keys(L.SUB_D).filter(k => ask[k]);
+          if (sc.length) h += `<div class="ex-fields">${sc.map(k => `<label><span>${L.SUB_D[k]}</span>${inp()}</label>`).join('')}</div>`;
+          if (nr && cols.length) h += `<div class="ex-scroll"><table class="ex-tab"><thead><tr><th></th>${cols.map(c => `<th>${L.SUB_C[c]}</th>`).join('')}</tr></thead><tbody>${[...Array(nr).keys()].map(r => `<tr><th>Υποδίκτυο ${r + 1}</th>${cols.map(() => `<td>${inp()}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+          return h;
+        }
+        const A = L.analyze(q.ip, q.prefix); if (!A) return '<p class="ex-hint">Μη έγκυρα δεδομένα άσκησης.</p>';
+        return `<p class="ex-given">Διεύθυνση IP: <b>${esc(q.ip)}${q.given === 'mask' ? '' : '/' + esc(q.prefix)}</b>${q.given === 'mask' ? ` με μάσκα <b>${A.mask}</b>` : ''}</p><div class="ex-fields">${Object.keys(L.SUB_A).filter(k => (q.ask || {})[k]).map(k => `<label><span>${L.SUB_A[k]}</span>${inp()}</label>`).join('')}</div>`;
+      }
+      case 'conv': return `<div class="ex-conv">${(q.rows || []).filter(r => L.convAns(r) != null).map(r => `<div class="ex-cr"><span class="ex-src">(${esc(L.convSrc(r))})<sub>${L.BSUB[r.from]}</sub> =</span><span class="ex-dst">(${inp()})<sub>${L.BSUB[r.to]}</sub></span></div>`).join('')}</div>`;
+      case 'arith': return `<div class="ex-ars">${(q.rows || []).filter(r => L.arithAns(r) != null).map(r => { const A = L.arithSrc(r.a), B = L.arithSrc(r.b), len = Math.max(A.length, B.length) + 2; return `<div class="ex-ar" style="--w:${len}ch"><span class="ex-arb">${L.BSUB[r.base]}</span><div class="ex-arn">${esc(A)}</div><div class="ex-arn"><span class="ex-op">${r.op === '-' ? '−' : '+'}</span>${esc(B)}</div><input type="text" data-g="${g++}" class="ex-arr" autocomplete="off" spellcheck="false" aria-label="Αποτέλεσμα"></div>`; }).join('')}</div>`;
+      case 'wave': {
+        const R = L.simWave(q), D = L.WDEV[q.dev] || L.WDEV.jk, pp = q.parts || {}, ops = L.wOpsFor(q), tg = () => `<button type="button" class="ex-tg" data-g="${g++}" data-v="" aria-label="Τιμή">–</button>`;
+        let h = `<p class="ex-given">${D.name}${D.latch ? '' : `, που διεγείρεται με το <b>${q.edge === 'neg' ? 'αρνητικό' : 'θετικό'} μέτωπο</b> του ρολογιού`}${q.async ? ', με ασύγχρονες εισόδους PRESET και CLEAR (ενεργές στο 0)' : ''}. Τη χρονική στιγμή t<sub>0</sub> = 0 είναι <b>Q = ${R.Q[0]}</b>.</p>`;
+        if (pp.draw) h += `<h4 class="ex-part">Χάραξε την κυματομορφή της εξόδου Q</h4><div class="ex-wv" data-g="${g++}" data-v=""></div><p class="ex-hint">Πάτα σε κάθε διάστημα της γραμμής Q, ψηλά για 1 ή χαμηλά για 0.</p>`;
+        else { const r = L.drawWave(q, { noQ: true }); h += `<svg class="wv-svg" viewBox="0 0 ${r.W} ${r.H}">${r.svg}</svg>`; }
+        if (pp.table) h += `<h4 class="ex-part">Συμπλήρωσε τον πίνακα</h4><div class="ex-scroll"><table class="ex-tab ex-wt"><thead><tr><th>Χρόνος</th>${q.tin ? D.ins.map(x => `<th>${x}</th>`).join('') : ''}<th>Q</th>${q.top ? '<th>Λειτουργία</th>' : ''}</tr></thead><tbody><tr><th>${wTL(q, 0)}</th>${q.tin ? D.ins.map(x => `<td>${L.wv(q, x, 0)}</td>`).join('') : ''}<td><b>${R.Q[0]}</b></td>${q.top ? '<td class="ex-mu">Αρχική κατάσταση</td>' : ''}</tr>${wRows(q).map(k => `<tr><th>${wTL(q, k)}</th>${q.tin ? D.ins.map(() => `<td>${tg()}</td>`).join('') : ''}<td>${tg()}</td>${q.top ? `<td><select data-g="${g++}" aria-label="Λειτουργία"><option value="">— Επίλεξε —</option>${ops.map(o => `<option value="${o}">${esc(L.wLabel(q, o))}</option>`).join('')}</select></td>` : ''}</tr>`).join('')}</tbody></table></div>`;
+        return h;
+      }
+      case 'reg': {
+        const G = L.regSim(q), tg = () => `<button type="button" class="ex-tg" data-g="${g++}" data-v="" aria-label="Τιμή">–</button>`;
+        return `<p class="ex-given">Καταχωρητής <b>${q.kind === 'sipo' ? 'SIPO' : 'SISO'}</b> ${G.n} bits, <b>${q.dir === 'left' ? 'αριστερής' : 'δεξιάς'} ολίσθησης</b>. Αρχική κατάσταση: <b>${G.rows[0].c.join('')}</b>. Σειριακή είσοδος ανά παλμό: <b>${G.rows.slice(1).map(r => r.in).join(', ')}</b>.</p>
+          <div class="ex-scroll"><table class="ex-tab ex-reg"><thead><tr><th></th><th>Σειριακή<br>είσοδος</th><th colspan="${G.n}">Περιεχόμενα καταχωρητή</th>${q.kind !== 'sipo' ? '<th>Σειριακή<br>έξοδος</th>' : ''}</tr></thead><tbody>
+          <tr><th>Αρχική κατάσταση</th><td>–</td>${G.rows[0].c.map(b => `<td class="ex-rc"><b>${b}</b></td>`).join('')}${q.kind !== 'sipo' ? `<td><b>${G.rows[0].out}</b></td>` : ''}</tr>
+          ${G.rows.slice(1).map((r, i) => `<tr><th>${ord(i + 1)}</th><td>${q.cin ? tg() : `<b>${r.in}</b>`}</td>${r.c.map(() => `<td class="ex-rc">${tg()}</td>`).join('')}${q.kind !== 'sipo' ? `<td>${q.cout ? tg() : ''}</td>` : ''}</tr>`).join('')}</tbody></table></div>`;
+      }
+      case 'cnt': {
+        const C = L.cntSim(q); if (C.err) return '<p class="ex-hint">Μη έγκυρος απαριθμητής.</p>';
+        const tg = () => `<button type="button" class="ex-tg" data-g="${g++}" data-v="" aria-label="Τιμή">–</button>`, nm = { up: `δυαδικός σύγχρονος προς τα πάνω (up) απαριθμητής ${C.n} bits`, down: `δυαδικός σύγχρονος προς τα κάτω (down) απαριθμητής ${C.n} bits`, bcd: 'BCD απαριθμητής', mod: `απαριθμητής mod-${C.mod}` }[q.mode] || '';
+        const hd = [...Array(C.n).keys()].map(j => `Q<sub>${C.n - j}</sub>`);
+        return `<p class="ex-given">${nm.charAt(0).toUpperCase() + nm.slice(1)}. Αρχική κατάσταση: <b>${hd.join('')} = ${C.bitsOf(C.rows[0]).join('')}</b>.</p><div class="ex-scroll"><table class="ex-tab ex-cnt"><thead><tr><th>Παλμός ρολογιού</th>${hd.map(x => `<th>${x}</th>`).join('')}${q.dec ? '<th>Δεκαδικός</th>' : ''}</tr></thead><tbody><tr><th>Αρχική κατάσταση</th>${C.bitsOf(C.rows[0]).map(b => `<td><b>${b}</b></td>`).join('')}${q.dec ? `<td><b>${C.rows[0]}</b></td>` : ''}</tr>${C.rows.slice(1).map((v, i) => `<tr><th>${ord(i + 1)}</th>${C.bitsOf(v).map(() => `<td>${tg()}</td>`).join('')}${q.dec ? `<td><input type="text" data-g="${g++}" class="ex-dec" inputmode="numeric" autocomplete="off" aria-label="Δεκαδικός"></td>` : ''}</tr>`).join('')}</tbody></table></div>`;
+      }
+      case 'comb': {
+        const F = L.funcOf(q); if (F.err) return '<p class="ex-hint">Μη έγκυρη συνάρτηση.</p>';
+        const pp = combParts(q), V = F.vars.join(', '), let_ = 'αβγδε'; let h = '';
+        if (q.show === 'table') h += `<p class="ex-hint">Δίνεται ο πίνακας αληθείας:</p><div class="ex-scroll"><table class="ex-tab ex-tt"><thead><tr>${F.vars.map(v => `<th>${v}</th>`).join('')}<th class="ex-oc">${esc(F.out)}</th></tr></thead><tbody>${F.rows.map((x, r) => `<tr>${F.vars.map((v, i) => `<td>${(r >> (F.vars.length - 1 - i)) & 1}</td>`).join('')}<td class="ex-oc"><b>${x === 'x' ? 'X' : x}</b></td></tr>`).join('')}</tbody></table></div>`;
+        else h += `<p class="ex-given ex-fn">${q.show === 'mint' || q.src === 'mint' ? `${esc(F.out)}(${V}) = Σm(${F.ones.join(', ')})${F.dcs.length ? ` + d(${F.dcs.join(', ')})` : ''}` : `${esc(F.out)} = ${F.html}`}</p>`;
+        pp.forEach((k, j) => {
+          const tag = `<h4 class="ex-part">${let_[j]}) ${{ table: 'Συμπλήρωσε τον πίνακα αληθείας', kmap: q.kfill ? 'Συμπλήρωσε τον χάρτη Karnaugh και κάνε τις ομαδοποιήσεις' : 'Κάνε τις ομαδοποιήσεις στον χάρτη Karnaugh', simp: 'Γράψε την απλοποιημένη λογική συνάρτηση', circ: 'Σχεδίασε το λογικό κύκλωμα' }[k]}</h4>`;
+          if (k === 'table') h += tag + `<div class="ex-scroll"><table class="ex-tab ex-tt"><thead><tr>${F.vars.map(v => `<th>${v}</th>`).join('')}<th class="ex-oc">${esc(F.out)}</th></tr></thead><tbody>${F.rows.map((x, r) => `<tr>${F.vars.map((v, i) => `<td>${(r >> (F.vars.length - 1 - i)) & 1}</td>`).join('')}<td class="ex-oc">${x === 'x' ? '<b>X</b>' : `<button type="button" class="ex-tg" data-g="${g++}" data-v="" aria-label="Τιμή">–</button>`}</td></tr>`).join('')}</tbody></table></div>`;
+          if (k === 'kmap') h += tag + `<div class="ex-km" data-g="${g++}" data-v="" data-fill="${q.kfill ? 1 : ''}"></div>`;
+          if (k === 'simp') h += tag + `<div class="ex-row ex-exr"><b>${esc(F.out)} =</b><input type="hidden" data-g="${g++}" data-expr><div class="ex-eqd" tabindex="0" role="textbox" aria-label="Απλοποιημένη συνάρτηση"><span class="ex-eqv"></span><span class="ex-car"></span></div></div>
+            <div class="ex-kp"><div>${F.vars.map(v => `<button type="button" data-act="kp" data-ins="${v}">${v}</button><button type="button" data-act="kp" data-ins="${v}'"><span class="ov">${v}</span></button>`).join('')}</div>
+            <div><button type="button" data-act="kp" data-ins="+" title="OR">+</button><button type="button" data-act="kp" data-ins="·" title="AND">·</button><button type="button" data-act="kp" data-ins="⊕" title="XOR" class="ex-kps">⊕︎</button><button type="button" data-act="kp" data-ins="⊙" title="XNOR" class="ex-kps">⊙︎</button><button type="button" data-act="kp" data-ins="(">(</button><button type="button" data-act="kp" data-ins=")">)</button><button type="button" data-act="kp" data-ins="'" title="Άρνηση της παρένθεσης: πάτα το αμέσως μετά το «)»" class="ex-kpn"><span class="ov">(…)</span></button></div>
+            <div><button type="button" data-act="kp" data-kb="back" class="ex-kpw">⌫ Σβήσιμο</button><button type="button" data-act="kp" data-kb="clear" class="ex-kpw">Καθαρισμός</button></div></div>
+            <p class="ex-prev" aria-live="polite"></p><p class="ex-hint">Γράψε τη συνάρτηση με τα κουμπιά (ή με το πληκτρολόγιο). Για άρνηση παρένθεσης πάτα «<span class="ov">(…)</span>» αμέσως μετά το «)».</p>`;
+          if (k === 'circ') { const gs = Object.keys(L.GATES).filter(t => (q.gates || {})[t]); h += tag + `<div class="ex-circ" data-g="${g++}" data-v="" data-gates="${gs.join(',')}" data-g3="${q.g3 ? 1 : ''}" data-sim="${q.sim ? 1 : ''}"></div>`; }
+        });
+        return h;
+      }
+      case 'truth': {
+        const T = L.truthTable(q); if (T.err) return '<p class="ex-hint">Μη έγκυρη παράσταση.</p>';
+        return `<p class="ex-hint">Πάτα σε κάθε κελί για 0 ή 1 (ή γράψε 0/1 με το πληκτρολόγιο).</p><div class="ex-scroll"><table class="ex-tab ex-tt"><thead><tr>${T.vars.map(v => `<th>${v}</th>`).join('')}${T.cols.map((c, ci) => `<th class="ex-oc">${colHead(q, c, ci, T.cols.length)}</th>`).join('')}</tr></thead><tbody>${T.rows.map(row => `<tr>${row.ins.map(x => `<td>${x}</td>`).join('')}${T.cols.map(() => `<td class="ex-oc"><button type="button" class="ex-tg" data-g="${g++}" data-v="" aria-label="Τιμή">–</button></td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+      }
+    }
+    return '';
+  }
+  const ordHtml = (q, P) => { const it = items(q); return P.cur.map((k, p) => `<li data-p="${p}"><span class="ex-oi">${fmt(it[k])}</span><span class="ex-ob"><button type="button" data-mv="-1" aria-label="Πάνω" ${p === 0 ? 'disabled' : ''}>↑</button><button type="button" data-mv="1" aria-label="Κάτω" ${p === P.cur.length - 1 ? 'disabled' : ''}>↓</button></span></li>`).join(''); };
+  const gEls = el => [...el.querySelectorAll('.ex-b [data-g]')].sort((a, b) => a.dataset.g - b.dataset.g);
+  function gather(q, el) {
+    const P = st.perm[q.id];
+    if (q.type === 'tf' || q.type === 'mc') return [...el.querySelectorAll('.ex-b input:checked')].map(x => x.value);
+    if (q.type === 'order') return P.cur.slice();
+    if (q.type === 'open') return el.querySelector('[data-open]').value;
+    return gEls(el).map(x => x.classList.contains('ex-tg') || x.classList.contains('ex-circ') || x.classList.contains('ex-km') || x.classList.contains('ex-wv') ? x.dataset.v : x.value);
+  }
+  function apply(q, el, v) {
+    if (v == null) return;
+    if (q.type === 'tf' || q.type === 'mc') el.querySelectorAll('.ex-b input').forEach(x => x.checked = v.includes(x.value));
+    else if (q.type === 'open') el.querySelector('[data-open]').value = v;
+    else if (q.type !== 'order') gEls(el).forEach((x, k) => { const val = v[k] == null ? '' : v[k]; if (x.classList.contains('ex-tg')) { x.dataset.v = val; x.textContent = val === '' ? '–' : val; } else if (x.classList.contains('ex-circ') || x.classList.contains('ex-km') || x.classList.contains('ex-wv')) { x.dataset.v = val; if (x._redraw) x._redraw(); } else { x.value = val; if ('expr' in x.dataset) exprPrev(x); } });
+  }
+  const answered = (q, v) => q.type === 'order' ? !!st.moved[q.id] : q.type === 'open' ? filled(v) : Array.isArray(v) && v.some(x => filled(x) && !/^\{"g":\[\],"w":\[\]\}$|^\{"c":\{\},"g":\[\]\}$/.test(x));
+  function grade(q, v) {
+    const P = st.perm[q.id];
+    if (q.type === 'tf') { const c = String(!!q.answer); return { frac: v.length === 1 && v[0] === c ? 1 : 0, oks: v.map(x => x === c) }; }
+    if (q.type === 'mc') { const C = new Set((q.options || []).map((o, j) => o.c && filled(o.t) ? String(j) : null).filter(x => x !== null)); const ok = v.length === C.size && v.every(x => C.has(x)); return { frac: ok ? 1 : 0, oks: v.map(x => C.has(x)) }; }
+    if (q.type === 'order') { if (!st.moved[q.id]) return { frac: 0, oks: v.map(() => false) }; const oks = v.map((x, p) => x === p); return { frac: oks.length ? oks.filter(Boolean).length / oks.length : 0, oks }; }
+    const sp = spec(q, P), sc = sp.map((f, k) => { const r = f.eq(v ? v[k] : ''); return r === true ? 1 : r === false ? 0 : Number(r) || 0; });
+    const W = sp.reduce((a, f) => a + (f.w || 1), 0), tot = sp.reduce((a, f, k) => a + (f.w || 1) * sc[k], 0);
+    return { frac: W ? Math.round(tot / W * 10000) / 10000 : 0, oks: sc.map(x => x >= 1) };
+  }
+
+  /* ---------- επεξεργαστής κυκλώματος ---------- */
+  function rawHtml(v) {
+    const st2 = [''], out = c => { st2[st2.length - 1] += c; };
+    for (let i = 0; i < v.length; i++) {
+      const c = v[i], nx = v[i + 1];
+      if (/[A-Za-z]/.test(c)) { if (nx === "'" || nx === '’') { out(`<span class="ov">${c.toUpperCase()}</span>`); i++; } else out(c.toUpperCase()); }
+      else if (c === '(') st2.push('');
+      else if (c === ')') { if (st2.length < 2) { out(')'); continue; } const inner = st2.pop(); if (nx === "'" || nx === '’') { out(`<span class="ov">${inner}</span>`); i++; } else out('(' + inner + ')'); }
+      else if (c === '+') out(' + '); else if (c === '·' || c === '*' || c === '.' || c === '&') out('·');
+      else if (c === '⊕' || c === '^') out(' ⊕ '); else if (c === '⊙') out(' ⊙ ');
+      else if (c === "'") out('<span class="ov">&nbsp;</span>'); else if (c === '0' || c === '1') out(c);
+    }
+    while (st2.length > 1) { const inner = st2.pop(); out('(' + inner); }
+    return st2[0];
+  }
+  function exprPrev(inp) {
+    const row = inp.closest('.ex-b'), pv = row && row.querySelector('.ex-prev'), dv = row && row.querySelector('.ex-eqv');
+    const v = inp.value.trim();
+    if (dv) dv.innerHTML = rawHtml(v);
+    if (!pv) return;
+    if (!v) { pv.textContent = ''; return; }
+    try { L.parseExpr(v.replace(/^\s*[A-Za-z]\w*\s*=\s*/, '')); pv.textContent = ''; pv.className = 'ex-prev'; }
+    catch (e) { pv.textContent = 'Η παράσταση δεν είναι ακόμη πλήρης: ' + e.message; pv.className = 'ex-prev bad'; }
+  }
+  function kp(b, key) {
+    const el = b.closest('.ex-q'), inp = el && el.querySelector('[data-expr]'); if (!inp || inp.disabled) return;
+    let v = inp.value;
+    if (key === 'back' || b && b.dataset.kb === 'back') v = /[A-Za-z]'$/.test(v) ? v.slice(0, -2) : v.slice(0, -1);
+    else if (key === 'clear' || b && b.dataset.kb === 'clear') v = '';
+    else { const ins = key || b.dataset.ins; if (ins === "'" && !/\)$/.test(v)) return; v += ins; }
+    inp.value = v; exprPrev(inp); el.querySelectorAll('.ex-eqd').forEach(x => x.classList.remove('ex-bad')); autosave(el);
+  }
+  function wvEditor(box, q) {
+    const R = L.simWave(q);
+    const get = () => { try { return JSON.parse(box.dataset.v || '[]') || []; } catch (e) { return []; } };
+    function redraw() { const r = L.drawWave(q, { student: get(), edit: box.dataset.lock !== '1' }); box.innerHTML = `<svg class="wv-svg" viewBox="0 0 ${r.W} ${r.H}" role="application" aria-label="Χάραξη κυματομορφής Q">${r.svg}</svg>`; }
+    box._redraw = redraw;
+    box.addEventListener('click', e => {
+      if (box.dataset.lock === '1') return; const h = e.target.closest('[data-wk]'); if (!h) return;
+      const a = get(); while (a.length < R.n) a.push(null); a[+h.dataset.wk] = +h.dataset.lv; box.dataset.v = JSON.stringify(a);
+      box.classList.remove('ex-bad'); box.dispatchEvent(new Event('input', { bubbles: true })); redraw();
+    });
+    redraw();
+  }
+  const KMC = ['#d97706', '#2563eb', '#16a34a', '#db2777', '#7c3aed', '#0891b2', '#b45309', '#4b5563'];
+  function kmEditor(box, q) {
+    const F = L.funcOf(q); if (F.err) return;
+    const K = L.kmLayout(F.vars), n = F.vars.length, fill = !!box.dataset.fill;
+    let cur = null, msg = '';
+    const data = () => { let d = null; try { d = JSON.parse(box.dataset.v || 'null'); } catch (e) { } d = d || { c: {}, g: [] }; if (!fill) { d.c = {}; F.rows.forEach((x, m) => d.c[m] = x === 'x' ? 'X' : String(x)); } return d; };
+    const put = d => { if (!fill) d.c = {}; box.dataset.v = JSON.stringify(d); box.dispatchEvent(new Event('input', { bubbles: true })); };
+    const locked = () => box.dataset.lock === '1';
+    function redraw() {
+      const d = data(), lk = locked();
+      const cell = m => { const v = (d.c || {})[m] || '', gi = (d.g || []).map((S, i) => S.includes(m) ? i : -1).filter(i => i >= 0), inCur = cur && cur.includes(m);
+        const tint = i => KMC[i % KMC.length] + '40', bg = !gi.length ? '' : gi.length === 1 ? tint(gi[0]) : `linear-gradient(135deg,${gi.map((i, k) => `${tint(i)} ${Math.round(k / gi.length * 100)}% ${Math.round((k + 1) / gi.length * 100)}%`).join(',')})`;
+        return `<td><button type="button" class="km-c${inCur ? ' cur' : ''}${fill ? '' : ' fixed'}" data-m="${m}" ${bg ? `style="background:${bg}"` : ''} ${lk ? 'disabled' : ''} aria-label="Κελί ${m}">${v === '' ? '<span class="km-e">·</span>' : v}<span class="km-m">${m}</span><span class="km-d">${gi.map(i => `<i style="background:${KMC[i % KMC.length]}"></i>`).join('')}</span></button></td>`; };
+      box.innerHTML = `<div class="km-wrap"><table class="km"><tr><th class="km-corner"><span class="km-rv">${K.rv}</span><span class="km-cv">${K.cv}</span></th>${K.cols.map(c => `<th>${c}</th>`).join('')}</tr>${K.rows.map((r, ri) => `<tr><th>${r}</th>${K.cols.map((c, ci) => cell(K.idx(ri, ci))).join('')}</tr>`).join('')}</table>
+        <div class="km-side"><div class="km-bar">${cur ? `<button type="button" class="ex-btn" data-km="done">✓ Τέλος ομάδας (${cur.length})</button><button type="button" class="ex-btn2" data-km="cancel">Άκυρο</button>` : `<button type="button" class="ex-btn2" data-km="new" ${lk ? 'disabled' : ''}>+ Νέα ομάδα</button>`}</div>
+        <p class="km-msg${msg ? ' bad' : ''}">${msg || (cur ? 'Πάτα τα κελιά της ομάδας και μετά «Τέλος ομάδας».' : fill ? 'Πάτα ένα κελί για 1 → 0 → X.' : '')}</p>
+        <ul class="km-gl">${(d.g || []).map((S, i) => `<li><i style="background:${KMC[i % KMC.length]}"></i>Ομάδα ${i + 1} · ${S.length} ${S.length === 1 ? 'κελί' : 'κελιά'}${lk ? '' : ` <button type="button" class="km-x" data-kx="${i}" aria-label="Διαγραφή ομάδας ${i + 1}">✕</button>`}</li>`).join('') || '<li class="km-none">Καμία ομάδα ακόμα.</li>'}</ul></div></div>`;
+    }
+    box._redraw = redraw;
+    box.addEventListener('click', e => {
+      if (locked()) return;
+      const c = e.target.closest('[data-m]'), b = e.target.closest('[data-km]'), x = e.target.closest('[data-kx]');
+      const d = data(); msg = '';
+      if (c) {
+        const m = +c.dataset.m;
+        if (cur) { cur = cur.includes(m) ? cur.filter(z => z !== m) : cur.concat(m); }
+        else if (fill) { const v = d.c[m] || ''; d.c[m] = { '': '1', '1': '0', '0': 'X', 'X': '' }[v]; if (!d.c[m]) delete d.c[m]; put(d); }
+      } else if (b) {
+        if (b.dataset.km === 'new') cur = [];
+        else if (b.dataset.km === 'cancel') cur = null;
+        else if (b.dataset.km === 'done') {
+          if (!cur.length) msg = 'Δεν διάλεξες κελιά.';
+          else if (!L.cubeOf(cur, n)) msg = `⚠ Μη έγκυρη ομάδα: πρέπει να είναι ορθογώνιο από γειτονικά κελιά, με 1, 2, 4${n > 2 ? ', 8' : ''}${n > 3 ? ' ή 16' : ''} κελιά.`;
+          else if ((d.g || []).some(S => S.length === cur.length && S.every(m => cur.includes(m)))) msg = 'Αυτή η ομάδα υπάρχει ήδη.';
+          else { d.g = (d.g || []).concat([cur.slice().sort((a, b) => a - b)]); cur = null; put(d); }
+        }
+      } else if (x) { d.g.splice(+x.dataset.kx, 1); put(d); }
+      else return;
+      redraw();
+    });
+    redraw();
+  }
+  function circEditor(box, q) {
+    const F = L.funcOf(q); if (F.err) return;
+    const gates = (box.dataset.gates || 'and,or,not').split(',').filter(Boolean), g3 = !!box.dataset.g3, sim = !!box.dataset.sim;
+    let sel = null, pend = null, drag = null, vals = {}; F.vars.forEach(v => vals[v] = 0);
+    const data = () => { try { const d = JSON.parse(box.dataset.v || 'null'); if (d && d.g) return d; } catch (e) { } return { g: [], w: [] }; };
+    const put = d => { box.dataset.v = JSON.stringify(d); box.dispatchEvent(new Event('input', { bubbles: true })); };
+    const locked = () => box.dataset.lock === '1';
+    const pal = gates.map(t => `<button type="button" class="ex-btn2 cc-add" data-add="${t}">+ ${L.GATES[t]}</button>` + (g3 && t !== 'not' ? `<button type="button" class="ex-btn2 cc-add" data-add="${t}" data-n="3">+ ${L.GATES[t]}<sub>3</sub></button>` : '')).join('');
+    box.innerHTML = `<div class="cc-bar">${pal}<button type="button" class="ex-btn2 cc-clr" data-clr>Καθαρισμός</button></div><svg class="cc-svg" tabindex="0" role="application" aria-label="Σχεδίαση κυκλώματος"></svg>${sim ? '<div class="cc-sim"></div>' : ''}<p class="ex-hint">Πρόσθεσε πύλες και σύρε τες. Για καλώδιο: πάτα μια έξοδο (● δεξιά της πύλης ή είσοδο ${F.vars.join(', ')}) και μετά μια είσοδο πύλης ή την έξοδο ${esc(F.out)}. Πάτα μια συνδεδεμένη είσοδο για να σβήσεις το καλώδιο της· πάτα μια πύλη και ✕ για να τη διαγράψεις.</p>`;
+    const svg = box.querySelector('svg');
+    function redraw() {
+      const d = data(), r = L.drawCirc(d, F.vars, F.out, { sel: locked() ? null : sel, pend, edit: !locked(), vals: sim ? vals : null });
+      svg.setAttribute('viewBox', `0 0 ${r.W} ${r.H}`); svg.innerHTML = r.svg;
+      box.querySelectorAll('.cc-bar button').forEach(b => b.disabled = locked());
+      const sm = box.querySelector('.cc-sim');
+      if (sm) { const o = L.evalCirc(d, F.vars, vals).out; sm.innerHTML = 'Δοκιμή: ' + F.vars.map(v => `<button type="button" class="ex-tg cc-sv" data-sv="${v}">${v} = ${vals[v]}</button>`).join(' ') + ` → <b>${esc(F.out)} = ${o == null ? '?' : o}</b>`; }
+    }
+    box._redraw = redraw;
+    const pt = e => { const m = svg.getScreenCTM(); const p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; return m ? p.matrixTransform(m.inverse()) : { x: 0, y: 0 }; };
+    let down = null;
+    svg.addEventListener('pointerdown', e => {
+      if (locked()) return; const h = e.target.closest('[data-hit]'); const P = pt(e);
+      down = { h, x: P.x, y: P.y, moved: false };
+      if (h && h.dataset.hit === 'gate') { const d = data(), g = d.g.find(g => g.id === h.dataset.id); if (g) { drag = { d, g, dx: P.x - g.x, dy: P.y - g.y }; svg.setPointerCapture(e.pointerId); } }
+    });
+    svg.addEventListener('pointermove', e => {
+      if (!down) return; const P = pt(e);
+      if (Math.hypot(P.x - down.x, P.y - down.y) > 4) down.moved = true;
+      if (drag && down.moved) { const Lg = { W: 760, H: svg.viewBox.baseVal.height }; drag.g.x = Math.round(Math.min(Lg.W - 170, Math.max(80, P.x - drag.dx)) / 5) * 5; drag.g.y = Math.round(Math.min(Lg.H - 60, Math.max(14, P.y - drag.dy)) / 5) * 5; box.dataset.v = JSON.stringify(drag.d); sel = drag.g.id; redraw(); }
+    });
+    svg.addEventListener('pointerup', e => {
+      if (!down) return; const dn = down; down = null;
+      if (drag) { const dd = drag; drag = null; if (dn.moved) { put(dd.d); return; } }
+      if (dn.moved) return;
+      const h = dn.h, d = data(), kind = h ? h.dataset.hit : 'bg', id = h && h.dataset.id;
+      if (kind === 'gate') { sel = sel === id ? null : id; pend = null; }
+      else if (kind === 'del') { d.g = d.g.filter(g => g.id !== id); d.w = d.w.filter(w => w.s !== id && w.d !== id); sel = null; put(d); }
+      else if (kind === 'src') { pend = pend === id ? null : id; sel = null; }
+      else if (kind === 'dst') {
+        const p = +h.dataset.p || 0, has = d.w.findIndex(w => w.d === id && (w.p || 0) === p);
+        if (pend && pend !== id) { if (has >= 0) d.w.splice(has, 1); d.w.push({ s: pend, d: id, p }); pend = null; put(d); }
+        else if (has >= 0) { d.w.splice(has, 1); put(d); }
+      } else { pend = null; sel = null; }
+      redraw();
+    });
+    svg.addEventListener('keydown', e => {
+      if (locked() || !sel || !['Delete', 'Backspace'].includes(e.key)) return; e.preventDefault();
+      const d = data(); d.g = d.g.filter(g => g.id !== sel); d.w = d.w.filter(w => w.s !== sel && w.d !== sel); sel = null; put(d); redraw();
+    });
+    box.addEventListener('click', e => {
+      const a = e.target.closest('[data-add]'), c = e.target.closest('[data-clr]'), sv = e.target.closest('[data-sv]');
+      if (sv) { vals[sv.dataset.sv] = vals[sv.dataset.sv] ? 0 : 1; redraw(); e.stopPropagation(); return; }
+      if (locked()) return;
+      if (a) {
+        const d = data(), k = d.g.length, H = svg.viewBox.baseVal.height || 240;
+        let id = 1; while (d.g.some(g => g.id === 'g' + id)) id++;
+        const n = a.dataset.add === 'not' ? 1 : +(a.dataset.n || 2);
+        d.g.push({ id: 'g' + id, t: a.dataset.add, n, x: 150 + (k % 4) * 135, y: Math.min(H - 70, 20 + Math.floor(k / 4) * 80 + (k % 2) * 30) });
+        sel = 'g' + id; pend = null; put(d); redraw(); return;
+      }
+      if (c) { if (!c.dataset.armed) { const t = c.textContent; c.dataset.armed = '1'; c.textContent = 'Σίγουρα; Πάτα ξανά'; setTimeout(() => { c.dataset.armed = ''; c.textContent = t; }, 3000); return; } c.dataset.armed = ''; c.textContent = 'Καθαρισμός'; sel = null; pend = null; put({ g: [], w: [] }); redraw(); }
+    });
+    redraw();
+  }
+
+  /* ---------- οθόνες ---------- */
+  const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+  const dmy = s => s ? s.split('-').reverse().join('/') : '';
+  const head = () => `<header class="ex-h">${filled(E.subject) || filled(E.grade) ? `<p class="ex-sub">${[E.subject, E.grade].filter(filled).map(fmt).join(' · ')}</p>` : ''}<h1>${fmt(E.title || 'Τεστ')}</h1>${QUIZ && (S.themeToggle !== false || S.printBtn !== false) ? `<div class="ex-htools">${S.themeToggle !== false ? '<button type="button" data-act="theme" class="ex-thb"></button>' : ''}${S.printBtn !== false ? '<button type="button" data-act="print">⎙ Εκτύπωση / PDF</button>' : ''}</div>` : ''}</header>`;
+  const gear = QUIZ ? '' : '<button type="button" class="ex-gear" data-act="teacher" title="Καθηγητής" aria-label="Καθηγητής">⚙</button>';
+  const autoMax = QS.filter(AUTO).reduce((a, q) => a + pts(q), 0), openMax = QS.filter(q => !AUTO(q)).reduce((a, q) => a + pts(q), 0);
+  let timerId = null;
+  function render() {
+    clearInterval(timerId); timerId = null;
+    if (QUIZ && st.phase !== 'exam') { quizStart(); return examScreen(); }
+    if (st.phase === 'exam') return examScreen();
+    if (st.phase === 'done') return doneScreen();
+    if (S.date && S.date !== today() && !st.override) return gateScreen();
+    startScreen();
+  }
+  function gateScreen() {
+    root.innerHTML = head() + `<section class="ex-card ex-center"><h2>Το τεστ δεν είναι ενεργό</h2><p>Είναι διαθέσιμο μόνο στις <b>${dmy(S.date)}</b>.</p></section>` + gear;
+  }
+  function startScreen() {
+    const secs = String(S.sections || '').split(',').map(x => x.trim()).filter(Boolean);
+    root.innerHTML = head() + `<section class="ex-card ex-start">
+      ${filled(E.intro) ? `<p class="ex-intro">${fmt(E.intro)}</p>` : ''}
+      <ul class="ex-facts"><li><b>${QS.length}</b> ${QS.length === 1 ? 'ερώτηση' : 'ερωτήσεις'} · <b>${nf(autoMax + openMax)}</b> μονάδες</li>
+      ${Number(S.duration) > 0 ? `<li>Διάρκεια: <b>${Number(S.duration)} λεπτά</b> — στο τέλος του χρόνου το γραπτό υποβάλλεται αυτόματα</li>` : ''}
+      ${QS.some(RETRY) ? `<li>Στις ερωτήσεις με «Έλεγχος» έχεις <b>2 προσπάθειες</b>· η 2η βαθμολογείται με μείωση <b>${Math.round(PEN * 100)}%</b></li>` : ''}
+      <li>Μετά την υποβολή δεν μπορείς να αλλάξεις τις απαντήσεις σου.</li></ul>
+      <div class="ex-form">
+        <label><span>Ονοματεπώνυμο</span><input type="text" id="exName" autocomplete="off" value="${esc(st.name)}"></label>
+        <label><span>Τμήμα</span>${secs.length ? `<select id="exSec"><option value="">— Επίλεξε —</option>${secs.map(s => `<option ${s === st.section ? 'selected' : ''}>${esc(s)}</option>`).join('')}</select>` : `<input type="text" id="exSec" autocomplete="off" value="${esc(st.section)}">`}</label>
+        ${filled(S.startCode) ? '<label><span>Κωδικός έναρξης (από τον καθηγητή)</span><input type="text" id="exCode" autocomplete="off"></label>' : ''}
+      </div>
+      <p class="ex-err" id="exErr" role="alert"></p>
+      <button type="button" class="ex-btn" data-act="start">Έναρξη εξέτασης</button>
+      <p class="ex-fold" id="exFold"></p>
+    </section>` + gear;
+    folderLine();
+  }
+  async function folderLine() {
+    const el = root.querySelector('#exFold'); if (!el) return;
+    if (opt.preview) { el.textContent = 'Προεπισκόπηση: το PDF θα κατέβει ως αρχείο.'; return; }
+    const s = await dirStatus();
+    el.textContent = !s.sup ? '⚠ Αποθήκευση PDF: στις Λήψεις (ο browser δεν υποστηρίζει φάκελο).' : !s.h ? '⚠ Δεν έχει οριστεί φάκελος αποθήκευσης — το PDF θα πάει στις Λήψεις.' : s.perm === 'granted' ? `Φάκελος αποθήκευσης: ${s.name} ✓` : `⚠ Ο φάκελος «${s.name}» χρειάζεται ενεργοποίηση από τον καθηγητή.`;
+    el.className = 'ex-fold' + (s.perm === 'granted' ? ' ok' : '');
+  }
+  function quizStart() {
+    let idx = QS.map((q, i) => i); if (S.shuffleQ) idx = shuf(idx);
+    st = Object.assign(fresh(), { phase: 'exam', startedAt: Date.now(), order: idx }); QS.forEach(q => { st.perm[q.id] = makePerm(q); }); cur = 0;
+  }
+  function begin() {
+    const n = root.querySelector('#exName').value.trim(), s = root.querySelector('#exSec').value.trim(), c = root.querySelector('#exCode');
+    const err = m => { root.querySelector('#exErr').textContent = m; };
+    if (n.length < 3) return err('Γράψε το ονοματεπώνυμό σου.');
+    if (!s) return err('Συμπλήρωσε το τμήμα σου.');
+    if (c && norm(c.value) !== norm(S.startCode)) return err('Λάθος κωδικός έναρξης.');
+    let idx = QS.map((q, i) => i); if (S.shuffleQ) idx = shuf(idx);
+    st = Object.assign(fresh(), { phase: 'exam', name: n, section: s, startedAt: Date.now(), order: idx, override: st.override });
+    QS.forEach(q => { st.perm[q.id] = makePerm(q); });
+    store(); render();
+    try { root.scrollIntoView({ block: 'start' }); } catch (e) { }
+  }
+  function examScreen() {
+    const qs = st.order.map(i => QS[i]).filter(Boolean);
+    root.classList.toggle('ex-cards', CARDS);
+    root.innerHTML = (QUIZ ? head() + (filled(E.intro) ? `<p class="ex-intro ex-qi">${fmt(E.intro)}</p>` : '') : `<div class="ex-bar"><span class="ex-who">${esc(st.name)} · ${esc(st.section)}</span><span class="ex-prog"></span><span class="ex-timer" hidden></span></div>` + head())
+      + (CARDS ? `<nav class="ex-pills" aria-label="Ερωτήσεις">${qs.map((q, i) => `<button type="button" class="ex-pill" data-go="${i}" aria-label="Ερώτηση ${i + 1}">${i + 1}</button>`).join('')}</nav>` : '')
+      + qs.map((q, i) => { const P = st.perm[q.id] || (st.perm[q.id] = makePerm(q)); return `<section class="ex-card ex-q" data-i="${i}" data-id="${esc(q.id)}"><div class="ex-top"><span class="ex-n">${i + 1}</span><span class="ex-p">${nf(pts(q))} ${pts(q) === 1 ? 'μονάδα' : 'μονάδες'}${RETRY(q) && MAXA(q) === 2 ? ` · <span class="ex-r">2 προσπάθειες</span>` : ''}${q.type === 'open' ? ' · βαθμολογείται από τον καθηγητή' : ''}</span></div>${filled(q.text) ? `<div class="ex-t">${fmt(q.text)}</div>` : ''}${q.img ? `<img src="${esc(q.img)}" alt="">` : ''}<div class="ex-b">${body(q, i, P)}</div>${RETRY(q) ? '<div class="ex-act"><button type="button" class="ex-btn2" data-act="check">Έλεγχος</button></div>' : ''}<div class="ex-fb" hidden></div></section>`; }).join('')
+      + (CARDS ? '<div class="ex-nav"><button type="button" class="ex-btn2" data-step="-1">← Προηγούμενη</button><span class="ex-pos"></span><button type="button" class="ex-btn2" data-step="1">Επόμενη →</button></div>' : '')
+      + `<section class="ex-card ex-center ex-end"><p id="exLeft" class="ex-hint"></p>${st.quizDone ? '' : `<button type="button" class="ex-btn" data-act="submit">${QUIZ ? 'Τέλος — δες τη βαθμολογία' : 'Υποβολή γραπτού'}</button>`}<div class="ex-qres"></div></section>` + gear;
+    qs.forEach((q, i) => { const el = cardEl(i); if (q.type === 'order') el.querySelector('.ex-ord').innerHTML = ordHtml(q, st.perm[q.id]); el.querySelectorAll('.ex-circ').forEach(c => circEditor(c, q)); el.querySelectorAll('.ex-km').forEach(c => kmEditor(c, q)); el.querySelectorAll('.ex-wv').forEach(c => wvEditor(c, q)); apply(q, el, st.ans[q.id]); showAtt(q, el); });
+    prog(); if (CARDS) go(cur); if (st.quizDone) quizResult(); applyTheme();
+    if (!QUIZ && Number(S.duration) > 0 && st.startedAt) { tick(); timerId = setInterval(tick, 1000); }
+  }
+  const cardEl = i => root.querySelector(`.ex-q[data-i="${i}"]`);
+  let cur = 0;
+  function go(i) {
+    const qs = root.querySelectorAll('.ex-q'), n = qs.length; if (!n) return; cur = Math.max(0, Math.min(n - 1, i));
+    qs.forEach((c, k) => c.classList.toggle('on', k === cur));
+    root.querySelectorAll('.ex-pill').forEach((b, k) => b.classList.toggle('on', k === cur));
+    const ps = root.querySelector('.ex-pos'); if (ps) ps.textContent = `${cur + 1} / ${n}`;
+    const pv = root.querySelector('[data-step="-1"]'), nx = root.querySelector('[data-step="1"]'); if (pv) pv.disabled = cur === 0; if (nx) { nx.disabled = cur === n - 1; nx.style.visibility = cur === n - 1 ? 'hidden' : ''; }
+    const end = root.querySelector('.ex-end'); if (end) end.hidden = cur !== n - 1 && !st.quizDone;
+  }
+  const qOf = el => QS.find(q => q.id === el.dataset.id);
+  function prog() {
+    const qs = st.order.map(i => QS[i]).filter(Boolean), n = qs.filter(q => answered(q, st.ans[q.id])).length;
+    const p = root.querySelector('.ex-prog'); if (p) p.textContent = `Απαντήθηκαν ${n} / ${qs.length}`;
+    root.querySelectorAll('.ex-pill').forEach((b, k) => { const q = qs[k], a = q && st.att[q.id]; b.classList.toggle('ans', !!q && answered(q, st.ans[q.id])); b.classList.remove('ok', 'bad', 'part'); if (a && a.locked) { const fr = a['f' + a.n]; b.classList.add(fr >= 1 ? 'ok' : fr > 0 ? 'part' : 'bad'); } });
+    const l = root.querySelector('#exLeft'); if (l) l.textContent = n < qs.length ? `Έχεις ${qs.length - n} ${qs.length - n === 1 ? 'αναπάντητη ερώτηση' : 'αναπάντητες ερωτήσεις'}.` : 'Απάντησες σε όλες τις ερωτήσεις.';
+  }
+  function tick() {
+    const el = root.querySelector('.ex-timer'); if (!el || st.phase !== 'exam') return;
+    const rem = st.startedAt + Number(S.duration) * 60000 - Date.now();
+    el.hidden = false; const s = Math.max(0, Math.ceil(rem / 1000));
+    el.textContent = `⏱ ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+    el.classList.toggle('warn', s <= 300);
+    if (rem <= 0) { clearInterval(timerId); submit(true, false); }
+  }
+  function mark(q, el, a, final) {
+    el.querySelectorAll('.ex-ok,.ex-bad').forEach(x => x.classList.remove('ex-ok', 'ex-bad'));
+    if (!a || !a.oks) return;
+    if (q.type === 'tf' || q.type === 'mc') (a.last || []).forEach((v, k) => { const o = el.querySelector(`.ex-opt[data-v="${v}"]`); if (o && (final || !a.oks[k])) o.classList.add(a.oks[k] ? 'ex-ok' : 'ex-bad'); });
+    else if (q.type === 'order') el.querySelectorAll('.ex-ord li').forEach((li, p) => { if (final || !a.oks[p]) li.classList.add(a.oks[p] ? 'ex-ok' : 'ex-bad'); });
+    else gEls(el).forEach((x, k) => { const t = 'expr' in x.dataset ? x.parentNode.querySelector('.ex-eqd') : x; if (t && (final || !a.oks[k])) t.classList.add(a.oks[k] ? 'ex-ok' : 'ex-bad'); });
+  }
+  function showAtt(q, el) {
+    const a = st.att[q.id], fb = el.querySelector('.ex-fb'); if (!a || !fb) return;
+    const cnt = a.oks ? `${a.oks.filter(Boolean).length} από ${a.oks.length}` : '';
+    if (a.locked) {
+      el.querySelectorAll('.ex-b input,.ex-b select,.ex-b button,.ex-b textarea').forEach(x => x.disabled = true);
+      el.querySelectorAll('.ex-circ,.ex-km,.ex-wv').forEach(c => { c.dataset.lock = '1'; if (c._redraw) c._redraw(); });
+      const b = el.querySelector('.ex-act'); if (b) b.remove();
+      const fr = a['f' + a.n];
+      fb.innerHTML = QUIZ && a['f' + a.n] < 1 ? `<b>${a['f' + a.n] > 0 ? 'Μερικώς σωστό (' + cnt + ')' : '✗ Λάθος'}.</b>` : a.n === 1 ? '<b>✓ Σωστό!</b>' : fr >= 1 ? `<b>✓ Σωστό στη 2η προσπάθεια</b> — παίρνεις το ${Math.round((1 - PEN) * 100)}% των μονάδων.` : `<b>Η απάντησή σου καταχωρήθηκε.</b> ${fr > 0 ? `Σωστά: ${cnt}.` : 'Δεν είναι σωστή.'}`;
+      fb.className = 'ex-fb ' + (fr >= 1 ? 'ok' : fr > 0 ? 'part' : 'bad');
+      mark(q, el, a, true);
+      if (QUIZ && S.showSol !== false && !el.querySelector('.ex-sol')) fb.insertAdjacentHTML('afterend', `<details class="ex-sol"${a['f' + a.n] < 1 ? ' open' : ''}><summary>Δες τη λύση</summary><div class="rsol">${solHtml(q, a.last)}</div></details>`);
+    } else if (a.n === 1) {
+      fb.innerHTML = `<b>✗ ${a.f1 > 0 && a.oks.length > 1 ? 'Μερικώς σωστό (' + cnt + ')' : 'Λάθος'}.</b> Έχεις άλλη μία προσπάθεια: διόρθωσε και πάτα ξανά «Έλεγχος». Αν είναι σωστή, παίρνεις το ${Math.round((1 - PEN) * 100)}% των μονάδων.`;
+      fb.className = 'ex-fb bad';
+      const b = el.querySelector('[data-act="check"]'); if (b) b.textContent = 'Έλεγχος (2η προσπάθεια)';
+      mark(q, el, a, false);
+    }
+    fb.hidden = false;
+  }
+  function check(el) {
+    const q = qOf(el), v = gather(q, el); st.ans[q.id] = v;
+    if (!answered(q, v)) { const fb = el.querySelector('.ex-fb'); fb.innerHTML = 'Συμπλήρωσε πρώτα μια απάντηση.'; fb.className = 'ex-fb'; fb.hidden = false; return; }
+    const r = grade(q, v), a = st.att[q.id] || { n: 0 };
+    if (a.locked) return;
+    a.n++; a['f' + a.n] = r.frac; a.oks = r.oks; a.last = v;
+    if (r.frac >= 1 || a.n >= MAXA(q)) { a.locked = true; a.final = a.n === 1 ? r.frac : Math.max(a.f1, r.frac * (1 - PEN)); }
+    st.att[q.id] = a; store(); showAtt(q, el); prog();
+  }
+  function results() {
+    const out = [];
+    st.order.forEach(i => {
+      const q = QS[i]; if (!q) return;
+      const v = st.ans[q.id] != null ? st.ans[q.id] : q.type === 'order' ? (st.perm[q.id] || {}).cur || [] : q.type === 'open' ? '' : [];
+      if (!AUTO(q)) return out.push({ id: q.id, manual: true, v });
+      const a = st.att[q.id]; let final, n = 1, r;
+      if (RETRY(q) && a && a.locked) { final = a.final; n = a.n; r = { oks: a.oks, frac: a['f' + a.n] }; }
+      else if (RETRY(q) && a && a.n === 1) { r = grade(q, v); final = Math.max(a.f1, r.frac * (1 - PEN)); n = 2; }
+      else { r = grade(q, v); final = r.frac; }
+      out.push({ id: q.id, final, n, f1: a && a.f1, frac: r.frac, oks: r.oks, v: (RETRY(q) && a && a.locked) ? a.last : v });
+    });
+    const auto = out.filter(r => !r.manual).reduce((s, r) => s + r.final * pts(QS.find(q => q.id === r.id)), 0);
+    return { list: out, auto: Math.round(auto * 100) / 100 };
+  }
+  function openSubmit() {
+    if (QUIZ) return quizFinish();
+    const qs = st.order.map(i => QS[i]).filter(Boolean), left = qs.filter(q => !answered(q, st.ans[q.id])).length;
+    modal(`<h2>Υποβολή γραπτού</h2><p>${left ? `<b>Έχεις ${left} ${left === 1 ? 'αναπάντητη ερώτηση' : 'αναπάντητες ερωτήσεις'}.</b><br>` : ''}Μετά την υποβολή <b>δεν μπορείς</b> να αλλάξεις τις απαντήσεις σου.</p><div class="ex-mact"><button type="button" class="ex-btn" data-act="dosubmit">Υποβολή</button><button type="button" class="ex-btn2" data-act="close">Επιστροφή</button></div>`);
+  }
+  function quizFinish() {
+    root.querySelectorAll('.ex-q').forEach(el => { const q = qOf(el); if (!q) return; st.ans[q.id] = gather(q, el); const a = st.att[q.id] || { n: 0 }; if (!AUTO(q) || a.locked) return; const r = grade(q, st.ans[q.id]); a.n++; a['f' + a.n] = r.frac; a.oks = r.oks; a.last = st.ans[q.id]; a.locked = true; a.final = a.n === 1 ? r.frac : Math.max(a.f1, r.frac * (1 - PEN)); st.att[q.id] = a; showAtt(q, el); });
+    st.quizDone = true; store(); const b = root.querySelector('[data-act="submit"]'); if (b) b.remove(); prog(); quizResult(); if (CARDS) go(cur);
+    try { root.querySelector('.ex-end').scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { }
+  }
+  function quizResult() {
+    const tot = QS.filter(AUTO).reduce((a, q) => a + pts(q), 0), sc = Math.round(QS.filter(AUTO).reduce((a, q) => a + ((st.att[q.id] || {}).final || 0) * pts(q), 0) * 100) / 100, pc = tot ? Math.round(sc / tot * 100) : 0;
+    const el = root.querySelector('.ex-qres'); if (!el) return;
+    el.innerHTML = `<div class="ex-score"><b>${nf(sc)}</b> / ${nf(tot)} μονάδες</div><div class="ex-bar2"><i style="width:${pc}%"></i></div><p class="ex-big">${pc}%${S.pass != null && S.pass !== '' ? (pc >= Number(S.pass) ? ' — Μπράβο!' : '') : ''}</p>${openMax ? `<p class="ex-hint">Οι ανοιχτές ερωτήσεις (${nf(openMax)} μονάδες) δεν βαθμολογούνται αυτόματα.</p>` : ''}<button type="button" class="ex-btn" data-act="again">Ξανά από την αρχή</button>`;
+    const l = root.querySelector('#exLeft'); if (l) l.textContent = '';
+  }
+  function solHtml(q, v) { try { return rAnswer(q, { v: v == null ? (q.type === 'open' ? '' : []) : v }); } catch (e) { return ''; } }
+  let submitting = false;
+  async function submit(auto, gesture) {
+    if (submitting || st.phase !== 'exam') return; submitting = true;
+    if (gesture) await ensurePerm();
+    root.querySelectorAll('.ex-q').forEach(el => { const q = qOf(el); if (q) st.ans[q.id] = gather(q, el); });
+    st.result = results(); st.phase = 'done'; st.submittedAt = Date.now(); st.auto = !!auto; st.pdf = { pending: true };
+    store(); closeModal(); render();
+    await makeAndSave();
+    submitting = false;
+  }
+  async function makeAndSave(forceDownload) {
+    st.pdf = { pending: true }; render();
+    try {
+      const bytes = await buildPdf();
+      const name = fileName();
+      const r = forceDownload ? (download(bytes, name), { where: 'download', file: name }) : await savePdf(bytes, name);
+      st.pdf = Object.assign({ ok: true }, r);
+    } catch (e) { st.pdf = { ok: false, err: String(e && e.message || e) }; }
+    store(); render();
+  }
+  function fileName() {
+    const d = new Date(st.submittedAt || Date.now()), p = n => String(n).padStart(2, '0');
+    const clean = s => String(s || '').trim().replace(/[\\/:*?"<>|]+/g, '').replace(/\s+/g, '_');
+    return `${clean(st.section)}_${clean(st.name)}_${clean(E.title || 'test').slice(0, 40)}_${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}.pdf`;
+  }
+  const scaled = sc => { const tot = autoMax + openMax; if (!tot) return ''; const m = S.scale === '100' ? 100 : S.scale === '20' ? 20 : 0; return m ? nf(sc / tot * m) + ' / ' + m : ''; };
+  function doneScreen() {
+    const R = st.result || { auto: 0 }, P = st.pdf || {};
+    const t = new Date(st.submittedAt || Date.now()).toLocaleString('el-GR');
+    root.innerHTML = head() + `<section class="ex-card ex-center ex-done"><div class="ex-big">✓</div><h2>Το γραπτό σου υποβλήθηκε</h2><p>${esc(st.name)} · ${esc(st.section)}<br><span class="ex-hint">${t}${st.auto ? ' · αυτόματη υποβολή (τέλος χρόνου)' : ''}</span></p>
+      ${S.showScore ? `<div class="ex-score"><b>${nf(R.auto)}</b> / ${nf(autoMax)} μονάδες${openMax ? `<br><span class="ex-hint">+ ${nf(openMax)} μονάδες από ανοιχτές ερωτήσεις, που θα βαθμολογήσει ο καθηγητής</span>` : S.scale !== 'pts' ? `<br><span class="ex-hint">Βαθμός: ${scaled(R.auto)}</span>` : ''}</div>` : ''}
+      <p class="ex-pdf ${P.ok ? 'ok' : P.pending ? '' : 'bad'}">${P.pending ? '<span class="ex-spin"></span> Αποθήκευση του γραπτού (PDF)…' : P.ok ? (P.where === 'folder' ? `Το γραπτό αποθηκεύτηκε στον φάκελο «${esc(P.dir)}».` : P.where === 'preview' ? 'Το PDF δημιουργήθηκε.' : 'Το γραπτό κατέβηκε στις Λήψεις.') : '⚠ Η αποθήκευση του PDF απέτυχε — ειδοποίησε τον καθηγητή.'}</p>
+      <p class="ex-hint">Δεν χρειάζεται να κάνεις κάτι άλλο.</p></section>` + gear;
+  }
+
+  /* ---------- καθηγητής ---------- */
+  const sha = async s => { try { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); } catch (e) { return ''; } };
+  function modal(html) { closeModal(); const m = document.createElement('div'); m.className = 'ex-modal'; m.innerHTML = `<div class="ex-mbox" role="dialog" aria-modal="true">${html}</div>`; root.appendChild(m); const f = m.querySelector('input,button'); if (f) f.focus(); }
+  function closeModal() { root.querySelectorAll('.ex-modal').forEach(m => m.remove()); }
+  function openTeacher() {
+    if (opt.preview || !S.pinHash) return panel();
+    modal('<h2>Καθηγητής</h2><label class="ex-form"><span>PIN</span><input type="password" id="exPin" autocomplete="off" inputmode="numeric"></label><p class="ex-err" id="exPinErr"></p><div class="ex-mact"><button type="button" class="ex-btn" data-act="pin">Είσοδος</button><button type="button" class="ex-btn2" data-act="close">Άκυρο</button></div>');
+  }
+  async function pin() {
+    const v = root.querySelector('#exPin').value;
+    if (await sha((E.id || '') + ':' + v) === S.pinHash) panel(); else root.querySelector('#exPinErr').textContent = 'Λάθος PIN.';
+  }
+  async function panel() {
+    const s = opt.preview ? { sup: false, prev: true } : await dirStatus();
+    const ph = { start: 'αναμονή μαθητή', exam: `σε εξέλιξη — ${esc(st.name)} (${esc(st.section)})`, done: `υποβλήθηκε — ${esc(st.name)} (${esc(st.section)})` }[st.phase];
+    modal(`<h2>Καθηγητής</h2>
+      <h3>Φάκελος αποθήκευσης PDF</h3>
+      <p>${s.prev ? 'Στην προεπισκόπηση το PDF κατεβαίνει ως αρχείο.' : !s.sup ? 'Ο browser δεν επιτρέπει επιλογή φακέλου (χρειάζεται Chrome ή Edge, με τη σελίδα ανοιχτή μόνη της και όχι μέσα σε πλαίσιο). Τα PDF πηγαίνουν στις Λήψεις.' : !s.h ? 'Δεν έχει οριστεί φάκελος — τα PDF πηγαίνουν στις Λήψεις.' : `«<b>${esc(s.name)}</b>» — ${s.perm === 'granted' ? '<span class="ok">ενεργός ✓</span>' : '<span class="bad">χρειάζεται ενεργοποίηση</span>'}`}</p>
+      ${s.sup ? `<div class="ex-mact"><button type="button" class="ex-btn2" data-act="pick">${s.h ? 'Αλλαγή φακέλου…' : 'Επιλογή φακέλου…'}</button>${s.h && s.perm !== 'granted' ? '<button type="button" class="ex-btn" data-act="grant">Ενεργοποίηση</button>' : ''}</div><p class="ex-hint">Στο μήνυμα του browser διάλεξε «Να επιτρέπεται σε κάθε επίσκεψη», αν εμφανιστεί.</p>` : ''}
+      <h3>Εξέταση σε αυτόν τον υπολογιστή</h3><p>Κατάσταση: ${ph}</p>
+      <div class="ex-mact">${st.phase === 'done' ? '<button type="button" class="ex-btn2" data-act="resave">Αποθήκευση PDF ξανά</button><button type="button" class="ex-btn2" data-act="dl">Λήψη PDF</button>' : ''}
+      ${S.date && S.date !== today() && !st.override && st.phase === 'start' ? '<button type="button" class="ex-btn2" data-act="override">Άνοιγμα τεστ σήμερα</button>' : ''}
+      <button type="button" class="ex-btn" data-act="reset" data-confirm="Σίγουρα; Πάτα ξανά">Νέος μαθητής</button></div>
+      ${st.phase === 'exam' ? '<p class="ex-hint">Προσοχή: ο «Νέος μαθητής» σβήνει τις απαντήσεις του τρέχοντος μαθητή χωρίς αποθήκευση.</p>' : ''}
+      <div class="ex-mact"><button type="button" class="ex-btn2" data-act="close">Κλείσιμο</button></div>`);
+  }
+  /* ---------- φάκελος (File System Access) ---------- */
+  const fsOK = () => typeof window.showDirectoryPicker === 'function';
+  const idb = () => new Promise((res, rej) => { const r = indexedDB.open('examTool', 1); r.onupgradeneeded = () => r.result.createObjectStore('kv'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+  const idbGet = async k => { const db = await idb(); return new Promise(res => { const t = db.transaction('kv').objectStore('kv').get(k); t.onsuccess = () => res(t.result); t.onerror = () => res(null); }); };
+  const idbSet = async (k, v) => { const db = await idb(); return new Promise(res => { const t = db.transaction('kv', 'readwrite'); t.objectStore('kv').put(v, k); t.oncomplete = () => res(); t.onerror = () => res(); }); };
+  async function dirStatus() {
+    if (!fsOK()) return { sup: false };
+    let h = null; try { h = await idbGet('dir'); } catch (e) { }
+    if (!h) return { sup: true };
+    let p = 'prompt'; try { p = await h.queryPermission({ mode: 'readwrite' }); } catch (e) { }
+    return { sup: true, h, name: h.name, perm: p };
+  }
+  async function ensurePerm() { try { const s = await dirStatus(); if (s.h && s.perm === 'prompt') await s.h.requestPermission({ mode: 'readwrite' }); } catch (e) { } }
+  async function pick() {
+    try { const h = await window.showDirectoryPicker({ id: 'exam-pdf', mode: 'readwrite' }); await idbSet('dir', h); }
+    catch (e) { if (e && e.name !== 'AbortError') alertBox('Δεν ήταν δυνατή η επιλογή φακέλου εδώ. Άνοιξε τη σελίδα μόνη της (όχι μέσα σε πλαίσιο) σε Chrome ή Edge.'); return; }
+    panel(); folderLine();
+  }
+  async function grant() { try { const s = await dirStatus(); if (s.h) await s.h.requestPermission({ mode: 'readwrite' }); } catch (e) { } panel(); folderLine(); }
+  function alertBox(m) { modal(`<p>${esc(m)}</p><div class="ex-mact"><button type="button" class="ex-btn2" data-act="close">Εντάξει</button></div>`); }
+  function download(bytes, name) {
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' })); a.download = name;
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+  }
+  async function savePdf(bytes, name) {
+    if (opt.save) { await opt.save(bytes, name); return { where: 'preview', file: name }; }
+    const s = await dirStatus();
+    if (s.h && s.perm === 'granted') {
+      try { const fh = await s.h.getFileHandle(name, { create: true }); const w = await fh.createWritable(); await w.write(new Blob([bytes], { type: 'application/pdf' })); await w.close(); return { where: 'folder', dir: s.name, file: name }; } catch (e) { }
+    }
+    download(bytes, name); return { where: 'download', file: name };
+  }
+
+  /* ---------- αναφορά / PDF ---------- */
+  const RCSS = `.rp{position:relative;width:794px;box-sizing:border-box;padding:46px 52px 60px;background:#fff;color:#111;font:13px/1.45 "Segoe UI",Arial,"Noto Sans",sans-serif}
+.rp *{box-sizing:border-box}.rp b{font-weight:700}
+.rh{border-left:6px solid ${S.accent || '#0b4f8a'};background:#eef2f7;padding:10px 14px;border-radius:4px;margin-bottom:12px}
+.rh .rs{font-size:12px;color:#333;margin:0 0 2px}.rh h1{font-size:21px;margin:0;line-height:1.2}
+.ri,.rt{width:100%;border-collapse:collapse;margin:6px 0 10px}.ri td,.rt td,.rt th{border:1px solid #bbb;padding:4px 7px;text-align:left;vertical-align:top}
+.ri td:nth-child(odd){background:#f4f5f7;width:16%;color:#333}.rt th{background:#f4f5f7;font-weight:600}
+.rsum{border:1px solid #888;border-radius:6px;padding:8px 12px;margin:0 0 14px;background:#fafafa}.rsum p{margin:3px 0}
+.rq{border:1px solid #bbb;border-radius:6px;padding:9px 12px;margin:0 0 10px}
+.rqh{display:flex;gap:10px;align-items:baseline;border-bottom:1px solid #ddd;padding-bottom:4px;margin-bottom:6px}.rqh .rty{color:#555;font-size:12px;flex:1}.rqh .rpt{font-weight:700;white-space:nowrap}
+.rtx{margin:0 0 6px}.rq img{max-width:100%;max-height:220px;display:block;margin:4px 0 8px}
+.ok{color:#1a7f37;font-weight:700}.bad{color:#c1121f;font-weight:700}.mu{color:#555}
+.cbad{background:#fdecee}.cok{background:#eaf6ec}
+.rop{border:1px solid #999;border-radius:4px;padding:8px 10px;min-height:60px;white-space:pre-wrap;background:#fcfcfc}
+.rmc{list-style:none;padding:0;margin:4px 0}.rmc li{margin:2px 0}
+.rnote{font-size:12px;color:#444;margin:4px 0 0}
+.rgr{margin-top:8px;font-weight:700}
+.ov{border-top:1.4px solid currentColor;padding-top:1px;display:inline-block;line-height:1.1}
+.rpart{font-weight:700;margin:8px 0 2px}.rkey{color:#1a5fb4;font-weight:700}.rbl{display:inline-block;border-bottom:1.2px solid #333;height:1.3em;vertical-align:bottom;text-align:center}.rans{margin:6px 0}.rlines div{height:30px;border-bottom:1px solid #999}.rbox{border:1.2px solid #999;border-radius:4px;margin:4px 0}.rars{display:flex;flex-wrap:wrap;gap:16px 34px;margin:6px 0}.rar{position:relative;font:600 17px/1.5 Consolas,'Courier New',monospace;letter-spacing:.1em;text-align:right;min-width:150px;padding-right:4px}.rarl{border-top:2px solid #111;min-height:1.6em}.rarb{position:absolute;right:-30px;top:0;font:12px Arial;letter-spacing:0;color:#555}
+${L.WAVE_CSS}.rkm td{min-width:44px;text-align:center}.rkm th{background:#f4f5f7;text-align:center}.rcirc{display:block;margin:4px 0}.rcirc .cc-hit,.rcirc .cc-body{fill:none;stroke:none}
+${L.CIRC_CSS.replace(/\.cc-svg\{[^}]*\}/, '')}
+.rft{position:absolute;left:52px;right:52px;bottom:22px;font-size:11px;color:#666;display:flex;justify-content:space-between;border-top:1px solid #ddd;padding-top:4px}`;
+  if (!document.getElementById('sol-css')) { const sc = document.createElement('style'); sc.id = 'sol-css'; sc.textContent = RCSS.replace(/(^|\})\s*([^{}@]+)\{/g, (m, a, sel) => a + sel.split(',').map(x => '.rsol ' + x.trim()).join(',') + '{'); document.head.appendChild(sc); }
+  const yes = b => b ? '<span class="ok">✓</span>' : '<span class="bad">✗</span>';
+  function rAnswer(q, r) {
+    const v = r.v, P = st.perm[q.id] || makePerm(q);
+    if (q.type === 'open') return `<div class="rop">${filled(v) ? esc(v) : '<span class="mu">(κενό)</span>'}</div>${filled(q.model) ? `<p class="rnote"><b>Ενδεικτική απάντηση:</b> ${fmt(q.model)}</p>` : ''}<p class="rgr">Βαθμός: ______ / ${nf(pts(q))}</p>`;
+    if (q.type === 'tf') { const u = v[0]; return `<p>Απάντηση: <b>${u === 'true' ? 'Σωστό' : u === 'false' ? 'Λάθος' : '—'}</b> ${u ? yes(u === String(!!q.answer)) : ''} <span class="mu">· Σωστή: ${q.answer ? 'Σωστό' : 'Λάθος'}</span></p>`; }
+    if (q.type === 'mc') return `<ul class="rmc">${(q.options || []).map((o, j) => filled(o.t) ? `<li>${v.includes(String(j)) ? '■' : '□'} ${fmt(o.t)}${o.c ? ' <span class="ok">(σωστή)</span>' : ''}${v.includes(String(j)) && !o.c ? ' <span class="bad">✗</span>' : ''}</li>` : '').join('')}</ul>`;
+    if (q.type === 'order') { const it = items(q); return `<table class="rt"><tr><th>#</th><th>Σειρά μαθητή</th><th>Σωστή σειρά</th></tr>${it.map((x, p) => `<tr><td>${p + 1}</td><td class="${st.moved[q.id] ? (v[p] === p ? 'cok' : 'cbad') : ''}">${fmt(it[v[p]] || '')}</td><td>${fmt(x)}</td></tr>`).join('')}</table>${st.moved[q.id] ? '' : '<p class="rnote">Ο μαθητής δεν άλλαξε τη σειρά — βαθμολογήθηκε με 0.</p>'}`; }
+    if (q.type === 'wave') {
+      const R = L.simWave(q), D = L.WDEV[q.dev] || L.WDEV.jk, pp = q.parts || {}, sp = spec(q, P); let h = `<p class="rtx">${D.name}${D.latch ? '' : `, ${q.edge === 'neg' ? 'αρνητικό' : 'θετικό'} μέτωπο`}${q.async ? ', ασύγχρονες PRESET/CLEAR' : ''} · Q(t<sub>0</sub>) = ${R.Q[0]}</p>`;
+      if (pp.draw) { const i = sp.findIndex(f => f.part === 'draw'); let a = []; try { a = JSON.parse(v[i] || '[]') || []; } catch (e) { } const r = L.drawWave(q, { student: a, correct: true }); h += `<p class="rpart">Κυματομορφή Q (μπλε: μαθητή · πράσινη διακεκομμένη: σωστή) — ${Math.round(sp[i].eq(v[i]) * 100)}% σωστά διαστήματα</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${r.W} ${r.H}" width="${Math.round(r.W * 0.88)}" height="${Math.round(r.H * 0.88)}">${r.svg}</svg>`; }
+      else { const r = L.drawWave(q, { noQ: true }); h += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${r.W} ${r.H}" width="${Math.round(r.W * 0.8)}" height="${Math.round(r.H * 0.8)}">${r.svg}</svg>`; }
+      if (pp.table) { const cols = (q.tin ? D.ins : []).concat(['Q'], q.top ? ['op'] : []); h += `<p class="rpart">Πίνακας</p><table class="rt"><tr><th>Χρόνος</th>${cols.map(c => `<th>${c === 'op' ? 'Λειτουργία' : c}</th>`).join('')}</tr>${wRows(q).map(k => `<tr><td>${wTL(q, k)}</td>${cols.map(c => { const i = sp.findIndex(f => f.part === 'table' && f.k === k && f.col === c), u = v[i], ok = sp[i].eq(u), shown = c === 'op' ? (u ? esc(L.wLabel(q, u)) : '–') : (filled(u) ? u : '–'); return `<td class="${ok ? 'cok' : 'cbad'}">${shown}${ok ? '' : ` <span class="mu">(${esc(sp[i].exp)})</span>`}</td>`; }).join('')}</tr>`).join('')}</table>`; }
+      return h;
+    }
+    if (q.type === 'reg' || q.type === 'cnt') {
+      const sp = spec(q, P); let k = 0; const cell = () => { const f = sp[k], u = v[k++]; const ok = f.eq(u); return `<td class="${ok ? 'cok' : 'cbad'}">${filled(u) ? esc(u) : '–'}${ok ? '' : ` <span class="mu">(${esc(f.exp)})</span>`}</td>`; };
+      if (q.type === 'reg') { const G = L.regSim(q); return `<p class="rtx">${q.kind === 'sipo' ? 'SIPO' : 'SISO'} ${G.n} bits, ${q.dir === 'left' ? 'αριστερής' : 'δεξιάς'} ολίσθησης · αρχική ${G.rows[0].c.join('')} · είσοδος ${G.rows.slice(1).map(r => r.in).join(', ')}</p><table class="rt"><tr><th></th><th>Είσοδος</th>${G.rows[0].c.map((b, j) => `<th>FF${j + 1}</th>`).join('')}${q.kind !== 'sipo' ? '<th>Έξοδος</th>' : ''}</tr>${G.rows.slice(1).map((r, i) => `<tr><td>${ord(i + 1)}</td>${q.cin ? cell() : `<td>${r.in}</td>`}${r.c.map(() => cell()).join('')}${q.kind !== 'sipo' ? (q.cout ? cell() : `<td>${r.out}</td>`) : ''}</tr>`).join('')}</table>`; }
+      const C = L.cntSim(q); if (C.err) return ''; return `<p class="rtx">Αρχική κατάσταση ${C.bitsOf(C.rows[0]).join('')}</p><table class="rt"><tr><th>Παλμός</th>${[...Array(C.n).keys()].map(j => `<th>Q${C.n - j}</th>`).join('')}${q.dec ? '<th>Δεκαδικός</th>' : ''}</tr>${C.rows.slice(1).map((x, i) => `<tr><td>${ord(i + 1)}</td>${C.bitsOf(x).map(() => cell()).join('')}${q.dec ? cell() : ''}</tr>`).join('')}</table>`;
+    }
+    if (q.type === 'comb') {
+      const F = L.funcOf(q); if (F.err) return '';
+      const sp = spec(q, P), pp = combParts(q), lt = 'αβγδε'; let h = `<p class="rtx">Συνάρτηση: <b>${q.src === 'mint' || q.show === 'mint' ? `${esc(F.out)}(${F.vars.join(', ')}) = Σm(${F.ones.join(', ')})${F.dcs.length ? ` + d(${F.dcs.join(', ')})` : ''}` : `${esc(F.out)} = ${F.html}`}</b>${q.show === 'table' ? ' <span class="mu">(δόθηκε ως πίνακας αληθείας)</span>' : ''}</p>`;
+      pp.forEach((k, j) => {
+        h += `<p class="rpart">${lt[j]}) ${{ table: 'Πίνακας αληθείας', kmap: 'Χάρτης Karnaugh', simp: 'Απλοποιημένη συνάρτηση', circ: 'Κύκλωμα' }[k]}</p>`;
+        if (k === 'table') { const cells = sp.map((f, i) => ({ f, u: v[i] })).filter(x => x.f.part === 'table'); h += `<table class="rt" style="width:auto"><tr>${F.vars.map(x => `<th>${x}</th>`).join('')}<th>${esc(F.out)}</th></tr>${F.rows.map((x, r) => { const c = cells.find(z => z.f.r === r); const ok = c && String(c.u) === String(x); return `<tr>${F.vars.map((vv, i) => `<td>${(r >> (F.vars.length - 1 - i)) & 1}</td>`).join('')}<td class="${x === 'x' ? '' : ok ? 'cok' : 'cbad'}">${x === 'x' ? 'X' : (filled(c && c.u) ? c.u : '–') + (ok ? '' : ` <span class="mu">(${x})</span>`)}</td></tr>`; }).join('')}</table>`; }
+        if (k === 'kmap') {
+          const i = sp.findIndex(f => f.part === 'kmap'), K = L.kmLayout(F.vars), R = L.kmCheck(F, v[i], q.kfill), dd = R.d;
+          h += `<table class="rt rkm" style="width:auto"><tr><th>${K.rv}\\${K.cv}</th>${K.cols.map(c => `<th>${c}</th>`).join('')}</tr>${K.rows.map((r, ri) => `<tr><th>${r}</th>${K.cols.map((c, ci) => { const m = K.idx(ri, ci), e = F.rows[m] === 'x' ? 'X' : String(F.rows[m]), u = String((dd.c || {})[m] || ''), ok = !q.kfill || u === e, gi = (dd.g || []).map((S, j) => S.includes(m) ? j + 1 : 0).filter(Boolean); return `<td class="${q.kfill ? (ok ? 'cok' : 'cbad') : ''}"><b>${q.kfill ? (u || '–') : e}</b>${ok ? '' : ` <span class="mu">(${e})</span>`}${gi.length ? `<br><span class="mu" style="font-size:10px">ομ. ${gi.join(',')}</span>` : ''}</td>`; }).join('')}</tr>`).join('')}</table>`;
+          h += `<p>${q.kfill ? `Κελιά: ${R.cellsOk}/${R.N} σωστά. ` : ''}Ομάδες: ${R.groups.length ? R.groups.map((x, j) => `${j + 1}) ${x.cube ? L.cubesHtml([x.cube], F.vars) : '—'}`).join(' · ') : '—'}<br>${!R.groups.length ? '<span class="bad">✗ Δεν έγιναν ομαδοποιήσεις.</span>' : R.bad.length ? '<span class="bad">✗ Κάποια ομάδα περιέχει 0.</span>' : R.miss.length ? `<span class="bad">✗ Δεν καλύπτονται οι ελαχιστόροι ${R.miss.join(', ')}.</span>` : R.minimal ? '<span class="ok">✓ Σωστές και ελάχιστες ομαδοποιήσεις.</span>' : `<span class="mu">Σωστή κάλυψη, αλλά όχι ελάχιστη — ${Math.round(partOf(q) * 100)}% για τις ομάδες.</span>`}</p>`;
+        }
+        if (k === 'simp') { const i = sp.findIndex(f => f.part === 'simp'), u = v[i], c = L.checkExpr(F, u); h += `<p>Απάντηση: <b>${filled(u) ? (c.html ? esc(F.out) + ' = ' + c.html : esc(u)) : '—'}</b> ${!filled(u) ? '' : c.ok === 1 ? '<span class="ok">✓ σωστή και απλοποιημένη</span>' : c.ok === 'eq' ? `<span class="mu">σωστή αλλά όχι η απλούστερη (${c.lits} μεταβλητές έναντι ${F.minLits}) — ${Math.round(partOf(q) * 100)}%</span>` : `<span class="bad">✗ ${c.err ? 'δεν διαβάζεται' : 'λάθος συνάρτηση'}</span>`}<br><span class="mu">Ελάχιστη: ${esc(F.out)} = ${F.minHtml}</span></p>`; }
+        if (k === 'circ') { const i = sp.findIndex(f => f.part === 'circ'); let d = null; try { d = JSON.parse(v[i] || 'null'); } catch (e) { } const r = L.drawCirc(d || { g: [], w: [] }, F.vars, F.out, { labels: true }), ck = L.circCheck(d, F); h += `<svg xmlns="http://www.w3.org/2000/svg" class="rcirc" viewBox="0 0 ${r.W} ${r.H}" width="${Math.round(r.W * 0.85)}" height="${Math.round(r.H * 0.85)}">${r.svg}</svg><p>${ck.ok ? '<span class="ok">✓ Το κύκλωμα υλοποιεί τη συνάρτηση.</span>' : ck.why === 'empty' ? '<span class="bad">✗ Δεν σχεδιάστηκε κύκλωμα.</span>' : ck.why === 'open' ? '<span class="bad">✗ Το κύκλωμα είναι ελλιπές (ασύνδετες είσοδοι ή έξοδος).</span>' : `<span class="bad">✗ Λάθος έξοδος στις γραμμές ${ck.bad.join(', ')} του πίνακα αληθείας.</span>`}</p>`; }
+      });
+      return h;
+    }
+    if (q.type === 'truth') {
+      const T = L.truthTable(q); if (T.err) return '';
+      let k = 0;
+      return `<table class="rt" style="width:auto"><tr>${T.vars.map(x => `<th>${x}</th>`).join('')}${T.cols.map((c, ci) => `<th>${(c.name ? esc(c.name) + ' = ' : '') + c.html}</th>`).join('')}</tr>${T.rows.map(row => `<tr>${row.ins.map(x => `<td>${x}</td>`).join('')}${row.outs.map(o => { const u = v[k++]; const ok = String(u) === String(o); return `<td class="${ok ? 'cok' : 'cbad'}">${filled(u) ? u : '–'}${ok ? '' : ` <span class="mu">(${o})</span>`}</td>`; }).join('')}</tr>`).join('')}</table><p class="rnote">Σε παρένθεση η σωστή τιμή στα λάθος κελιά.</p>`;
+    }
+    const sp = spec(q, P);
+    return `<table class="rt"><tr><th>${q.type === 'match' ? 'Στοιχείο' : q.type === 'conv' ? 'Μετατροπή' : 'Ζητούμενο'}</th><th>Απάντηση μαθητή</th><th>Σωστή απάντηση</th><th></th></tr>${sp.map((f, k) => { const u = v[k]; const ok = f.eq(u); return `<tr><td>${f.label}</td><td>${filled(u) ? esc(u) : '<span class="mu">—</span>'}</td><td class="mu">${esc(f.exp)}</td><td>${yes(ok)}</td></tr>`; }).join('')}</table>`;
+  }
+  function reportBlocks() {
+    const R = st.result || results(), d0 = new Date(st.startedAt || Date.now()), d1 = new Date(st.submittedAt || Date.now());
+    const hm = d => d.toLocaleTimeString('el-GR', { hour: '2-digit', minute: '2-digit' }), mins = Math.max(1, Math.round((d1 - d0) / 60000));
+    const blocks = [];
+    blocks.push(`<div class="rh">${filled(E.subject) || filled(E.grade) ? `<p class="rs">${[E.subject, E.grade].filter(filled).map(fmt).join(' · ')}</p>` : ''}<h1>${fmt(E.title || 'Τεστ')}</h1></div>
+      <table class="ri"><tr><td>Ονοματεπώνυμο</td><td><b>${esc(st.name)}</b></td><td>Τμήμα</td><td><b>${esc(st.section)}</b></td></tr>
+      <tr><td>Ημερομηνία</td><td>${d1.toLocaleDateString('el-GR')}</td><td>Χρόνος</td><td>${hm(d0)} – ${hm(d1)} (${mins}′)${st.auto ? ' · αυτόματη υποβολή' : ''}</td></tr></table>`);
+    blocks.push(`<div class="rsum"><p>Αυτόματη βαθμολόγηση: <b>${nf(R.auto)} / ${nf(autoMax)}</b> μονάδες</p>${openMax ? `<p>Ανοιχτές ερωτήσεις: ______ / ${nf(openMax)} μονάδες</p><p>Σύνολο: ______ / ${nf(autoMax + openMax)} μονάδες${S.scale !== 'pts' ? ` · Βαθμός: ______ / ${S.scale}` : ''}</p>` : S.scale !== 'pts' ? `<p>Βαθμός: <b>${scaled(R.auto)}</b></p>` : ''}${QS.some(RETRY) ? `<p class="rnote">Στις ερωτήσεις με 2 προσπάθειες, η σωστή απάντηση στη 2η προσπάθεια παίρνει το ${Math.round((1 - PEN) * 100)}% των μονάδων.</p>` : ''}</div>`);
+    R.list.forEach((r, i) => {
+      const q = QS.find(x => x.id === r.id); if (!q) return;
+      const att = RETRY(q) ? (r.n === 2 ? ` · 2η προσπάθεια (1η: ${Math.round((r.f1 || 0) * 100)}%)` : st.att[q.id] && st.att[q.id].n ? ' · σωστό με την 1η' : ' · χωρίς έλεγχο') : '';
+      blocks.push(`<div class="rq"><div class="rqh"><b>Ερώτηση ${i + 1}</b><span class="rty">${TL[q.type] || ''}${att}</span><span class="rpt">${r.manual ? `____ / ${nf(pts(q))}` : `${nf(r.final * pts(q))} / ${nf(pts(q))}`}</span></div>${filled(q.text) ? `<div class="rtx">${fmt(q.text)}</div>` : ''}${q.img ? `<img src="${esc(q.img)}" alt="">` : ''}${q.type === 'subnet' ? `<p class="rnote">${esc(q.mode === 'divide' ? `Δίκτυο ${q.net}/${q.dprefix} σε ${q.n} υποδίκτυα` : `IP ${q.ip}/${q.prefix}`)}</p>` : ''}${q.type === 'fill' ? `<p class="rtx mu">${fmt(String(q.gap || '').replace(/\[([^\]]*)\]/g, '____'))}</p>` : ''}${rAnswer(q, r)}</div>`);
+    });
+    return blocks;
+  }
+  /* ---------- κενό γραπτό / λύσεις ---------- */
+  function paperBlocks(key) {
+    const K = x => key ? `<span class="rkey">${x}</span>` : '', blank = (w, val) => key && val != null && val !== '' ? `<span class="rkey rbl" style="min-width:${w}px">${val}</span>` : `<span class="rbl" style="min-width:${w}px"></span>`;
+    const box = (val) => key && val != null ? `<td class="rkey">${val}</td>` : '<td>&nbsp;</td>';
+    const blocks = [`<div class="rh">${filled(E.subject) || filled(E.grade) ? `<p class="rs">${[E.subject, E.grade].filter(filled).map(fmt).join(' · ')}</p>` : ''}<h1>${fmt(E.title || 'Τεστ')}${key ? ' — Λύσεις' : ''}</h1></div>${key ? '' : `<table class="ri"><tr><td>Ονοματεπώνυμο</td><td style="width:44%"></td><td>Τμήμα</td><td></td></tr><tr><td>Ημερομηνία</td><td></td><td>Βαθμός</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / ${S.scale === '100' ? 100 : S.scale === '20' ? 20 : nf(autoMax + openMax)}</td></tr></table>`}${filled(E.intro) && !key ? `<p class="rtx">${fmt(E.intro)}</p>` : ''}<p class="rnote">${QS.length} ερωτήσεις · ${nf(autoMax + openMax)} μονάδες${Number(S.duration) > 0 ? ` · διάρκεια ${Number(S.duration)} λεπτά` : ''}</p>`];
+    QS.forEach((q, i) => {
+      const P = makePermPlain(q); let h = '';
+      switch (q.type) {
+        case 'tf': h = `<p class="rans">${key ? (q.answer ? '■ Σωστό &nbsp;&nbsp; □ Λάθος' : '□ Σωστό &nbsp;&nbsp; ■ Λάθος') : '□ Σωστό &nbsp;&nbsp;&nbsp; □ Λάθος'}</p>`; break;
+        case 'mc': h = `<ul class="rmc">${(q.options || []).filter(o => filled(o.t)).map((o, j) => `<li>${key && o.c ? '<span class="rkey">■</span>' : '□'} ${'αβγδεζηθ'[j] || ''}. ${fmt(o.t)}</li>`).join('')}</ul>`; break;
+        case 'match': { const R = [...new Set((q.pairs || []).map(p => String(p.r || '').trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'el')), Lf = (q.pairs || []).filter(p => filled(p.l)); h = `<table class="rt"><tr><th>Στήλη Α</th><th>Στήλη Β</th></tr>${[...Array(Math.max(Lf.length, R.length)).keys()].map(k => `<tr><td>${Lf[k] ? (k + 1) + '. ' + fmt(Lf[k].l) : ''}</td><td>${R[k] ? 'αβγδεζηθικλμ'[k] + '. ' + esc(R[k]) : ''}</td></tr>`).join('')}</table><p class="rans">${Lf.map((p, k) => `${k + 1} → ${key ? `<span class="rkey">${'αβγδεζηθικλμ'[R.indexOf(String(p.r).trim())]}</span>` : '____'}`).join(' &nbsp; ')}</p>`; break; }
+        case 'fill': { const A = gaps(q); let gi = 0; h = `<p class="rans" style="line-height:2.2">${String(q.gap || '').split(/\[([^\]]*)\]/).map((p, k) => k % 2 ? blank(110, esc((A[gi++] || [])[0] || '')) : fmt(p)).join('')}</p>${q.bank ? `<p class="rnote">Λέξεις: ${makePerm(q).bank.map(esc).join(' · ')}</p>` : ''}`; break; }
+        case 'order': { const it = items(q), sh = it.map((x, k) => k).sort((a, b) => (it[a] > it[b] ? 1 : -1)); h = `<p class="rnote">Γράψε τη σωστή σειρά (1, 2, 3…) στα κουτάκια.</p><ul class="rmc">${sh.map(k => `<li>[ ${key ? `<span class="rkey">${k + 1}</span>` : '&nbsp;&nbsp;'} ] ${fmt(it[k])}</li>`).join('')}</ul>`; break; }
+        case 'num': case 'short': { const sp = spec(q, P); h = `<p class="rans">Απάντηση: ${blank(220, esc(sp[0].exp))} ${q.type === 'num' ? esc(q.unit || '') : ''}</p>`; break; }
+        case 'open': h = key ? `<p class="rans">${filled(q.model) ? `<span class="rkey">${fmt(q.model)}</span>` : '<span class="mu">(ανοιχτή απάντηση)</span>'}</p>` : `<div class="rlines">${'<div></div>'.repeat(Math.max(3, Number(q.lines) || 6))}</div>`; break;
+        case 'subnet': {
+          const sp = spec(q, P);
+          if (q.mode === 'divide') { const D = L.divide(q.net, q.dprefix, q.n); if (!D) break; const cols = Object.keys(L.SUB_C).filter(c => (q.cols || {})[c]), nr = Math.min(D.rows.length, Number(q.rows) || 0), sc = Object.keys(L.SUB_D).filter(k => (q.ask || {})[k]);
+            h = `<p class="rans">Δίκτυο <b>${esc(D.base)}/${esc(q.dprefix)}</b>: να χωριστεί σε <b>${esc(q.n)}</b> υποδίκτυα.</p>${sc.length ? `<table class="rt">${sc.map(k => `<tr><td style="width:40%">${L.SUB_D[k]}</td>${box(key ? D[k] : null)}</tr>`).join('')}</table>` : ''}${nr && cols.length ? `<table class="rt"><tr><th></th>${cols.map(c => `<th>${L.SUB_C[c]}</th>`).join('')}</tr>${[...Array(nr).keys()].map(r => `<tr><td>Υποδίκτυο ${r + 1}</td>${cols.map(c => box(key ? D.rows[r][c] : null)).join('')}</tr>`).join('')}</table>` : ''}`; }
+          else { const A = L.analyze(q.ip, q.prefix); if (!A) break; h = `<p class="rans">Διεύθυνση IP: <b>${esc(q.ip)}${q.given === 'mask' ? '' : '/' + esc(q.prefix)}</b>${q.given === 'mask' ? ` με μάσκα <b>${A.mask}</b>` : ''}</p><table class="rt">${sp.map(f => `<tr><td style="width:40%">${f.label}</td>${box(key ? esc(f.exp) : null)}</tr>`).join('')}</table>`; }
+          break; }
+        case 'conv': h = (q.rows || []).filter(r => L.convAns(r) != null).map(r => `<p class="rans">(${esc(L.convSrc(r))})<sub>${L.BSUB[r.from]}</sub> = (${blank(200, esc(L.convAns(r)))})<sub>${L.BSUB[r.to]}</sub></p>`).join(''); break;
+        case 'arith': h = `<div class="rars">${(q.rows || []).filter(r => L.arithAns(r) != null).map(r => `<div class="rar"><div>${esc(L.arithSrc(r.a))}</div><div>${r.op === '-' ? '−' : '+'} ${esc(L.arithSrc(r.b))}</div><div class="rarl">${key ? `<span class="rkey">${esc(L.arithAns(r))}</span>` : '&nbsp;'}</div><span class="rarb">(${L.BSUB[r.base]})</span></div>`).join('')}</div>`; break;
+        case 'truth': { const T = L.truthTable(q); if (T.err) break; h = `<table class="rt" style="width:auto"><tr>${T.vars.map(x => `<th>${x}</th>`).join('')}${T.cols.map((c, ci) => `<th style="min-width:70px">${colHead(q, c, ci, T.cols.length)}</th>`).join('')}</tr>${T.rows.map(r => `<tr>${r.ins.map(x => `<td>${x}</td>`).join('')}${r.outs.map(o => box(key ? o : null)).join('')}</tr>`).join('')}</table>`; break; }
+        case 'comb': {
+          const F = L.funcOf(q); if (F.err) break; const pp = combParts(q), lt = 'αβγδε';
+          h = q.show === 'table' ? `<table class="rt" style="width:auto"><tr>${F.vars.map(v => `<th>${v}</th>`).join('')}<th>${esc(F.out)}</th></tr>${F.rows.map((x, r) => `<tr>${F.vars.map((v, k) => `<td>${(r >> (F.vars.length - 1 - k)) & 1}</td>`).join('')}<td><b>${x === 'x' ? 'X' : x}</b></td></tr>`).join('')}</table>` : `<p class="rans">${q.show === 'mint' || q.src === 'mint' ? `${esc(F.out)}(${F.vars.join(', ')}) = Σm(${F.ones.join(', ')})${F.dcs.length ? ` + d(${F.dcs.join(', ')})` : ''}` : `${esc(F.out)} = ${F.html}`}</p>`;
+          pp.forEach((k, j) => {
+            h += `<p class="rpart">${lt[j]}) ${{ table: 'Να συμπληρώσετε τον πίνακα αληθείας.', kmap: 'Να συμπληρώσετε τον χάρτη Karnaugh και να κάνετε τις ομαδοποιήσεις.', simp: 'Να γράψετε την απλοποιημένη λογική συνάρτηση.', circ: 'Να σχεδιάσετε το λογικό κύκλωμα.' }[k]}</p>`;
+            if (k === 'table') h += `<table class="rt" style="width:auto"><tr>${F.vars.map(v => `<th>${v}</th>`).join('')}<th style="min-width:60px">${esc(F.out)}</th></tr>${F.rows.map((x, r) => `<tr>${F.vars.map((v, z) => `<td>${(r >> (F.vars.length - 1 - z)) & 1}</td>`).join('')}${x === 'x' ? '<td><b>X</b></td>' : box(key ? x : null)}</tr>`).join('')}</table>`;
+            if (k === 'kmap') { const KL = L.kmLayout(F.vars); h += `<table class="rt rkm" style="width:auto"><tr><th>${KL.rv}\\${KL.cv}</th>${KL.cols.map(c => `<th>${c}</th>`).join('')}</tr>${KL.rows.map((r, ri) => `<tr><th>${r}</th>${KL.cols.map((c, ci) => { const m = KL.idx(ri, ci); return !q.kfill || key ? `<td class="${key && q.kfill ? 'rkey' : ''}" style="height:34px"><b>${F.rows[m] === 'x' ? 'X' : F.rows[m]}</b></td>` : '<td style="height:34px"></td>'; }).join('')}</tr>`).join('')}</table>${key ? `<p class="rans"><span class="rkey">Ομάδες: ${F.min.terms.map(t => L.cubesHtml([t], F.vars)).join(' · ')}</span></p>` : ''}`; }
+            if (k === 'simp') h += `<p class="rans">${esc(F.out)} = ${key ? `<span class="rkey">${F.minHtml}</span>` : blank(420)}</p>`;
+            if (k === 'circ') h += key ? `<p class="rans"><span class="rkey">Οποιοδήποτε κύκλωμα υλοποιεί την ${esc(F.out)} = ${F.minHtml}</span></p>` : '<div class="rbox" style="height:230px"></div>';
+          });
+          break; }
+        case 'wave': {
+          const R = L.simWave(q), D = L.WDEV[q.dev] || L.WDEV.jk, pp = q.parts || {}, r = L.drawWave(q, key ? { correct: true, noQ: true } : { student: [] });
+          h = `<p class="rans">${D.name}${D.latch ? '' : `, που διεγείρεται με το ${q.edge === 'neg' ? 'αρνητικό' : 'θετικό'} μέτωπο του ρολογιού`}${q.async ? ', με ασύγχρονες εισόδους PRESET και CLEAR' : ''}. Q = ${R.Q[0]} τη χρονική στιγμή t<sub>0</sub> = 0.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${r.W} ${r.H}" width="${Math.round(r.W * 0.88)}" height="${Math.round(r.H * 0.88)}">${r.svg}</svg>`;
+          if (pp.table) h += `<table class="rt" style="width:auto"><tr><th>Χρόνος</th>${q.tin ? D.ins.map(x => `<th>${x}</th>`).join('') : ''}<th style="min-width:50px">Q</th>${q.top ? '<th style="min-width:230px">Λειτουργία</th>' : ''}</tr><tr><td>${wTL(q, 0)}</td>${q.tin ? D.ins.map(x => `<td>${L.wv(q, x, 0)}</td>`).join('') : ''}<td>${R.Q[0]}</td>${q.top ? '<td>Αρχική κατάσταση</td>' : ''}</tr>${wRows(q).map(k => `<tr><td>${wTL(q, k)}</td>${q.tin ? D.ins.map(x => box(key ? wInAt(q, x, k) : null)).join('') : ''}${box(key ? R.Q[k] : null)}${q.top ? box(key ? esc(L.wLabel(q, R.op[k])) : null) : ''}</tr>`).join('')}</table>`;
+          break; }
+        case 'reg': { const G = L.regSim(q); h = `<p class="rans">Καταχωρητής ${q.kind === 'sipo' ? 'SIPO' : 'SISO'} ${G.n} bits, ${q.dir === 'left' ? 'αριστερής' : 'δεξιάς'} ολίσθησης. Αρχική κατάσταση ${G.rows[0].c.join('')}. Σειριακή είσοδος ανά παλμό: ${G.rows.slice(1).map(r => r.in).join(', ')}.</p><table class="rt" style="width:auto"><tr><th></th><th>Είσοδος</th>${G.rows[0].c.map((b, j) => `<th style="min-width:40px">FF${j + 1}</th>`).join('')}${q.kind !== 'sipo' ? '<th>Έξοδος</th>' : ''}</tr><tr><td>Αρχική κατάσταση</td><td>–</td>${G.rows[0].c.map(b => `<td>${b}</td>`).join('')}${q.kind !== 'sipo' ? `<td>${G.rows[0].out}</td>` : ''}</tr>${G.rows.slice(1).map((r, i) => `<tr><td>${ord(i + 1)}</td>${q.cin ? box(key ? r.in : null) : `<td>${r.in}</td>`}${r.c.map(b => box(key ? b : null)).join('')}${q.kind !== 'sipo' ? (q.cout ? box(key ? r.out : null) : '<td></td>') : ''}</tr>`).join('')}</table>`; break; }
+        case 'cnt': { const C = L.cntSim(q); if (C.err) break; h = `<table class="rt" style="width:auto"><tr><th>Παλμός ρολογιού</th>${[...Array(C.n).keys()].map(j => `<th style="min-width:40px">Q<sub>${C.n - j}</sub></th>`).join('')}${q.dec ? '<th>Δεκαδικός</th>' : ''}</tr><tr><td>Αρχική κατάσταση</td>${C.bitsOf(C.rows[0]).map(b => `<td>${b}</td>`).join('')}${q.dec ? `<td>${C.rows[0]}</td>` : ''}</tr>${C.rows.slice(1).map((v, i) => `<tr><td>${ord(i + 1)}</td>${C.bitsOf(v).map(b => box(key ? b : null)).join('')}${q.dec ? box(key ? v : null) : ''}</tr>`).join('')}</table>`; break; }
+      }
+      blocks.push(`<div class="rq"><div class="rqh"><b>Ερώτηση ${i + 1}</b><span class="rty"></span><span class="rpt">${key ? '' : '____ / '}${nf(pts(q))} ${pts(q) === 1 ? 'μονάδα' : 'μονάδες'}</span></div>${filled(q.text) ? `<div class="rtx">${fmt(q.text)}</div>` : ''}${q.img ? `<img src="${esc(q.img)}" alt="">` : ''}${h}</div>`);
+    });
+    return blocks;
+  }
+  function makePermPlain(q) { const P = {}; if (q.type === 'mc') P.opts = (q.options || []).map((o, i) => i).filter(i => filled(q.options[i].t)); if (q.type === 'match') { const A = q.pairs || []; P.left = A.map((p, i) => i).filter(i => filled(A[i].l)); P.right = []; } if (q.type === 'order') P.cur = items(q).map((x, i) => i); return P; }
+  async function buildPdf(blocksIn, foot) {
+    const PH = 1123, host = document.createElement('div');
+    host.style.cssText = 'position:fixed;left:-30000px;top:0;width:794px;pointer-events:none;';
+    host.innerHTML = `<style>${RCSS}</style>`; document.body.appendChild(host);
+    const pages = []; let page = null;
+    const newPage = () => { page = document.createElement('div'); page.className = 'rp'; host.appendChild(page); pages.push(page); };
+    newPage();
+    for (const b of (blocksIn || reportBlocks())) {
+      const w = document.createElement('div'); w.innerHTML = b;
+      const nodes = [...w.childNodes]; nodes.forEach(n => page.appendChild(n));
+      if (page.offsetHeight > PH && page.childNodes.length > nodes.length) { newPage(); nodes.forEach(n => page.appendChild(n)); }
+    }
+    const imgs = [];
+    try {
+      for (let i = 0; i < pages.length; i++) {
+        const p = pages[i], h = Math.max(PH, p.offsetHeight + 10);
+        p.style.height = h + 'px';
+        p.insertAdjacentHTML('beforeend', `<div class="rft"><span>${foot != null ? foot : `${esc(st.name)} · ${esc(st.section)} · ${esc(E.title || '')}`}</span><span>Σελίδα ${i + 1} / ${pages.length}</span></div>`);
+        imgs.push(await snap(p, 794, h));
+      }
+    } finally { host.remove(); }
+    return makePdf(imgs);
+  }
+  function snap(el, w, h) {
+    const wrap = document.createElement('div'); const sty = document.createElement('style'); sty.textContent = RCSS; wrap.appendChild(sty); wrap.appendChild(el.cloneNode(true));
+    const xml = new XMLSerializer().serializeToString(wrap);
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><foreignObject x="0" y="0" width="${w}" height="${h}">${xml}</foreignObject></svg>`;
+    return new Promise((res, rej) => {
+      const img = new Image(), sc = 1.7;
+      img.onload = () => {
+        const c = document.createElement('canvas'); c.width = w * sc; c.height = h * sc;
+        const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); x.drawImage(img, 0, 0, c.width, c.height);
+        c.toBlob(b => { if (!b) return rej(new Error('Η εικόνα της σελίδας δεν δημιουργήθηκε')); b.arrayBuffer().then(ab => res({ bytes: new Uint8Array(ab), pw: c.width, ph: c.height, w, h })); }, 'image/jpeg', 0.84);
+      };
+      img.onerror = () => rej(new Error('Σφάλμα απόδοσης σελίδας'));
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    });
+  }
+  function makePdf(imgs) {
+    const enc = new TextEncoder(), chunks = [], offs = []; let len = 0;
+    const push = x => { const b = typeof x === 'string' ? enc.encode(x) : x; chunks.push(b); len += b.length; };
+    const obj = (n, f) => { offs[n] = len; push(`${n} 0 obj\n`); f(); push('\nendobj\n'); };
+    push('%PDF-1.4\n%âãÏÓ\n');
+    const N = imgs.length, W = 595.28;
+    obj(1, () => push('<< /Type /Catalog /Pages 2 0 R >>'));
+    obj(2, () => push(`<< /Type /Pages /Kids [${imgs.map((m, i) => `${3 + i * 3} 0 R`).join(' ')}] /Count ${N} >>`));
+    imgs.forEach((m, i) => {
+      const H = +(W * m.h / m.w).toFixed(2), pg = 3 + i * 3;
+      obj(pg, () => push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${W} ${H}] /Resources << /XObject << /Im0 ${pg + 2} 0 R >> >> /Contents ${pg + 1} 0 R >>`));
+      const cs = `q ${W} 0 0 ${H} 0 0 cm /Im0 Do Q`;
+      obj(pg + 1, () => push(`<< /Length ${cs.length} >>\nstream\n${cs}\nendstream`));
+      obj(pg + 2, () => { push(`<< /Type /XObject /Subtype /Image /Width ${m.pw} /Height ${m.ph} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${m.bytes.length} >>\nstream\n`); push(m.bytes); push('\nendstream'); });
+    });
+    const xref = len, cnt = 3 + N * 3;
+    push(`xref\n0 ${cnt}\n0000000000 65535 f \n` + [...Array(cnt - 1).keys()].map(k => String(offs[k + 1]).padStart(10, '0') + ' 00000 n \n').join(''));
+    push(`trailer\n<< /Size ${cnt} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`);
+    const out = new Uint8Array(len); let o = 0; chunks.forEach(c => { out.set(c, o); o += c.length; }); return out;
+  }
+
+  /* ---------- συμβάντα ---------- */
+  let saveT; const dirty = new Set();
+  const autosave = el => { if (!el) return; dirty.add(el); clearTimeout(saveT); saveT = setTimeout(flush, 250); };
+  const flush = () => { if (st.phase === 'exam') { dirty.forEach(el => { const q = qOf(el); if (q && el.isConnected) st.ans[q.id] = gather(q, el); }); store(); prog(); } dirty.clear(); };
+  root.oninput = root.onchange = e => {
+    const el = e.target.closest('.ex-q'); if (!el) return;
+    e.target.classList.remove('ex-bad');
+    const o = e.target.closest('.ex-opt'); if (o) el.querySelectorAll('.ex-opt').forEach(x => x.classList.remove('ex-bad'));
+    if (e.target.dataset && 'expr' in e.target.dataset) exprPrev(e.target);
+    autosave(el);
+  };
+  root.onclick = async e => {
+    const t = e.target, b = t.closest('[data-act],[data-mv],.ex-tg,[data-go],[data-step]');
+    if (!b || b.disabled) return;
+    if (b.dataset.go != null) { go(+b.dataset.go); try { root.querySelector('.ex-q.on').scrollIntoView({ block: 'nearest' }); } catch (x) { } return; }
+    if (b.dataset.step != null) { go(cur + +b.dataset.step); return; }
+    if (b.closest('.ex-circ,.ex-km,.ex-wv')) return;
+    if (b.classList.contains('ex-tg')) { const v = { '': '0', '0': '1', '1': '' }[b.dataset.v || '']; b.dataset.v = v; b.textContent = v === '' ? '–' : v; b.classList.remove('ex-bad'); return autosave(b.closest('.ex-q')); }
+    if (b.dataset.mv) { const el = b.closest('.ex-q'), q = qOf(el), P = st.perm[q.id], p = +b.closest('li').dataset.p, to = p + +b.dataset.mv; if (to < 0 || to >= P.cur.length) return; [P.cur[p], P.cur[to]] = [P.cur[to], P.cur[p]]; st.moved[q.id] = true; el.querySelector('.ex-ord').innerHTML = ordHtml(q, P); const nb = el.querySelector(`li[data-p="${to}"] [data-mv="${b.dataset.mv}"]`); if (nb && !nb.disabled) nb.focus({ preventScroll: true }); st.ans[q.id] = P.cur.slice(); store(); prog(); return; }
+    if ('confirm' in b.dataset && !b.dataset.armed) { const txt = b.textContent; b.dataset.armed = '1'; b.textContent = b.dataset.confirm; setTimeout(() => { b.dataset.armed = ''; b.textContent = txt; }, 3000); return; }
+    switch (b.dataset.act) {
+      case 'kp': return kp(b);
+      case 'theme': theme = isDark() ? 'light' : 'dark'; if (!opt.preview) { try { localStorage.setItem('qz-theme', theme); } catch (x) { } } return applyTheme();
+      case 'print': try { root.querySelectorAll('.ex-sol').forEach(d => d.open = true); window.print(); } catch (x) { } return;
+      case 'again': st = fresh(); quizStart(); store(); render(); try { root.scrollIntoView({ block: 'start' }); } catch (x) { } return;
+      case 'start': return begin();
+      case 'check': return check(b.closest('.ex-q'));
+      case 'submit': return openSubmit();
+      case 'dosubmit': return submit(false, true);
+      case 'close': closeModal(); return;
+      case 'teacher': return openTeacher();
+      case 'pin': return pin();
+      case 'pick': return pick();
+      case 'grant': return grant();
+      case 'override': st.override = true; store(); closeModal(); return render();
+      case 'reset': st = fresh(); store(); closeModal(); render(); try { root.scrollIntoView({ block: 'start' }); } catch (x) { } return;
+      case 'resave': closeModal(); return makeAndSave(false);
+      case 'dl': closeModal(); return makeAndSave(true);
+    }
+  };
+  root.onkeydown = e => {
+    if (e.key === 'Enter' && e.target.id === 'exPin') { e.preventDefault(); pin(); return; }
+    if (e.key === 'Escape' && root.querySelector('.ex-modal')) { closeModal(); return; }
+    const eqd = e.target.closest && e.target.closest('.ex-eqd');
+    if (eqd) { const q = qOf(eqd.closest('.ex-q')), F = q && L.funcOf(q), k = e.key; if (!F || F.err || eqd.closest('.ex-q').querySelector('[data-expr]').disabled) return;
+      let ins = null; if (k.length === 1 && F.vars.includes(k.toUpperCase())) ins = k.toUpperCase(); else if ("+()'".includes(k) && k.length === 1) ins = k; else if (k === '*' || k === '.') ins = '·'; else if (k === '^') ins = '⊕';
+      if (ins) { e.preventDefault(); const el = eqd.closest('.ex-q'), inp = el.querySelector('[data-expr]'); if (ins === "'") { if (/[A-D)]$/.test(inp.value)) inp.value += "'"; } else inp.value += ins; exprPrev(inp); eqd.classList.remove('ex-bad'); autosave(el); }
+      else if (k === 'Backspace') { e.preventDefault(); kp(eqd, 'back'); } else if (k === 'Delete') { e.preventDefault(); kp(eqd, 'clear'); }
+      return; }
+    if (e.target.classList && e.target.classList.contains('ex-tg') && !e.target.closest('.ex-circ,.ex-km') && (e.key === '0' || e.key === '1')) { e.target.dataset.v = e.key; e.target.textContent = e.key; e.target.classList.remove('ex-bad'); autosave(e.target.closest('.ex-q')); }
+  };
+  if (!opt.preview && !QUIZ) window.addEventListener('beforeunload', e => { if (st.phase === 'exam') { e.preventDefault(); e.returnValue = ''; } });
+  if (!opt.headless) render();
+  if (QUIZ && !opt.preview && window.parent !== window) { let lastH = 0; const post = () => { const h = Math.ceil(root.getBoundingClientRect().bottom + window.scrollY + 8); if (Math.abs(h - lastH) < 2) return; lastH = h; try { window.parent.postMessage({ qzHeight: h }, '*'); } catch (e) { } }; try { new ResizeObserver(post).observe(root); } catch (e) { setInterval(post, 1000); } post(); }
+  return { reset: () => { st = fresh(); store(); render(); }, paperPdf: key => buildPdf(paperBlocks(key), `${esc(E.title || '')}${key ? ' · Λύσεις' : ''}`) };
+});
+EXAM(document.getElementById('exam'), JSON.parse(document.getElementById('exam-data').textContent), {});
+</script>
+</body>
+</html>
